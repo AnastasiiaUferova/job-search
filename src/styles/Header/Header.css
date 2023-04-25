@@ -1,11 +1,7 @@
 .header {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 0 10%;
   height: 84px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
 }
 .header__content {
   display: flex;
@@ -26,10 +22,11 @@
   line-height: 20px;
 }
 .header__links a:hover {
-  color: #5E96FC;
+  opacity: 0.7;
 }
 .header__links_active {
   color: #5E96FC !important;
+  font-weight: 500 !important;
 }
 .header__logo {
   position: relative;
@@ -53,4 +50,18 @@
 .header a {
   color: #232134;
   cursor: pointer;
+}
+
+@media (max-width: 650px) {
+  .header {
+    height: 200px;
+    padding-top: 20px;
+  }
+  .header__content {
+    flex-direction: column;
+  }
+  .header__links {
+    flex-direction: column;
+    gap: 30px;
+  }
 }
