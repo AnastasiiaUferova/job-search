@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'poppins_blackregular';
+    src: url('poppins-black-webfont.woff2') format('woff2'),
+         url('poppins-black-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
