@@ -25,6 +25,12 @@
   font-size: 16px;
   line-height: 20px;
 }
+.header__links a:hover {
+  color: #5E96FC;
+}
+.header__links_active {
+  color: #5E96FC !important;
+}
 .header__logo {
   position: relative;
 }

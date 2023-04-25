@@ -27,6 +27,14 @@
         font-size: 16px;
         line-height: 20px;
 
+        a:hover {
+            color: $main-blue;
+         }
+
+         &_active {
+            color: $main-blue !important;
+         }
+
     }
 
     &__logo {
@@ -48,10 +56,12 @@
         width: 30px;
         height: 30px;
      }
+
     }
 
      a {
         color: #232134;
         cursor: pointer;
      }
+
 }

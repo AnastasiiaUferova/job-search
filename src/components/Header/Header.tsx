@@ -12,8 +12,24 @@ export default function Header(): JSX.Element {
           </NavLink>
         </div>
         <div className="header__links">
-          <NavLink to="/">Поиск Вакансии</NavLink>
-          <NavLink to="/saved">Избранное</NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "header__links_active" : ""
+            }
+            end
+          >
+            Поиск Вакансий
+          </NavLink>
+          <NavLink
+            to="/saved"
+            className={({ isActive }) =>
+              isActive ? "header__links_active" : ""
+            }
+            end
+          >
+            Избранное
+          </NavLink>
         </div>
       </div>
     </div>
