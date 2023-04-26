@@ -9,7 +9,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   height: 100vh;
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
 }
 
 div {
@@ -19,4 +19,17 @@ div {
 
 a {
   text-decoration: none;
+  cursor: pointer;
+}
+
+h2, h3 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+button {
+   cursor: pointer;
 }

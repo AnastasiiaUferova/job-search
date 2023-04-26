@@ -1,0 +1,66 @@
+@import "../Variables/Variables.scss";
+.filter {
+    width: 315px;
+    height: 360px;
+    background-color: $ligth-background;
+    border: 1px solid #EAEBED;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    
+   
+    flex-direction: column;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 32px;
+    }
+
+    &__title {
+        @include font(700);
+        line-height: 20px;
+        font-size: 20px;
+        color: $black-font;
+    }
+
+    &__reset {
+        @include font(500);
+        font-size: 14px;
+        line-height: 20px;
+        color: $gray-font;
+        border: none;
+        background-color: transparent;
+        margin-right: 21px;
+        padding: 0;
+        position: relative;
+    }
+
+    &__reset::after {
+        content: url(../../assets/Close-icon.svg);
+        margin-top: 3px;
+        padding-left: 8px;
+        position: absolute;
+    }
+
+    &__branch {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__subtitle {
+        @include font(700);
+        font-size: 16px;
+        line-height: 19px;
+        color: $black-font;
+        margin-bottom: 8px;
+    }
+}
+
+.dropdown {
+    background-image: url(../../assets/Dropdown.svg);
+    width: 15px;
+    height: 7px;
+    background-size: cover;
+}
