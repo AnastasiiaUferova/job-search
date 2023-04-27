@@ -12,17 +12,32 @@ export default function Branch() {
   };
 
   return (
-    <div className="filter__branch">
+    <div className="filter__input-groups">
       <h3 className="filter__subtitle">Отрасль</h3>
       <Select
         onDropdownOpen={() => setIsOpened(true)}
         onDropdownClose={() => setIsOpened(false)}
         searchable
+        clearable
         placeholder="Выберете отрасль"
         rightSection={Dropdown()}
         styles={{
           rightSection: { pointerEvents: "none" },
-          input: { height: "42px", cursor: "pointer" },
+          input: {
+            height: "42px",
+            cursor: "pointer",
+            "&:focus, &:hover": {
+              border: "1px solid #5E96FC",
+            },
+          },
+
+          item: {
+            "&[data-selected]": {
+              "&, &:hover": {
+                backgroundColor: "#5E96FC",
+              },
+            },
+          },
         }}
         data={["React", "Angular", "Svelte", "Vue"]}
       />

@@ -39,9 +39,10 @@
   padding-left: 8px;
   position: absolute;
 }
-.filter__branch {
+.filter__input-groups {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 .filter__subtitle {
   font-style: normal;
@@ -51,6 +52,38 @@
   color: #232134;
   margin-bottom: 8px;
 }
+.filter__number-input {
+  position: relative;
+}
+.filter__number-inputs button {
+  border: none;
+  background: transparent;
+  width: 12px;
+  height: 12px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.filter__number-inputs button:nth-of-type(1) {
+  background-image: url(../../assets/UpNumber.svg);
+  top: 9px;
+  right: 0;
+}
+.filter__number-inputs button:nth-of-type(2) {
+  background-image: url(../../assets/DownNumber.svg);
+  background-size: contain;
+}
+.filter__number-inputs_buttons {
+  width: 12px;
+  height: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  top: 9px;
+}
 
 .dropdown {
   background-image: url(../../assets/Dropdown.svg);
@@ -59,6 +92,6 @@
   background-size: cover;
 }
 
-.dropdown_open {
-  background-image: url(../../assets/DropdownUp.svg);
+.mantine-k3ov3c {
+  gap: 8px !important;
 }

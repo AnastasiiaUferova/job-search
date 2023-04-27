@@ -44,9 +44,10 @@
         position: absolute;
     }
 
-    &__branch {
+    &__input-groups {
         display: flex;
         flex-direction: column;
+        margin-bottom: 20px;
     }
 
     &__subtitle {
@@ -56,6 +57,47 @@
         color: $black-font;
         margin-bottom: 8px;
     }
+
+    &__number-input {
+        position: relative;
+    }
+
+    &__number-inputs {
+        button {
+            border: none;
+            background: transparent;
+            width: 12px;
+            height: 12px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        button:nth-of-type(1){
+            background-image: url(../../assets/UpNumber.svg);
+            top: 9px;
+            right: 0;
+        }
+
+        button:nth-of-type(2){
+            background-image: url(../../assets/DownNumber.svg);
+            background-size: contain;
+        }
+
+        &_buttons {
+            width: 12px;
+            height: 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            position: absolute;
+            z-index: 2;
+            right: 10px;
+            top: 9px;
+        }
+
+    }
+
 }
 
 .dropdown {
@@ -63,4 +105,8 @@
     width: 15px;
     height: 7px;
     background-size: cover;
+}
+
+.mantine-k3ov3c {
+    gap: 8px !important;
 }
