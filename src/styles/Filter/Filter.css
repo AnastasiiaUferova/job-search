@@ -36,7 +36,7 @@
 .filter__reset::after {
   content: url(../../assets/Close-icon.svg);
   margin-top: 3px;
-  padding-left: 8px;
+  padding-left: 5px;
   position: absolute;
 }
 .filter__reset:hover {
@@ -44,6 +44,18 @@
 }
 .filter__reset:active {
   color: #5E96FC;
+}
+.filter__reset::after {
+  content: url(../../assets/Close-icon.svg);
+  margin-top: 3px;
+  padding-left: 5px;
+  position: absolute;
+}
+.filter__reset:hover::after {
+  content: url(../../assets/CloseIconHover.svg);
+}
+.filter__reset:active::after {
+  content: url(../../assets/CloseIconActive.svg);
 }
 .filter__input-groups {
   display: flex;
@@ -75,9 +87,22 @@
   top: 9px;
   right: 0;
 }
+.filter__number-inputs button:nth-of-type(1):hover {
+  background-image: url(../../assets/UpNumberHover.svg);
+}
+.filter__number-inputs button:nth-of-type(1):active {
+  background-image: url(../../assets/UpNumberActive.svg);
+}
 .filter__number-inputs button:nth-of-type(2) {
   background-image: url(../../assets/DownNumber.svg);
-  background-size: contain;
+}
+.filter__number-inputs button:nth-of-type(2):hover {
+  background-image: url(../../assets/UpNumberHover.svg);
+  transform: rotate(180deg);
+}
+.filter__number-inputs button:nth-of-type(2):active {
+  background-image: url(../../assets/UpNumberActive.svg);
+  transform: rotate(180deg);
 }
 .filter__number-inputs_buttons {
   width: 12px;
