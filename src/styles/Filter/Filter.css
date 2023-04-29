@@ -39,6 +39,12 @@
   padding-left: 8px;
   position: absolute;
 }
+.filter__reset:hover {
+  color: #92C1FF;
+}
+.filter__reset:active {
+  color: #5E96FC;
+}
 .filter__input-groups {
   display: flex;
   flex-direction: column;

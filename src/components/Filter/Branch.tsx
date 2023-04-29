@@ -37,6 +37,9 @@ export default function Branch() {
                 backgroundColor: "#5E96FC",
               },
             },
+            "&[data-hovered]": {
+              backgroundColor: "#DEECFF",
+            },
           },
         }}
         data={["React", "Angular", "Svelte", "Vue"]}
@@ -44,3 +47,14 @@ export default function Branch() {
     </div>
   );
 }
+
+/*   item: {
+            "&[data-selected]": {
+              "&": {
+                backgroundColor: "#5E96FC",
+              },
+            },
+            "&[data-hovered]": {
+              backgroundColor: "#DEECFF",
+            },
+          },*/

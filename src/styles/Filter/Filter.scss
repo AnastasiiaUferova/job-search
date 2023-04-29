@@ -44,6 +44,15 @@
         position: absolute;
     }
 
+    &__reset:hover {
+        color: $hover-blue;
+    }
+
+    &__reset:active {
+        color: $main-blue;
+
+    }
+
     &__input-groups {
         display: flex;
         flex-direction: column;
