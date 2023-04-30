@@ -32,38 +32,31 @@
         margin-right: 21px;
         padding: 0;
         position: relative;
+    
+        &::after {
+            content: url(../../assets/Close-icon.svg);
+            margin-top: 3px;
+            padding-left: 5px;
+            position: absolute;
+        }
+    
+        &:hover {
+            color: $hover-blue;
+    
+            &::after {
+                content: url(../../assets/CloseIconHover.svg);
+            }
+        }
+    
+        &:active {
+            color: $main-blue;
+    
+            &::after {
+                content: url(../../assets/CloseIconActive.svg);
+            }
+        }
     }
-
-    &__reset::after {
-        content: url(../../assets/Close-icon.svg);
-        margin-top: 3px;
-        padding-left: 5px;
-        position: absolute;
-    }
-
-    &__reset:hover {
-        color: $hover-blue;
-    }
-
-    &__reset:active {
-        color: $main-blue;
-    }
-
-    &__reset::after {
-        content: url(../../assets/Close-icon.svg);
-        margin-top: 3px;
-        padding-left: 5px;
-        position: absolute;
-    }
-
-    &__reset:hover::after {
-        content: url(../../assets/CloseIconHover.svg);
-    }
-
-    &__reset:active::after {
-        content: url(../../assets/CloseIconActive.svg);
-    }
-
+    
 
     &__input-groups {
         display: flex;
@@ -92,39 +85,36 @@
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
+    
+            &:nth-of-type(1) {
+                background-image: url(../../assets/UpNumber.svg);
+                top: 9px;
+                right: 0;
+    
+                &:hover {
+                    background-image: url(../../assets/UpNumberHover.svg);
+                }
+    
+                &:active {
+                    background-image: url(../../assets/UpNumberActive.svg);
+                }
+            }
+    
+            &:nth-of-type(2) {
+                background-image: url(../../assets/DownNumber.svg);
+    
+                &:hover {
+                    background-image: url(../../assets/UpNumberHover.svg); 
+                    transform: rotate(180deg);
+                }
+    
+                &:active {
+                    background-image: url(../../assets/UpNumberActive.svg);
+                    transform: rotate(180deg);
+                }
+            }
         }
-
-        button:nth-of-type(1) {
-            background-image: url(../../assets/UpNumber.svg);
-            top: 9px;
-            right: 0;
-        }
-
-        button:nth-of-type(1):hover {
-            background-image: url(../../assets/UpNumberHover.svg);
-        }
-
-        button:nth-of-type(1):active {
-            background-image: url(../../assets/UpNumberActive.svg);
-        }
-
-        button:nth-of-type(2){
-            background-image: url(../../assets/DownNumber.svg);
-        }
-
-        button:nth-of-type(2):hover {
-            background-image: url(../../assets/UpNumberHover.svg); 
-            transform: rotate(180deg);
-           
-        }
-
-        button:nth-of-type(2):active {
-            background-image: url(../../assets/UpNumberActive.svg);
-            transform: rotate(180deg);
-        
-        }
-
-
+    
         &_buttons {
             width: 12px;
             height: 26px;
@@ -136,10 +126,9 @@
             right: 10px;
             top: 9px;
         }
-
     }
-
 }
+    
 
 .dropdown {
     background-image: url(../../assets/Dropdown.svg);

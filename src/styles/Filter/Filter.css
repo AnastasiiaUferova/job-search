@@ -42,17 +42,11 @@
 .filter__reset:hover {
   color: #92C1FF;
 }
-.filter__reset:active {
-  color: #5E96FC;
-}
-.filter__reset::after {
-  content: url(../../assets/Close-icon.svg);
-  margin-top: 3px;
-  padding-left: 5px;
-  position: absolute;
-}
 .filter__reset:hover::after {
   content: url(../../assets/CloseIconHover.svg);
+}
+.filter__reset:active {
+  color: #5E96FC;
 }
 .filter__reset:active::after {
   content: url(../../assets/CloseIconActive.svg);
