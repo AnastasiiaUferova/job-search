@@ -11,6 +11,7 @@
 }
 .search-comp .mantine-Input-input {
   padding-left: 30px;
+  padding-right: 100px;
   height: 48px;
   border: 1px solid #EAEBED;
   border-radius: 8px;
@@ -26,4 +27,11 @@
   margin-right: 12px;
   margin-top: 8px;
   border-radius: 8px;
+}
+
+@media (max-width: 720px) {
+  .search-comp {
+    width: 90vw;
+    overflow: scroll;
+  }
 }

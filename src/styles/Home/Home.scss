@@ -4,3 +4,17 @@
     padding: 40px 0 44px;
     gap: 28px;
 }
+
+@media (max-width: 1132px) {
+    .home {
+        padding-left: 20px;
+        padding-right: 20px
+    }
+}
+
+@media (max-width: 720px) {
+    .home {
+        flex-direction: column;
+        align-items: center;
+    }
+}

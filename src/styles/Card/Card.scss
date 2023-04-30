@@ -1,0 +1,9 @@
+@import "../Variables/Variables.scss";
+
+.card {
+    width: 100%;
+    height: 137px;
+    background-color: $ligth-background;
+    @include container-style(12px);
+
+}
