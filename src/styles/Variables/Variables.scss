@@ -12,12 +12,9 @@ $hover-blue: #92C1FF;
   font-weight: $weight;
 }
 
-@mixin gradient-button {
-  background: $gradient-button;
-  color: #ffffff;
-  @include font(600);
-  border-radius: 10px;
-  border: none;
+@mixin container-style($radius) {
+  border: 1px solid #EAEBED;
+  border-radius: $radius;
 }
 
 @mixin card {

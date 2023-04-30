@@ -3,12 +3,9 @@
     width: 315px;
     height: 360px;
     background-color: $ligth-background;
-    border: 1px solid #EAEBED;
-    border-radius: 12px;
+    @include container-style(12px);
     padding: 20px;
     display: flex;
-    
-   
     flex-direction: column;
 
     &__header {

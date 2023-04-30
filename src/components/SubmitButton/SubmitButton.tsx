@@ -1,7 +1,11 @@
-import React from "react";
+import { FC } from "react";
 import { Button } from "@mantine/core";
 
-export default function SubmitButton() {
+type SubmitButtonProps = {
+  title: string;
+};
+
+const SubmitButton: FC<SubmitButtonProps> = ({ title }) => {
   return (
     <>
       <Button
@@ -24,8 +28,10 @@ export default function SubmitButton() {
           },
         }}
       >
-        Применить
+        {title}
       </Button>
     </>
   );
-}
+};
+
+export default SubmitButton;

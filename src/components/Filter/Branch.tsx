@@ -47,14 +47,3 @@ export default function Branch() {
     </div>
   );
 }
-
-/*   item: {
-            "&[data-selected]": {
-              "&": {
-                backgroundColor: "#5E96FC",
-              },
-            },
-            "&[data-hovered]": {
-              backgroundColor: "#DEECFF",
-            },
-          },*/

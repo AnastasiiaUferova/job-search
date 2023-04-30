@@ -3,7 +3,7 @@ import Salary from "./Salary";
 import Branch from "./Branch";
 import "../../styles/Filter/Filter.css";
 import ResetButton from "./ResetButton";
-import SubmitButton from "./SubmitButton";
+import SubmitButton from "../SubmitButton/SubmitButton";
 
 export default function Filter() {
   return (
@@ -14,7 +14,7 @@ export default function Filter() {
       </div>
       <Branch />
       <Salary />
-      <SubmitButton />
+      <SubmitButton title="Применить" />
     </div>
   );
 }
