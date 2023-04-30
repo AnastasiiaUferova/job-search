@@ -35,7 +35,5 @@ button {
    cursor: pointer;
 }
 
-input:focus {
-  border: 1px solid #5E96FC;
-}
+
 
