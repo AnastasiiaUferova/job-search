@@ -1,7 +1,79 @@
+@charset "UTF-8";
 .card {
   width: 100%;
   height: 137px;
   background-color: #FFFFFF;
   border: 1px solid #EAEBED;
   border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+}
+.card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.card__title {
+  color: #5E96FC;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24.2px;
+}
+.card__details {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.card__salary {
+  font-style: normal;
+  font-weight: 600;
+}
+.card__time, .card__salary {
+  font-size: 16px;
+  line-height: 20px;
+}
+.card__time, .card__place {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+}
+.card__place {
+  line-height: 19px;
+}
+.card__place::before {
+  content: url(../../assets/location.svg);
+  margin-right: 11.3px;
+  position: relative;
+  top: 2px;
+}
+.card__button {
+  border: none;
+  background-color: transparent;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../../assets/Empty-star.svg);
+  width: 22px;
+  height: 22px;
+  align-self: flex-start;
+  margin: 0;
+}
+.card__button:hover {
+  background-image: url(../../assets/Hover-star.svg);
+}
+.card__button:active {
+  background-image: url(../../assets/Filled-star.svg);
+}
+.card__button_active {
+  background-image: url(../../assets/Filled-star.svg);
+}
+.card li {
+  list-style: none;
+}
+.card li::before {
+  content: "•";
+  color: #7B7C88;
+  padding-right: 12px;
 }

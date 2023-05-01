@@ -5,6 +5,7 @@ $main-blue: #5E96FC;
 $gray-font: #ACADB9;
 $black-font:#232134;
 $hover-blue: #92C1FF;
+$dark-gray: #7B7C88;
 
 //Fonts
 @mixin font($weight) {
@@ -17,8 +18,11 @@ $hover-blue: #92C1FF;
   border-radius: $radius;
 }
 
-@mixin card {
-  padding: 30px;
-  height: 450px;
-  border-radius: 30px;
+
+@mixin button {
+  border: none;
+  background-color: transparent;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }

@@ -78,13 +78,10 @@
 
     &__number-inputs {
         button {
-            border: none;
-            background: transparent;
             width: 12px;
             height: 12px;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
+            @include button;
+            
     
             &:nth-of-type(1) {
                 background-image: url(../../assets/UpNumber.svg);
@@ -143,4 +140,10 @@
 
 .mantine-k3ov3c {
     gap: 8px !important;
+}
+
+@media (max-width: 360px) {
+    .filter {
+        width: 300px;
+    }
 }

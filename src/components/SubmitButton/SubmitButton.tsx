@@ -9,6 +9,7 @@ const SubmitButton: FC<SubmitButtonProps> = ({ title }) => {
   return (
     <>
       <Button
+        className="search-comp__button"
         styles={{
           root: {
             backgroundColor: "#5E96FC",

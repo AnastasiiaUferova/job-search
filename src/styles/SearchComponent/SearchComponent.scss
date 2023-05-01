@@ -24,14 +24,13 @@
         border: 1px solid #5E96FC;
     }
 
-    button {
+    &__button {
         width: 83px;
         height: 32px;
         margin: 8px 12px 0 0;
         border-radius: 8px;
     }
 }
-
 
 @media (max-width: 720px) {
     .search-comp {
