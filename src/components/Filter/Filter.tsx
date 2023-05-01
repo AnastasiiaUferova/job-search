@@ -14,7 +14,7 @@ export default function Filter() {
       </div>
       <Branch />
       <Salary />
-      <SubmitButton title="Применить" />
+      <SubmitButton className="filter__submit-button" title="Применить" />
     </div>
   );
 }

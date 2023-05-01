@@ -23,7 +23,7 @@ export default function SearchInput() {
         }}
         rightSection={
           <div>
-            <SubmitButton title="Поиск" />
+            <SubmitButton title="Поиск" className="search-comp__button" />
           </div>
         }
       />

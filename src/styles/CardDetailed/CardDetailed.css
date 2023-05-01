@@ -1,7 +1,7 @@
 @charset "UTF-8";
-.card {
+.card_detailed {
   width: 100%;
-  height: 137px;
+  height: 157px;
   background-color: #FFFFFF;
   border: 1px solid #EAEBED;
   border-radius: 12px;
@@ -9,43 +9,43 @@
   display: flex;
   justify-content: space-between;
   padding: 24px;
+  margin-bottom: 20px;
 }
-.card__info {
+.card_detailed__info {
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 16.5px;
 }
-.card__title {
-  color: #5E96FC;
+.card_detailed__title {
   font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 24.2px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 33.89px;
 }
-.card__details {
+.card_detailed__details {
   display: flex;
   gap: 12px;
   align-items: center;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 20px;
 }
-.card__salary {
+.card_detailed__salary {
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
 }
-.card__place {
+.card_detailed__place {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 22.4px;
 }
-.card__place::before {
+.card_detailed__place::before {
   content: url(../../assets/location.svg);
   margin-right: 11.3px;
   position: relative;
   top: 2px;
 }
-.card__button {
+.card_detailed__button {
   border: none;
   background-color: transparent;
   background-size: contain;
@@ -57,38 +57,45 @@
   align-self: flex-start;
   margin: 0;
 }
-.card__button:hover {
+.card_detailed__button:hover {
   background-image: url(../../assets/Hover-star.svg);
 }
-.card__button:active {
+.card_detailed__button:active {
   background-image: url(../../assets/Filled-star.svg);
 }
-.card__button_active {
+.card_detailed__button_active {
   background-image: url(../../assets/Filled-star.svg);
 }
-.card li {
+.card_detailed li {
   list-style: none;
 }
-.card li::before {
+.card_detailed li::before {
   content: "•";
   color: #7B7C88;
   padding-right: 12px;
 }
-@media (max-width: 500px) {
-  .card {
+@media (max-width: 535px) {
+  .card_detailed {
     height: 180px;
-    padding: 20px;
+    padding: 10px 20px;
   }
-  .card__details {
+  .card_detailed__info {
+    gap: 13px;
+  }
+  .card_detailed__details {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-size: 12px;
-  }
-  .card__title {
-    font-size: 16px;
-  }
-  .card__place {
     font-size: 14px;
   }
+  .card_detailed__title {
+    font-size: 18px;
+  }
+  .card_detailed__place {
+    font-size: 12px;
+  }
+}
+
+.card_detailed {
+  height: 157px;
 }

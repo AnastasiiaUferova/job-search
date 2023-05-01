@@ -1,45 +1,44 @@
 @import "../Variables/Variables.scss";
 
-.card {
+.card_detailed {
     width: 100%;
-    height: 137px;
+    height: 157px;
     background-color: $ligth-background;
     @include container-style(12px);
     display: flex;
     justify-content: space-between;
     padding: 24px;
+    margin-bottom: 20px;
 
     &__info {
         display: flex;
         flex-direction: column;
-        gap: 11px;
+        gap: 16.5px;
     }
 
     &__title {
-        color: $main-blue;
-        @include font(600);
-        font-size: 20px;
-        line-height: 24.2px;
+        @include font(700);
+        font-size: 28px;
+        line-height: 33.89px
     }
 
     &__details {
         display: flex;
         gap: 12px;
         align-items: center;
-        font-size: 16px;
+        font-size: 20px;
         line-height: 20px;
     }
 
     &__salary {
-        @include font(600);
+        @include font(700);
     }
 
      &__place {
         @include font(400);
         font-size: 16px;
-        line-height: 19px;
+        line-height: 22.4px;
     }
-
 
     &__place::before {
         content: url(../../assets/location.svg);
@@ -80,24 +79,33 @@
         padding-right: 12px;
     }
 
-    @media(max-width: 500px) {
+    @media(max-width: 535px) {
         & {
             height: 180px;
-            padding: 20px;
+            padding: 10px 20px;
         }
+
+        &__info {
+            gap: 13px;
+        }
+
         &__details {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            font-size: 12px;
+            font-size: 14px;
         }
 
         &__title {
-            font-size: 16px;
+            font-size: 18px;
         }
 
         &__place {
-            font-size: 14px;
+            font-size: 12px;
         }
     }
+}
+
+.card_detailed {
+   height: 157px;
 }

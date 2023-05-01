@@ -1,0 +1,17 @@
+.v-details {
+  padding-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 51px;
+  background-color: #F5F5F5;
+}
+.v-details__wrapper {
+  width: 773px;
+}
+@media (max-width: 800px) {
+  .v-details {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

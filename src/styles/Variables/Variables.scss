@@ -1,5 +1,5 @@
 //Colors
-$main-background: #d3d7ea;
+$main-background: #F5F5F5;;
 $ligth-background: #FFFFFF;
 $main-blue: #5E96FC;
 $gray-font: #ACADB9;
@@ -16,8 +16,8 @@ $dark-gray: #7B7C88;
 @mixin container-style($radius) {
   border: 1px solid #EAEBED;
   border-radius: $radius;
+  background-color: $ligth-background;
 }
-
 
 @mixin button {
   border: none;

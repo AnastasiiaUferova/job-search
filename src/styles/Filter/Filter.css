@@ -4,6 +4,7 @@
   background-color: #FFFFFF;
   border: 1px solid #EAEBED;
   border-radius: 12px;
+  background-color: #FFFFFF;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -108,6 +109,9 @@
   z-index: 2;
   right: 10px;
   top: 9px;
+}
+.filter__submit-button {
+  border-radius: 8px;
 }
 
 .dropdown {

@@ -3,13 +3,14 @@ import { Button } from "@mantine/core";
 
 type SubmitButtonProps = {
   title: string;
+  className: string;
 };
 
-const SubmitButton: FC<SubmitButtonProps> = ({ title }) => {
+const SubmitButton: FC<SubmitButtonProps> = ({ title, className }) => {
   return (
     <>
       <Button
-        className="search-comp__button"
+        className={className}
         styles={{
           root: {
             backgroundColor: "#5E96FC",
