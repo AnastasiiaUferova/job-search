@@ -25,21 +25,17 @@
   display: flex;
   gap: 12px;
   align-items: center;
+  font-size: 16px;
+  line-height: 20px;
 }
 .card__salary {
   font-style: normal;
   font-weight: 600;
 }
-.card__time, .card__salary {
-  font-size: 16px;
-  line-height: 20px;
-}
-.card__time, .card__place {
+.card__place {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-}
-.card__place {
   line-height: 19px;
 }
 .card__place::before {
@@ -76,4 +72,21 @@
   content: "•";
   color: #7B7C88;
   padding-right: 12px;
+}
+@media (max-width: 500px) {
+  .card {
+    height: 170px;
+  }
+  .card__details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 14px;
+  }
+  .card__title {
+    font-size: 18px;
+  }
+  .card__place {
+    font-size: 14px;
+  }
 }
