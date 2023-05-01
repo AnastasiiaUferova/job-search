@@ -1,7 +1,15 @@
 .saved {
-  width: 100vw;
+  padding-top: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 26px;
+}
+.saved__wrapper {
+  width: 773px;
+}
+@media (max-width: 800px) {
+  .saved {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }

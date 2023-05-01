@@ -29,7 +29,7 @@
 
 @media (max-width: 800px) {
   .search-comp {
-    width: 90vw;
+    width: 90%;
     overflow: scroll;
   }
 }
