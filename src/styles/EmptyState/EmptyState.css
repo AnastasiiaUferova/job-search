@@ -1,0 +1,20 @@
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 120px;
+}
+.empty__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 32px;
+}
+.empty__title {
+  font-style: normal;
+  font-weight: 700;
+  color: #343A40;
+  size: 24px;
+  line-height: 29.05px;
+}
