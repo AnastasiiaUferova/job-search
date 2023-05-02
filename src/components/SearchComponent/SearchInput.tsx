@@ -11,6 +11,7 @@ export default function SearchInput() {
   return (
     <>
       <TextInput
+        data-elem="search-input"
         icon={<SearchIcon />}
         placeholder="Введите название вакансии"
         styles={{

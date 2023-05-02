@@ -4,7 +4,7 @@ import SavedButton from "./SavedButton";
 
 export default function Card() {
   return (
-    <div className="card">
+    <div data-elem="vacancy-_vacancy_id_" className="card">
       <div className="card__info">
         <h3 className="card__title">Менеджер-дизайнер</h3>
         <div className="card__details">

@@ -1,0 +1,21 @@
+@import "../Variables/Variables.scss";
+
+.loader {
+    margin: auto;
+    margin-top: 20px;
+    border: 10px solid #DEECFF;
+    border-radius: 50%;
+    border-top: 10px solid $main-blue;
+    width: 50px;
+    height: 50px;
+    animation: spinner 1.5s linear infinite;
+  }
+  
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

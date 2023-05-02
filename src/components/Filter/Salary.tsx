@@ -6,8 +6,8 @@ export default function Salary() {
     <div className="filter__input-groups filter__number-inputs">
       <h3 className="filter__subtitle">Оклад</h3>
       <Group>
-        <NumberInputComponent placeholder="От" />
-        <NumberInputComponent placeholder="До" />
+        <NumberInputComponent data-elem="salary-from-input" placeholder="От" />
+        <NumberInputComponent data-elem="salary-to-input" placeholder="До" />
       </Group>
     </div>
   );

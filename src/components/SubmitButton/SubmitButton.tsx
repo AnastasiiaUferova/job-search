@@ -10,6 +10,7 @@ const SubmitButton: FC<SubmitButtonProps> = ({ title, className }) => {
   return (
     <>
       <Button
+        data-elem="search-button"
         className={className}
         styles={{
           root: {

@@ -1,5 +1,10 @@
 import React from "react";
 
 export default function SavedButton() {
-  return <button className="card__button"></button>;
+  return (
+    <button
+      data-elem="vacancy-_vacancy_id_-shortlist-button"
+      className="card__button"
+    ></button>
+  );
 }

@@ -15,6 +15,7 @@ export default function Branch() {
     <div className="filter__input-groups">
       <h3 className="filter__subtitle">Отрасль</h3>
       <Select
+        data-elem="industry-select"
         onDropdownOpen={() => setIsOpened(true)}
         onDropdownClose={() => setIsOpened(false)}
         searchable
