@@ -4,6 +4,8 @@
     width: 773px;
     display: flex;
     flex-direction: column;
+    background-color: $main-background;
+    height: auto;
 
     &__icon {
         background-image: url(../../assets/Search.svg);

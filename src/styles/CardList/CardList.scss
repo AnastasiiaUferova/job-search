@@ -1,9 +1,15 @@
+@import "../../styles/Variables/Variables.scss";
+
 .card-list {
     display: flex;
     flex-direction: column;
     margin-top: 16px;
+    margin-bottom: 40px;
     gap: 16px;
     max-width: 773px;
+    background-color: $main-background;
+    height: auto;
+
 }
 
 @media (max-width: 1154px) {

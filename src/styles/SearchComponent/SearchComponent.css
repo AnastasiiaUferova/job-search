@@ -2,6 +2,8 @@
   width: 773px;
   display: flex;
   flex-direction: column;
+  background-color: #F5F5F5;
+  height: auto;
 }
 .search-comp__icon {
   background-image: url(../../assets/Search.svg);
