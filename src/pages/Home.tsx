@@ -5,9 +5,9 @@ import SearchComponent from "../components/SearchComponent/SearchComponent";
 
 export default function Home() {
   return (
-    <div className="home">
+    <main className="home">
       <Filter />
       <SearchComponent />
-    </div>
+    </main>
   );
 }

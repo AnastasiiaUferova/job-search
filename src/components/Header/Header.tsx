@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 export default function Header(): JSX.Element {
   return (
     <header className="header">
-      <div className="header__content">
+      <nav className="header__content">
         <div className="header__logo">
           <NavLink className="header__logo_title" to="/">
             Jobored
@@ -31,7 +31,7 @@ export default function Header(): JSX.Element {
             Избранное
           </NavLink>
         </div>
-      </div>
+      </nav>
     </header>
   );
 }
