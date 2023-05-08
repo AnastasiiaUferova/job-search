@@ -6,30 +6,36 @@ import Saved from "./pages/Saved";
 import VacancyDetails from "./pages/VacancyDetails";
 import EmptyState from "./components/EmptyState/EmptyState";
 import useFetch from "./api/api";
-import { CATALOGUES_URL } from "./_constants/constants";
+import { CATALOGUES_URL, VACANCIES_URL } from "./_constants/constants";
 import cardContext from "./context/CardsContext";
 import ProtectedRoutes from "./components/ProtectedRoute/ProtectedRoute";
+import useAuth from "./api/auth";
 
 function App() {
-  const { data: catalogueData, fetchData, tokenCheck } = useFetch();
+  const { data: catalogueData, fetchData } = useFetch();
+  const { data: vacData, fetchData: fetchVacData } = useFetch();
+  const { tokenCheck, loggedIn } = useAuth();
 
   useEffect(() => {
-    tokenCheck().then(() => {
-      fetchData(CATALOGUES_URL);
-    });
+    tokenCheck();
   }, []);
+
+  useEffect(() => {
+    if (loggedIn) {
+      fetchVacData(VACANCIES_URL);
+      fetchData(CATALOGUES_URL);
+    }
+  }, [loggedIn]);
 
   return (
     <>
       <Header />
-      <cardContext.Provider value={{ catalogueData }}>
+      <cardContext.Provider value={{ catalogueData, vacData }}>
         <Routes>
           <Route
             path="/"
             element={
-              <ProtectedRoutes
-                loggedIn={localStorage.getItem("token") !== null}
-              >
+              <ProtectedRoutes loggedIn={loggedIn}>
                 <Home />
               </ProtectedRoutes>
             }
