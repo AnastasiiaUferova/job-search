@@ -1,10 +1,5 @@
-import { useState, useEffect } from "react";
-import {
-  AUTH_URL,
-  BASIC_URL,
-  CATALOGUES_URL,
-  configAuth,
-} from "../_constants/constants";
+import { useState } from "react";
+import { AUTH_URL, BASIC_URL, configAuth } from "../_constants/constants";
 import axios from "axios";
 
 export default function useFetch() {
@@ -14,14 +9,6 @@ export default function useFetch() {
   const [loadingData, setLoadingData] = useState<boolean | null>(false);
   const [error, setError] = useState(null);
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  const [token, setToken] = useState<string>("");
-
-  /*const configData = {
-    headers: {
-      "x-secret-key": "GEU4nvd3rej*jeh.eqp",
-      //Authorization: `Bearer ${dataAuth?.access_token})`,
-    },
-  };*/
 
   const fetchDataAuth = () => {
     setLoading(true);
@@ -58,7 +45,16 @@ export default function useFetch() {
       .finally(() => setLoadingData(false));
   };
 
-  console.log(localStorage.getItem("token"));
+  const tokenCheck = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (token === null) {
+        fetchDataAuth();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return {
     dataAuth,
@@ -66,10 +62,9 @@ export default function useFetch() {
     error,
     data,
     fetchData,
-    token,
     fetchDataAuth,
     loadingData,
+    loggedIn,
+    tokenCheck,
   };
 }
-
-//приделать localstorage

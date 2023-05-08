@@ -1,4 +1,4 @@
-import { Loader } from "components/Loader/Loader";
+import { Loader } from "../../components/Loader/Loader";
 import { FC, ReactNode } from "react";
 
 type ProtectedRoutesProps = {
