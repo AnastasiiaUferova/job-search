@@ -4,7 +4,7 @@ import {
   BASIC_URL,
   CATALOGUES_URL,
   configAuth,
-} from "../constants/constants";
+} from "../_constants/constants";
 import axios from "axios";
 
 export default function useFetch() {
@@ -29,7 +29,7 @@ export default function useFetch() {
       .get(BASIC_URL + AUTH_URL, configAuth)
       .then((res) => {
         setDataAuth(res.data);
-        setToken(res.data.access_token);
+        localStorage.setItem("token", res.data.access_token);
         setLoggedIn(true);
       })
       .catch((err) => {
@@ -37,16 +37,6 @@ export default function useFetch() {
       })
       .finally(() => setLoading(false));
   };
-
-  const getAuthToken = async () => {
-    try {
-      fetchDataAuth();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  console.log(token);
 
   const fetchData = (url: string) => {
     setLoadingData(true);
@@ -56,7 +46,7 @@ export default function useFetch() {
           "x-secret-key": "GEU4nvd3rej*jeh.eqp",
           "x-api-app-id":
             "v3.r.137440105.ffdbab114f92b821eac4e21f485343924a773131.06c3bdbb8446aeb91c35b80c42ff69eb9c457948",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       })
       .then((res) => {
@@ -68,17 +58,12 @@ export default function useFetch() {
       .finally(() => setLoadingData(false));
   };
 
-  useEffect(() => {
-    fetchDataAuth();
-  }, []);
-
-  console.log(token);
+  console.log(localStorage.getItem("token"));
 
   return {
     dataAuth,
     loading,
     error,
-    getAuthToken,
     data,
     fetchData,
     token,
@@ -86,3 +71,5 @@ export default function useFetch() {
     loadingData,
   };
 }
+
+//приделать localstorage

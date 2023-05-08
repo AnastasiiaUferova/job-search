@@ -6,28 +6,40 @@ import Saved from "./pages/Saved";
 import VacancyDetails from "./pages/VacancyDetails";
 import EmptyState from "./components/EmptyState/EmptyState";
 import useFetch from "./api/api";
-import { CATALOGUES_URL, VACANCIES_URL } from "./constants/constants";
+import { CATALOGUES_URL, VACANCIES_URL } from "./_constants/constants";
 import cardContext from "./context/CardsContext";
 
 function App() {
   const {
     loading,
     data: catalogueData,
-    data: vacData,
     fetchData,
     loadingData,
     token,
   } = useFetch();
 
+  const { data: vacData, fetchData: fetchVacData, fetchDataAuth } = useFetch();
+
   useEffect(() => {
-    fetchData(CATALOGUES_URL);
+    tokenCheck().then(() => {
+      fetchVacData(VACANCIES_URL);
+      fetchData(CATALOGUES_URL);
+    });
   }, []);
 
-  console.log(token);
+  const tokenCheck = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (token === null) {
+        fetchDataAuth();
+        console.log("null223");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  /* useEffect(() => {
-    fetchData(VACANCIES_URL);
-  }, []);*/
+  console.log(vacData);
 
   return (
     <>
