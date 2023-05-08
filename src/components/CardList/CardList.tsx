@@ -6,16 +6,13 @@ import { Loader } from "../Loader/Loader";
 
 export default function CardList() {
   const { vacData, loading } = useContext(cardContext);
-
-  console.log(vacData?.objects);
-  console.log(loading);
+  const isData = vacData && vacData.objects;
 
   const renderElements = () => {
     if (loading === false) {
       return (
         <div className="card-list">
-          {vacData &&
-            vacData.objects &&
+          {isData &&
             vacData.objects.map((item) => {
               return (
                 <Card
