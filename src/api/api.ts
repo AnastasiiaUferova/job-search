@@ -1,32 +1,14 @@
 import { useState } from "react";
-import { AUTH_URL, BASIC_URL, configAuth } from "../_constants/constants";
+import { BASIC_URL } from "../_constants/constants";
 import axios from "axios";
 
 export default function useFetch() {
-  const [dataAuth, setDataAuth] = useState([";"]);
   const [data, setData] = useState<[]>([]);
-  const [loading, setLoading] = useState<boolean | null>(false);
-  const [loadingData, setLoadingData] = useState<boolean | null>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState(null);
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
-
-  const fetchDataAuth = () => {
-    setLoading(true);
-    axios
-      .get(BASIC_URL + AUTH_URL, configAuth)
-      .then((res) => {
-        setDataAuth(res.data);
-        localStorage.setItem("token", res.data.access_token);
-        setLoggedIn(true);
-      })
-      .catch((err) => {
-        setError(err);
-      })
-      .finally(() => setLoading(false));
-  };
 
   const fetchData = (url: string) => {
-    setLoadingData(true);
+    setLoading(true);
     axios
       .get(BASIC_URL + url, {
         headers: {
@@ -42,29 +24,13 @@ export default function useFetch() {
       .catch((err) => {
         setError(err);
       })
-      .finally(() => setLoadingData(false));
-  };
-
-  const tokenCheck = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      if (token === null) {
-        fetchDataAuth();
-      }
-    } catch (error) {
-      console.log(error);
-    }
+      .finally(() => setLoading(false));
   };
 
   return {
-    dataAuth,
     loading,
     error,
     data,
     fetchData,
-    fetchDataAuth,
-    loadingData,
-    loggedIn,
-    tokenCheck,
   };
 }

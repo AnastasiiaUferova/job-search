@@ -13,7 +13,7 @@ import useAuth from "./api/auth";
 
 function App() {
   const { data: catalogueData, fetchData } = useFetch();
-  const { data: vacData, fetchData: fetchVacData } = useFetch();
+  const { data: vacData, fetchData: fetchVacData, loading } = useFetch();
   const { tokenCheck, loggedIn } = useAuth();
 
   useEffect(() => {
@@ -27,10 +27,12 @@ function App() {
     }
   }, [loggedIn]);
 
+  console.log(vacData);
+
   return (
     <>
       <Header />
-      <cardContext.Provider value={{ catalogueData, vacData }}>
+      <cardContext.Provider value={{ catalogueData, vacData, loading }}>
         <Routes>
           <Route
             path="/"
