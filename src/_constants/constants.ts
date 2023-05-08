@@ -12,7 +12,6 @@ export const configAuth = {
 };
 
 export const CATALOGUES_URL = "/2.0/catalogues/";
-export const VACANCIES_URL = "/2.0/vacancies/?published=1&page=2&count=4/";
 
 //"/2.0/vacancies/?published_all=true";
 //"/2.0/vacancies?town=Москва&keyword=Python";

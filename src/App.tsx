@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/Header/Header";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
@@ -6,7 +6,7 @@ import Saved from "./pages/Saved";
 import VacancyDetails from "./pages/VacancyDetails";
 import EmptyState from "./components/EmptyState/EmptyState";
 import useFetch from "./api/api";
-import { CATALOGUES_URL, VACANCIES_URL } from "./_constants/constants";
+import { CATALOGUES_URL } from "./_constants/constants";
 import cardContext from "./context/CardsContext";
 import ProtectedRoutes from "./components/ProtectedRoute/ProtectedRoute";
 import useAuth from "./api/auth";
@@ -16,23 +16,32 @@ function App() {
   const { data: vacData, fetchData: fetchVacData, loading } = useFetch();
   const { tokenCheck, loggedIn } = useAuth();
 
+  const [vac, setVac] = useState(() => []);
+
+  const VACANCIES_URL = "/2.0/vacancies/?published=1&page=2&count=4/";
+
   useEffect(() => {
     tokenCheck();
   }, []);
 
   useEffect(() => {
-    if (loggedIn) {
+    if (loggedIn && vacData) {
       fetchVacData(VACANCIES_URL);
       fetchData(CATALOGUES_URL);
+      setVac(vacData);
     }
   }, [loggedIn]);
 
-  console.log(vacData);
+  useEffect(() => {
+    if (vacData) {
+      setVac(vacData);
+    }
+  }, [vacData]);
 
   return (
     <>
       <Header />
-      <cardContext.Provider value={{ catalogueData, vacData, loading }}>
+      <cardContext.Provider value={{ catalogueData, vac, loading }}>
         <Routes>
           <Route
             path="/"

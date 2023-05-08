@@ -1,12 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Card from "../Card/Card";
 import "../../styles/CardList/CardList.css";
 import cardContext from "../../context/CardsContext";
 import { Loader } from "../Loader/Loader";
 
 export default function CardList() {
-  const { vacData, loading } = useContext(cardContext);
+  const { vac: vacData, loading } = useContext(cardContext);
+  //const [data, setData] = useState(vacData.objects);
+
   const isData = vacData && vacData.objects;
+
+  console.log(vacData);
 
   const renderElements = () => {
     if (loading === false) {
