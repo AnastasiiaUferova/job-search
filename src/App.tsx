@@ -27,7 +27,6 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       fetchVacData(VACANCIES_PAGE_URL);
-      fetchData(CATALOGUES_URL);
       setVacData(vacApiData);
     }
   }, [loggedIn, page]);
@@ -38,7 +37,13 @@ function App() {
     }
   }, [loading]);
 
-  /*useEffect(() => {
+  useEffect(() => {
+    if (loggedIn) {
+      fetchData(CATALOGUES_URL);
+    }
+  }, [loggedIn]);
+
+  useEffect(() => {
     fetchVacData(VACANCIES_PAGE_URL);
     setVacData(vacApiData);
   }, [page]);
