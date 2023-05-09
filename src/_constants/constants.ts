@@ -11,6 +11,8 @@ export const configAuth = {
   },
 };
 
+export const VACANCIES_URL = "/2.0/vacancies/?published=1&page=0&count=4/";
+
 export const CATALOGUES_URL = "/2.0/catalogues/";
 
 //"/2.0/vacancies/?published_all=true";

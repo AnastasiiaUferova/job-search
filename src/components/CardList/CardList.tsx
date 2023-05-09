@@ -5,8 +5,7 @@ import cardContext from "../../context/CardsContext";
 import { Loader } from "../Loader/Loader";
 
 export default function CardList() {
-  const { vac: vacData, loading } = useContext(cardContext);
-  //const [data, setData] = useState(vacData.objects);
+  const { vacData, loading } = useContext(cardContext);
 
   const isData = vacData && vacData.objects;
 
