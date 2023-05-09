@@ -27,3 +27,9 @@ $dark-gray-font: #343A40;
   background-position: center;
   background-repeat: no-repeat;
 }
+
+@mixin pag_buttons {
+  background-color: #FFFFFF;
+  background-repeat: no-repeat;
+  background-position: center;
+}

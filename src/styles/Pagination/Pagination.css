@@ -1,0 +1,29 @@
+.mantine-1wqzler:first-of-type {
+  background: url(../../assets/Pagination-left.svg);
+  background-color: #FFFFFF;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.mantine-1wqzler:first-of-type[data-disabled] {
+  background-image: url(../../assets/Pagination-left-light.svg);
+  transform: none;
+  background-color: #FFFFFF;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.mantine-1wqzler:last-of-type {
+  background: url(../../assets/Pagination-right.svg);
+  background-color: #FFFFFF;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.mantine-1wqzler:last-of-type[data-disabled] {
+  background-image: url(../../assets/Pagination-left-light.svg);
+  transform: rotate(180deg);
+  background-color: #FFFFFF;
+  background-repeat: no-repeat;
+  background-position: center;
+}

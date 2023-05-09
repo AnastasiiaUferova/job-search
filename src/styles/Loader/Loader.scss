@@ -1,8 +1,7 @@
 @import "../Variables/Variables.scss";
 
 .loader {
-    margin: auto;
-    margin-top: 20px;
+    margin: 20px auto;
     border: 10px solid #DEECFF;
     border-radius: 50%;
     border-top: 10px solid $main-blue;
