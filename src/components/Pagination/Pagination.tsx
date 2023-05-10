@@ -1,25 +1,24 @@
 import { Pagination } from "@mantine/core";
-import { useContext } from "react";
-import cardContext from "../../context/CardsContext";
+import { FC } from "react";
 import "../../styles/Pagination/Pagination.css";
-import ArrowLight from "../../assets/Hover-star.svg";
 
-export default function PaginationComponent() {
-  const { setPage } = useContext(cardContext);
+type PaginationPropsType = {
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  total: number;
+};
 
-  const arrowRight = () => {
-    return <div></div>;
-  };
+const PaginationComponent: FC<PaginationPropsType> = (props) => {
+  const { setPage, total } = props;
 
-  const arrowLeft = () => {
+  const voidDiv = () => {
     return <div></div>;
   };
 
   return (
     <div className="pagination">
       <Pagination
-        nextIcon={arrowRight}
-        previousIcon={arrowLeft}
+        nextIcon={voidDiv}
+        previousIcon={voidDiv}
         position="center"
         styles={() => ({
           control: {
@@ -36,10 +35,12 @@ export default function PaginationComponent() {
           },
         })}
         onChange={setPage}
-        total={20}
+        total={total}
         siblings={1}
         defaultValue={1}
       />
     </div>
   );
-}
+};
+
+export default PaginationComponent;

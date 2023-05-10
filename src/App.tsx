@@ -6,7 +6,7 @@ import Saved from "./pages/Saved";
 import VacancyDetails from "./pages/VacancyDetails";
 import EmptyState from "./components/EmptyState/EmptyState";
 import useFetch from "./api/api";
-import { CATALOGUES_URL, VACANCIES_URL } from "./_constants/constants";
+import { CATALOGUES_URL } from "./_constants/constants";
 import cardContext from "./context/CardsContext";
 import ProtectedRoutes from "./components/ProtectedRoute/ProtectedRoute";
 import useAuth from "./api/auth";
@@ -15,7 +15,7 @@ function App() {
   const { data: catalogueData, fetchData } = useFetch();
   const { data: vacApiData, fetchData: fetchVacData, loading } = useFetch();
   const { tokenCheck, loggedIn } = useAuth();
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState<number>(1);
   const [vacData, setVacData] = useState<[]>([]);
 
   const VACANCIES_PAGE_URL = `/2.0/vacancies/?published=1&page=${page}&count=4/`;

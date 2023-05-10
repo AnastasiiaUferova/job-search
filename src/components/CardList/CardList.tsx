@@ -3,8 +3,14 @@ import Card from "../Card/Card";
 import "../../styles/CardList/CardList.css";
 import cardContext from "../../context/CardsContext";
 import { Loader } from "../Loader/Loader";
+import { useLocation } from "react-router-dom";
 
 export default function CardList() {
+  const location = useLocation();
+
+  const className =
+    location.pathname === "/saved" ? "card-list card-list__saved" : "card-list";
+
   const { vacData, loading } = useContext(cardContext);
 
   const isData = vacData && vacData.objects;
@@ -14,7 +20,7 @@ export default function CardList() {
   const renderElements = () => {
     if (loading === false) {
       return (
-        <div className="card-list">
+        <div className={className}>
           {isData &&
             vacData.objects.map((item) => {
               return (

@@ -2,7 +2,6 @@
 
 
 .saved {
-    padding-top: 26px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,7 +10,6 @@
 
     &__wrapper {
         width: 773px;
-        margin-bottom: 64px;
     }
 
     @media(max-width: 800px) {

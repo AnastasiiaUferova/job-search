@@ -10,6 +10,10 @@
     background-color: $main-background;
     height: auto;
 
+    &__saved {
+        margin-bottom: 104px;
+        margin-top: 40px; 
+    }
 }
 
 @media (max-width: 1154px) {
