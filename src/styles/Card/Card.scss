@@ -61,11 +61,7 @@
         background-image: url(../../assets/Hover-star.svg);
     }
 
-    &__button:active{
-        background-image: url(../../assets/Filled-star.svg);
-    }
-
-    &__button_active{
+    &__button_saved,&__button:active {
         background-image: url(../../assets/Filled-star.svg);
     }
 

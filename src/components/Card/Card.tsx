@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import "../../styles/Card/Card.css";
 import SavedButton from "./SavedButton";
 import cardContext from "../../context/CardsContext";
@@ -19,10 +19,20 @@ const Card: FC<CardPropsType> = (props) => {
 
   const savedCardIds = savedData.map((item) => item.id);
 
+  const [className, setClassName] = useState<string>(
+    savedCardIds.includes(id)
+      ? "card__button card__button_saved"
+      : "card__button"
+  );
+
   const onClickHandle = () => {
     if (savedCardIds.includes(id)) {
       removeFromSaved(id);
-    } else addToSaved(id);
+      setClassName("card__button");
+    } else {
+      setClassName("card__button card__button_saved");
+      addToSaved(id);
+    }
   };
 
   return (
@@ -37,7 +47,7 @@ const Card: FC<CardPropsType> = (props) => {
         </div>
         <p className="card__place">{town}</p>
       </div>
-      <SavedButton onClick={() => onClickHandle()} />
+      <SavedButton className={className} onClick={() => onClickHandle()} />
     </div>
   );
 };

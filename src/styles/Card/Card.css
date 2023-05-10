@@ -60,10 +60,7 @@
 .card__button:hover {
   background-image: url(../../assets/Hover-star.svg);
 }
-.card__button:active {
-  background-image: url(../../assets/Filled-star.svg);
-}
-.card__button_active {
+.card__button_saved, .card__button:active {
   background-image: url(../../assets/Filled-star.svg);
 }
 .card li {
