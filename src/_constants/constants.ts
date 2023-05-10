@@ -15,6 +15,8 @@ export const VACANCIES_URL = "/2.0/vacancies/?published=1&page=0&count=4/";
 
 export const CATALOGUES_URL = "/2.0/catalogues/";
 
+export const PAGE_SIZE = 4;
+
 //"/2.0/vacancies/?published_all=true";
 //"/2.0/vacancies?town=Москва&keyword=Python";
 //"/2.0/vacancies/?published=1&page=2&count=4/";

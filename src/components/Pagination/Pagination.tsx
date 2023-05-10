@@ -36,7 +36,6 @@ const PaginationComponent: FC<PaginationPropsType> = (props) => {
         })}
         onChange={setPage}
         total={total}
-        siblings={1}
         defaultValue={1}
       />
     </div>

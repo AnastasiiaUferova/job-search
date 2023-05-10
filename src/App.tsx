@@ -6,7 +6,7 @@ import Saved from "./pages/Saved";
 import VacancyDetails from "./pages/VacancyDetails";
 import EmptyState from "./components/EmptyState/EmptyState";
 import useFetch from "./api/api";
-import { CATALOGUES_URL } from "./_constants/constants";
+import { CATALOGUES_URL, PAGE_SIZE } from "./_constants/constants";
 import cardContext from "./context/CardsContext";
 import ProtectedRoutes from "./components/ProtectedRoute/ProtectedRoute";
 import useAuth from "./api/auth";
@@ -19,6 +19,10 @@ function App() {
   const [vacData, setVacData] = useState<[]>([]);
   const [savedData, setSavedData] = useState(
     () => JSON.parse(localStorage.getItem("saved")) || []
+  );
+
+  const [savedDataDisplayed, setSavedDataDisplayed] = useState(
+    savedData.slice(0, PAGE_SIZE)
   );
 
   const VACANCIES_PAGE_URL = `/2.0/vacancies/?published=1&page=${page}&count=4/`;
@@ -73,6 +77,9 @@ function App() {
     setSavedData(filteredData);
   }
 
+  console.log(savedData);
+  console.log(savedDataDisplayed);
+
   return (
     <>
       <Header />
@@ -86,6 +93,8 @@ function App() {
           addToSaved,
           removeFromSaved,
           savedData,
+          savedDataDisplayed,
+          setSavedDataDisplayed,
         }}
       >
         <Routes>

@@ -11,15 +11,15 @@ export default function CardList() {
   const className =
     location.pathname === "/saved" ? "card-list card-list__saved" : "card-list";
 
-  const { vacData, loading, savedData } = useContext(cardContext);
+  const { vacData, loading, savedDataDisplayed } = useContext(cardContext);
 
   const isData = vacData && vacData.objects;
 
   const getCards = () => {
-    if (location.pathname === "/saved" && !savedData) {
+    if (location.pathname === "/saved" && !savedDataDisplayed) {
       return [];
-    } else if (location.pathname === "/saved" && savedData) {
-      return savedData;
+    } else if (location.pathname === "/saved" && savedDataDisplayed) {
+      return savedDataDisplayed;
     } else return vacData.objects;
   };
 

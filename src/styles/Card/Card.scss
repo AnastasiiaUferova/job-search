@@ -61,7 +61,7 @@
         background-image: url(../../assets/Hover-star.svg);
     }
 
-    &__button_saved,&__button:active {
+    &__button_saved, &__button:active, &__button_saved:hover {
         background-image: url(../../assets/Filled-star.svg);
     }
 
