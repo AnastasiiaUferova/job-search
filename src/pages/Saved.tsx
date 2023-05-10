@@ -4,7 +4,6 @@ import "../styles/Saved/Saved.css";
 import PaginationComponent from "../components/Pagination/Pagination";
 import cardContext from "../context/CardsContext";
 import { PAGE_SIZE } from "../_constants/constants";
-import EmptyState from "../components/EmptyState/EmptyState";
 
 export default function Saved() {
   const [activePage, setPage] = useState(1);
@@ -18,20 +17,14 @@ export default function Saved() {
   }, [activePage, savedData]);
 
   return (
-    <>
-      {savedData.length > 0 ? (
-        <div className="saved">
-          <div className="saved__wrapper">
-            <CardList />
-            <PaginationComponent
-              setPage={setPage}
-              total={Math.ceil(savedData.length / 4)}
-            />
-          </div>
-        </div>
-      ) : (
-        <EmptyState />
-      )}
-    </>
+    <div className="saved">
+      <div className="saved__wrapper">
+        <CardList />
+        <PaginationComponent
+          setPage={setPage}
+          total={Math.ceil(savedData.length / 4)}
+        />
+      </div>
+    </div>
   );
 }

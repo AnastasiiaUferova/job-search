@@ -1,20 +1,18 @@
 import { createContext } from "react";
+import { CardPropsType } from "../types/types";
 
 type cardContext = {
   catalogueData: [];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  vacData: any;
+
+  vacData: [];
   loading: boolean;
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
   addToSaved: (id: number) => void;
   removeFromSaved: (id: number) => void;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  savedData: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  savedDataDisplayed: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setSavedDataDisplayed: React.Dispatch<any>;
+  savedData: [];
+  savedDataDisplayed: [];
+  setSavedDataDisplayed: React.Dispatch<CardPropsType[]>;
 };
 
 const cardContext = createContext<cardContext>({
@@ -25,9 +23,9 @@ const cardContext = createContext<cardContext>({
   loading: false,
   page: 1,
   setPage: () => 1,
-  addToSaved: () => 1,
-  removeFromSaved: () => 1,
-  setSavedDataDisplayed: () => 1,
+  addToSaved: () => [],
+  removeFromSaved: () => [],
+  setSavedDataDisplayed: () => [],
 });
 
 export default cardContext;

@@ -19,7 +19,7 @@ export default function useFetch() {
         },
       })
       .then((res) => {
-        setData(res.data);
+        setData(res.data.objects);
       })
       .catch((err) => {
         setError(err);

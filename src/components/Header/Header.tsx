@@ -2,7 +2,7 @@ import React from "react";
 import "../../styles/Header/Header.css";
 import { NavLink } from "react-router-dom";
 
-export default function Header(): JSX.Element {
+function Header(): JSX.Element {
   return (
     <header className="header">
       <nav className="header__content">
@@ -35,3 +35,5 @@ export default function Header(): JSX.Element {
     </header>
   );
 }
+const MemoHeader = React.memo(Header);
+export default MemoHeader;

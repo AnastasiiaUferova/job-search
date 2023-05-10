@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Header from "./components/Header/Header";
+import React, { useEffect, useState, useCallback } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Saved from "./pages/Saved";
@@ -10,6 +9,8 @@ import { CATALOGUES_URL, PAGE_SIZE } from "./_constants/constants";
 import cardContext from "./context/CardsContext";
 import ProtectedRoutes from "./components/ProtectedRoute/ProtectedRoute";
 import useAuth from "./api/auth";
+import MemoHeader from "./components/Header/Header";
+import { CardPropsType } from "./types/types";
 
 function App() {
   const { data: catalogueData, fetchData } = useFetch();
@@ -18,7 +19,7 @@ function App() {
   const [page, setPage] = useState<number>(1);
   const [vacData, setVacData] = useState<[]>([]);
   const [savedData, setSavedData] = useState(
-    () => JSON.parse(localStorage.getItem("saved")) || []
+    () => JSON.parse(localStorage.getItem("saved")!) || []
   );
 
   const [savedDataDisplayed, setSavedDataDisplayed] = useState(
@@ -26,14 +27,16 @@ function App() {
   );
 
   const VACANCIES_PAGE_URL = `/2.0/vacancies/?published=1&page=${page}&count=4/`;
+  const token = localStorage.getItem("token");
 
-  useEffect(() => {
+  const checkIfLoggedIn = useCallback(() => {
     tokenCheck();
-  }, []);
+  }, [token]);
 
   useEffect(() => {
+    checkIfLoggedIn();
     localStorage.setItem("saved", JSON.stringify(savedData));
-  }, [savedData]);
+  }, []);
 
   useEffect(() => {
     if (loggedIn) {
@@ -54,35 +57,31 @@ function App() {
     }
   }, [loggedIn]);
 
-  useEffect(() => {
-    if (loggedIn) {
-      fetchVacData(VACANCIES_PAGE_URL);
-      setVacData(vacApiData);
-    }
-  }, [page, loggedIn]);
+  const addToSaved = useCallback(
+    (id: number) => {
+      vacData.map((item: CardPropsType) => {
+        if (item.id === id) {
+          setSavedData([...savedData, item]);
+        }
+        return item;
+      });
+    },
+    [savedData, vacData]
+  );
 
-  function addToSaved(id: number) {
-    vacData.objects.map((item) => {
-      if (item.id === id) {
-        setSavedData([...savedData, item]);
-      }
-      return item;
-    });
-  }
-
-  function removeFromSaved(id: number) {
-    const filteredData = savedData.filter((item) => {
-      return item.id !== id;
-    });
-    setSavedData(filteredData);
-  }
-
-  console.log(savedData);
-  console.log(savedDataDisplayed);
+  const removeFromSaved = useCallback(
+    (id: number) => {
+      const filteredData = savedData.filter((item: CardPropsType) => {
+        return item.id !== id;
+      });
+      setSavedData(filteredData);
+    },
+    [savedData]
+  );
 
   return (
     <>
-      <Header />
+      <MemoHeader />
       <cardContext.Provider
         value={{
           catalogueData,
@@ -111,13 +110,12 @@ function App() {
             path="/saved"
             element={
               <ProtectedRoutes loggedIn={loggedIn}>
-                <Saved />
+                {savedData.length > 0 ? <Saved /> : <EmptyState />}
               </ProtectedRoutes>
             }
           ></Route>
 
           <Route path="/details" element={<VacancyDetails />}></Route>
-          <Route path="/em" element={<EmptyState />}></Route>
         </Routes>
       </cardContext.Provider>
     </>

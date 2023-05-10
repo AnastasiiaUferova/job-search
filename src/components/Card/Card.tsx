@@ -1,23 +1,15 @@
-import React, { FC, useContext, useEffect, useState } from "react";
+import { FC, useContext, useState } from "react";
 import "../../styles/Card/Card.css";
 import SavedButton from "./SavedButton";
 import cardContext from "../../context/CardsContext";
-
-type CardPropsType = {
-  id: number;
-  profession: string;
-  payment_from: number;
-  currency: string;
-  town: string;
-  type_of_work: string;
-};
+import { CardPropsType } from "../../types/types";
 
 const Card: FC<CardPropsType> = (props) => {
   const { id, profession, payment_from, currency, town, type_of_work } = props;
 
   const { addToSaved, removeFromSaved, savedData } = useContext(cardContext);
 
-  const savedCardIds = savedData.map((item) => item.id);
+  const savedCardIds = savedData.map((item: CardPropsType) => item.id);
 
   const [className, setClassName] = useState<string>(
     savedCardIds.includes(id)
