@@ -1,6 +1,7 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import "../../styles/Card/Card.css";
 import SavedButton from "./SavedButton";
+import cardContext from "../../context/CardsContext";
 
 type CardPropsType = {
   id: number;
@@ -13,6 +14,17 @@ type CardPropsType = {
 
 const Card: FC<CardPropsType> = (props) => {
   const { id, profession, payment_from, currency, town, type_of_work } = props;
+
+  const { addToSaved, removeFromSaved, savedData } = useContext(cardContext);
+
+  const savedCardIds = savedData.map((item) => item.id);
+
+  const onClickHandle = () => {
+    if (savedCardIds.includes(id)) {
+      removeFromSaved(id);
+    } else addToSaved(id);
+  };
+
   return (
     <div data-elem={`vacancy-_vacancy_id_${id}`} className="card">
       <div className="card__info">
@@ -25,7 +37,7 @@ const Card: FC<CardPropsType> = (props) => {
         </div>
         <p className="card__place">{town}</p>
       </div>
-      <SavedButton />
+      <SavedButton onClick={() => onClickHandle()} />
     </div>
   );
 };

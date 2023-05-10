@@ -17,12 +17,19 @@ function App() {
   const { tokenCheck, loggedIn } = useAuth();
   const [page, setPage] = useState<number>(1);
   const [vacData, setVacData] = useState<[]>([]);
+  const [savedData, setSavedData] = useState(
+    () => JSON.parse(localStorage.getItem("saved")) || []
+  );
 
   const VACANCIES_PAGE_URL = `/2.0/vacancies/?published=1&page=${page}&count=4/`;
 
   useEffect(() => {
     tokenCheck();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("saved", JSON.stringify(savedData));
+  }, [savedData]);
 
   useEffect(() => {
     if (loggedIn) {
@@ -32,7 +39,7 @@ function App() {
   }, [loggedIn, page]);
 
   useEffect(() => {
-    if (vacData) {
+    if (vacData && loggedIn) {
       setVacData(vacApiData);
     }
   }, [loading]);
@@ -44,24 +51,42 @@ function App() {
   }, [loggedIn]);
 
   useEffect(() => {
-    fetchVacData(VACANCIES_PAGE_URL);
-    setVacData(vacApiData);
-  }, [page]);
-
-  /*useEffect(() => {
-    if (vacData) {
+    if (loggedIn) {
       fetchVacData(VACANCIES_PAGE_URL);
       setVacData(vacApiData);
     }
-  }, []);*/
+  }, [page, loggedIn]);
 
-  console.log(vacData);
+  function addToSaved(id: number) {
+    vacData.objects.map((item) => {
+      if (item.id === id) {
+        setSavedData([...savedData, item]);
+      }
+      return item;
+    });
+  }
+
+  function removeFromSaved(id: number) {
+    const filteredData = savedData.filter((item) => {
+      return item.id !== id;
+    });
+    setSavedData(filteredData);
+  }
 
   return (
     <>
       <Header />
       <cardContext.Provider
-        value={{ catalogueData, vacData, page, setPage, loading }}
+        value={{
+          catalogueData,
+          vacData,
+          page,
+          setPage,
+          loading,
+          addToSaved,
+          removeFromSaved,
+          savedData,
+        }}
       >
         <Routes>
           <Route
@@ -73,7 +98,15 @@ function App() {
             }
           ></Route>
 
-          <Route path="/saved" element={<Saved />}></Route>
+          <Route
+            path="/saved"
+            element={
+              <ProtectedRoutes loggedIn={loggedIn}>
+                <Saved />
+              </ProtectedRoutes>
+            }
+          ></Route>
+
           <Route path="/details" element={<VacancyDetails />}></Route>
           <Route path="/em" element={<EmptyState />}></Route>
         </Routes>

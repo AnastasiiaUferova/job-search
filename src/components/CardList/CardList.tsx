@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Card from "../Card/Card";
 import "../../styles/CardList/CardList.css";
 import cardContext from "../../context/CardsContext";
@@ -11,18 +11,24 @@ export default function CardList() {
   const className =
     location.pathname === "/saved" ? "card-list card-list__saved" : "card-list";
 
-  const { vacData, loading } = useContext(cardContext);
+  const { vacData, loading, savedData } = useContext(cardContext);
 
   const isData = vacData && vacData.objects;
 
-  console.log(vacData);
+  const getCards = () => {
+    if (location.pathname === "/saved" && !savedData) {
+      return [];
+    } else if (location.pathname === "/saved" && savedData) {
+      return savedData;
+    } else return vacData.objects;
+  };
 
   const renderElements = () => {
     if (loading === false) {
       return (
         <div className={className}>
           {isData &&
-            vacData.objects.map((item) => {
+            getCards().map((item) => {
               return (
                 <Card
                   key={item.id}

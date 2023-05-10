@@ -1,10 +1,17 @@
-import React from "react";
+import React, { FC } from "react";
 
-export default function SavedButton() {
+type SavedButtonProps = {
+  onClick: () => void;
+};
+
+const SavedButton: FC<SavedButtonProps> = (props) => {
   return (
     <button
+      onClick={props.onClick}
       data-elem="vacancy-_vacancy_id_-shortlist-button"
       className="card__button"
     ></button>
   );
-}
+};
+
+export default SavedButton;
