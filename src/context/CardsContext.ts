@@ -7,6 +7,7 @@ type cardContext = {
   vacData: [];
   loading: boolean;
   page: number;
+  keyword: string;
   setPage: React.Dispatch<React.SetStateAction<number>>;
   addToSaved: (id: number) => void;
   removeFromSaved: (id: number) => void;
@@ -14,6 +15,7 @@ type cardContext = {
   savedDataDisplayed: [];
   setSavedDataDisplayed: React.Dispatch<CardPropsType[]>;
   setKeyword: React.Dispatch<React.SetStateAction<string>>;
+  setIsSearchSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const cardContext = createContext<cardContext>({
@@ -28,6 +30,8 @@ const cardContext = createContext<cardContext>({
   removeFromSaved: () => [],
   setSavedDataDisplayed: () => [],
   setKeyword: () => [],
+  keyword: "",
+  setIsSearchSubmitted: () => false,
 });
 
 export default cardContext;

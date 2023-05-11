@@ -3,14 +3,14 @@ import "../../styles/SearchComponent/SearchComponent.css";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import { useForm } from "@mantine/form";
 import cardContext from "../../context/CardsContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function SearchInput() {
   const SearchIcon = () => {
     return <div className="search-comp__icon"></div>;
   };
 
-  const { setKeyword } = useContext(cardContext);
+  const { setKeyword, keyword, setIsSearchSubmitted } = useContext(cardContext);
 
   const form = useForm({
     initialValues: {
@@ -19,13 +19,25 @@ export default function SearchInput() {
     },
   });
 
+  const [inputValue, setInputValue] = useState(form.values.query);
+
+  useEffect(() => {
+    setInputValue(keyword);
+  }, [keyword]);
+
   return (
-    <form onSubmit={form.onSubmit((values) => setKeyword(values.query))}>
+    <form
+      onSubmit={form.onSubmit(() => {
+        setKeyword(inputValue);
+        setIsSearchSubmitted(true);
+      })}
+    >
       <TextInput
-        {...form.getInputProps("query")}
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-          form.setFieldValue("query", event.target.value)
-        }
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          form.setFieldValue("query", event.target.value);
+          setKeyword(event.target.value);
+        }}
+        value={inputValue}
         data-elem="search-input"
         icon={<SearchIcon />}
         placeholder="Введите название вакансии"

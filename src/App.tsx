@@ -17,7 +17,10 @@ function App() {
   const { data: vacApiData, fetchData: fetchVacData, loading } = useFetch();
   const { tokenCheck, loggedIn } = useAuth();
   const [page, setPage] = useState<number>(1);
+
   const [keyword, setKeyword] = useState<string>("");
+  const [isSearchSubmitted, setIsSearchSubmitted] = useState<boolean>(false);
+
   const [vacData, setVacData] = useState<[]>([]);
   const [savedData, setSavedData] = useState(
     () => JSON.parse(localStorage.getItem("saved")!) || []
@@ -43,8 +46,10 @@ function App() {
     if (loggedIn) {
       fetchVacData(VACANCIES_PAGE_URL);
       setVacData(vacApiData);
+      setSavedDataDisplayed;
+      setIsSearchSubmitted(false);
     }
-  }, [loggedIn, page, keyword]);
+  }, [loggedIn, page, isSearchSubmitted]);
 
   useEffect(() => {
     if (vacData && loggedIn) {
@@ -96,6 +101,8 @@ function App() {
           savedDataDisplayed,
           setSavedDataDisplayed,
           setKeyword,
+          keyword,
+          setIsSearchSubmitted,
         }}
       >
         <Routes>
