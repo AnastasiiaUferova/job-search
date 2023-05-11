@@ -13,12 +13,13 @@ import MemoHeader from "./components/Header/Header";
 import { CardPropsType } from "./types/types";
 
 function App() {
-  const { data: catalogueData, fetchData } = useFetch();
+  const { catalogueData, fetchData } = useFetch();
   const { data: vacApiData, fetchData: fetchVacData, loading } = useFetch();
   const { tokenCheck, loggedIn } = useAuth();
   const [page, setPage] = useState<number>(1);
 
   const [keyword, setKeyword] = useState<string>("");
+  const [catalogue, setCatalogue] = useState<string>("");
   const [isSearchSubmitted, setIsSearchSubmitted] = useState<boolean>(false);
 
   const [vacData, setVacData] = useState<[]>([]);
@@ -26,11 +27,18 @@ function App() {
     () => JSON.parse(localStorage.getItem("saved")!) || []
   );
 
+  //for pagination
   const [savedDataDisplayed, setSavedDataDisplayed] = useState(
     savedData.slice(0, PAGE_SIZE)
   );
 
-  const VACANCIES_PAGE_URL = `/2.0/vacancies/?keyword=${keyword}&published=1&page=${page}&count=4/`;
+  useEffect(() => {
+    if (loggedIn) {
+      fetchData(CATALOGUES_URL);
+    }
+  }, [loggedIn]);
+
+  const VACANCIES_PAGE_URL = `/2.0/vacancies/?keyword=${keyword}&published=1&page=${page}&catalogues=${catalogue}&count=4/`;
   const token = localStorage.getItem("token");
 
   const checkIfLoggedIn = useCallback(() => {
@@ -42,6 +50,7 @@ function App() {
     localStorage.setItem("saved", JSON.stringify(savedData));
   }, []);
 
+  //render if search or filter change
   useEffect(() => {
     if (loggedIn) {
       fetchVacData(VACANCIES_PAGE_URL);
@@ -49,20 +58,16 @@ function App() {
       setSavedDataDisplayed;
       setIsSearchSubmitted(false);
     }
-  }, [loggedIn, page, isSearchSubmitted]);
+  }, [loggedIn, page, isSearchSubmitted, catalogue]);
 
+  //first render initial cards
   useEffect(() => {
     if (vacData && loggedIn) {
       setVacData(vacApiData);
     }
   }, [loading]);
 
-  useEffect(() => {
-    if (loggedIn) {
-      fetchData(CATALOGUES_URL);
-    }
-  }, [loggedIn]);
-
+  //saving functions
   const addToSaved = useCallback(
     (id: number) => {
       vacData.map((item: CardPropsType) => {
@@ -103,6 +108,7 @@ function App() {
           setKeyword,
           keyword,
           setIsSearchSubmitted,
+          setCatalogue,
         }}
       >
         <Routes>

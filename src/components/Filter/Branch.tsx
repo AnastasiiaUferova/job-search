@@ -1,13 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, FC } from "react";
 import "../../styles/Filter/Filter.css";
 import { Select } from "@mantine/core";
 import cardContext from "../../context/CardsContext";
 
-export default function Branch<T>() {
+type SelectProps = {
+  value: any;
+  onChange: any;
+  checked?: any;
+  error?: any;
+  onFocus?: any;
+  onBlur?: any;
+};
+
+const Branch: FC<SelectProps> = (props) => {
   type optionItem = {
     key: number;
-    positions: Array<T>;
     title: string;
     title_rus: string;
     title_trimmed: string;
@@ -34,11 +42,10 @@ export default function Branch<T>() {
     <div className="filter__input-groups">
       <h3 className="filter__subtitle">Отрасль</h3>
       <Select
+        onChange={props.onChange}
         data-elem="industry-select"
         onDropdownOpen={() => setIsOpened(true)}
         onDropdownClose={() => setIsOpened(false)}
-        searchable
-        clearable
         placeholder="Выберете отрасль"
         rightSection={Dropdown()}
         styles={{
@@ -66,4 +73,6 @@ export default function Branch<T>() {
       />
     </div>
   );
-}
+};
+
+export default Branch;

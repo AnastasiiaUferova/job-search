@@ -4,6 +4,7 @@ import axios from "axios";
 
 export default function useFetch() {
   const [data, setData] = useState<[]>([]);
+  const [catalogueData, setCatalogueData] = useState<[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState(null);
 
@@ -20,6 +21,7 @@ export default function useFetch() {
       })
       .then((res) => {
         setData(res.data.objects);
+        setCatalogueData(res.data);
       })
       .catch((err) => {
         setError(err);
@@ -32,5 +34,6 @@ export default function useFetch() {
     error,
     data,
     fetchData,
+    catalogueData,
   };
 }
