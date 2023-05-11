@@ -1,16 +1,31 @@
 import { TextInput } from "@mantine/core";
 import "../../styles/SearchComponent/SearchComponent.css";
-import React from "react";
 import SubmitButton from "../SubmitButton/SubmitButton";
+import { useForm } from "@mantine/form";
+import cardContext from "../../context/CardsContext";
+import { useContext } from "react";
 
 export default function SearchInput() {
   const SearchIcon = () => {
     return <div className="search-comp__icon"></div>;
   };
 
+  const { setKeyword } = useContext(cardContext);
+
+  const form = useForm({
+    initialValues: {
+      query: "",
+      termsOfService: false,
+    },
+  });
+
   return (
-    <>
+    <form onSubmit={form.onSubmit((values) => setKeyword(values.query))}>
       <TextInput
+        {...form.getInputProps("query")}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+          form.setFieldValue("query", event.target.value)
+        }
         data-elem="search-input"
         icon={<SearchIcon />}
         placeholder="Введите название вакансии"
@@ -28,6 +43,6 @@ export default function SearchInput() {
           </div>
         }
       />
-    </>
+    </form>
   );
 }

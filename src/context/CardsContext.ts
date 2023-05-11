@@ -13,6 +13,7 @@ type cardContext = {
   savedData: [];
   savedDataDisplayed: [];
   setSavedDataDisplayed: React.Dispatch<CardPropsType[]>;
+  setKeyword: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const cardContext = createContext<cardContext>({
@@ -26,6 +27,7 @@ const cardContext = createContext<cardContext>({
   addToSaved: () => [],
   removeFromSaved: () => [],
   setSavedDataDisplayed: () => [],
+  setKeyword: () => [],
 });
 
 export default cardContext;

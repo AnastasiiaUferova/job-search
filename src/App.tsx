@@ -17,6 +17,7 @@ function App() {
   const { data: vacApiData, fetchData: fetchVacData, loading } = useFetch();
   const { tokenCheck, loggedIn } = useAuth();
   const [page, setPage] = useState<number>(1);
+  const [keyword, setKeyword] = useState<string>("");
   const [vacData, setVacData] = useState<[]>([]);
   const [savedData, setSavedData] = useState(
     () => JSON.parse(localStorage.getItem("saved")!) || []
@@ -26,7 +27,7 @@ function App() {
     savedData.slice(0, PAGE_SIZE)
   );
 
-  const VACANCIES_PAGE_URL = `/2.0/vacancies/?published=1&page=${page}&count=4/`;
+  const VACANCIES_PAGE_URL = `/2.0/vacancies/?keyword=${keyword}&published=1&page=${page}&count=4/`;
   const token = localStorage.getItem("token");
 
   const checkIfLoggedIn = useCallback(() => {
@@ -43,7 +44,7 @@ function App() {
       fetchVacData(VACANCIES_PAGE_URL);
       setVacData(vacApiData);
     }
-  }, [loggedIn, page]);
+  }, [loggedIn, page, keyword]);
 
   useEffect(() => {
     if (vacData && loggedIn) {
@@ -94,6 +95,7 @@ function App() {
           savedData,
           savedDataDisplayed,
           setSavedDataDisplayed,
+          setKeyword,
         }}
       >
         <Routes>

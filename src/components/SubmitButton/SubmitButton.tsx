@@ -12,6 +12,7 @@ const SubmitButton: FC<SubmitButtonProps> = ({ title, className }) => {
       <Button
         data-elem="search-button"
         className={className}
+        type="submit"
         styles={{
           root: {
             backgroundColor: "#5E96FC",

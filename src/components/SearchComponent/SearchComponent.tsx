@@ -4,7 +4,6 @@ import SearchInput from "./SearchInput";
 import CardList from "../CardList/CardList";
 import PaginationComponent from "../Pagination/Pagination";
 import { useContext } from "react";
-//import { Loader } from "../Loader/Loader";
 
 export default function SearchComponent() {
   const { setPage } = useContext(cardContext);
@@ -16,5 +15,3 @@ export default function SearchComponent() {
     </div>
   );
 }
-
-//  <Loader />

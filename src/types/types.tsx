@@ -19,7 +19,3 @@ export type CardListItemType = {
     title: string;
   };
 };
-
-export type VacDataType = {
-  objects: CardListItemType[];
-};
