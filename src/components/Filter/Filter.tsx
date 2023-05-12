@@ -37,8 +37,6 @@ export default function Filter() {
     form.reset();
   };
 
-  console.log(form.values);
-
   return (
     <form
       onSubmit={form.onSubmit(() => {
