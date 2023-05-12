@@ -43,6 +43,7 @@ const Branch: FC<SelectProps> = (props) => {
       <h3 className="filter__subtitle">Отрасль</h3>
       <Select
         onChange={props.onChange}
+        value={props.value}
         data-elem="industry-select"
         onDropdownOpen={() => setIsOpened(true)}
         onDropdownClose={() => setIsOpened(false)}

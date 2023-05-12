@@ -1,9 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 
-export default function ResetButton() {
+type ResetButtonProps = {
+  onClick: () => void;
+};
+
+const ResetButton: FC<ResetButtonProps> = (props) => {
   return (
-    <>
-      <button className="filter__reset">Сбросить все</button>
-    </>
+    <button onClick={props.onClick} className="filter__reset">
+      Сбросить все
+    </button>
   );
-}
+};
+
+export default ResetButton;

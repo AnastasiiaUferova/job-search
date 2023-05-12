@@ -13,8 +13,8 @@ export default function Filter() {
   const form = useForm({
     initialValues: {
       catalogue: "",
-      from: 1,
-      to: 1,
+      from: "",
+      to: "",
     },
   });
 
@@ -30,6 +30,15 @@ export default function Filter() {
     } else return "";
   };
 
+  const handleReset = () => {
+    setCatalogue("");
+    setSalaryFrom("");
+    setSalaryTo("");
+    form.reset();
+  };
+
+  console.log(form.values);
+
   return (
     <form
       onSubmit={form.onSubmit(() => {
@@ -41,7 +50,7 @@ export default function Filter() {
     >
       <div className="filter__header">
         <h2 className="filter__title">Фильтры</h2>
-        <ResetButton />
+        <ResetButton onClick={() => handleReset()} />
       </div>
       <Branch {...form.getInputProps("catalogue")} />
       <div className="filter__input-groups filter__number-inputs">
