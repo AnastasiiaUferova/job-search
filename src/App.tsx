@@ -19,6 +19,8 @@ function App() {
   const [page, setPage] = useState<number>(1);
 
   const [keyword, setKeyword] = useState<string>("");
+  const [salaryFrom, setSalaryFrom] = useState<number | string>("");
+  const [salaryTo, setSalaryTo] = useState<number | string>("");
   const [catalogue, setCatalogue] = useState<string>("");
   const [isSearchSubmitted, setIsSearchSubmitted] = useState<boolean>(false);
 
@@ -38,7 +40,7 @@ function App() {
     }
   }, [loggedIn]);
 
-  const VACANCIES_PAGE_URL = `/2.0/vacancies/?keyword=${keyword}&published=1&page=${page}&catalogues=${catalogue}&count=4/`;
+  const VACANCIES_PAGE_URL = `/2.0/vacancies/?keyword=${keyword}&published=1&page=${page}&catalogues=${catalogue}&payment_from=${salaryFrom}&payment_to=${salaryTo}&count=4/`;
   const token = localStorage.getItem("token");
 
   const checkIfLoggedIn = useCallback(() => {
@@ -58,7 +60,7 @@ function App() {
       setSavedDataDisplayed;
       setIsSearchSubmitted(false);
     }
-  }, [loggedIn, page, isSearchSubmitted, catalogue]);
+  }, [loggedIn, page, isSearchSubmitted, catalogue, salaryFrom, salaryTo]);
 
   //first render initial cards
   useEffect(() => {
@@ -109,6 +111,8 @@ function App() {
           keyword,
           setIsSearchSubmitted,
           setCatalogue,
+          setSalaryFrom,
+          setSalaryTo,
         }}
       >
         <Routes>

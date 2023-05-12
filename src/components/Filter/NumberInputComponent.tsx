@@ -1,13 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NumberInput, NumberInputHandlers } from "@mantine/core";
 import { useState, useRef, FC } from "react";
 
 type NumberInputComponentProps = {
   placeholder: string;
+  value: any;
+  onChange: any;
+  checked?: any;
+  error?: any;
+  onFocus?: any;
+  onBlur?: any;
 };
 
-const NumberInputComponent: FC<NumberInputComponentProps> = ({
-  placeholder,
-}) => {
+const NumberInputComponent: FC<NumberInputComponentProps> = (props) => {
+  const { placeholder, onChange } = props;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [value, setValue] = useState<number | "">();
   const handlers = useRef<NumberInputHandlers>();
 
@@ -15,7 +22,7 @@ const NumberInputComponent: FC<NumberInputComponentProps> = ({
     <div className="filter__number-input">
       <NumberInput
         value={value}
-        onChange={(val) => setValue(val)}
+        onChange={onChange}
         handlersRef={handlers}
         hideControls
         min={0}

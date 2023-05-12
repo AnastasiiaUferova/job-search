@@ -19,3 +19,12 @@ export type CardListItemType = {
     title: string;
   };
 };
+
+export type catalogueItemType = {
+  key: number;
+  positions: object[];
+  title: string;
+  title_rus: string;
+  title_trimmed: string;
+  url_rus: string;
+};
