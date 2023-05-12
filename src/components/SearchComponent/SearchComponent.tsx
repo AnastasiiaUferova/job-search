@@ -7,9 +7,9 @@ import { useContext } from "react";
 import EmptyStateImg from "../EmptyState/EmptyStateImg";
 
 export default function SearchComponent() {
-  const { setPage, vacData } = useContext(cardContext);
+  const { setPage, vacData, isSearchSubmitted } = useContext(cardContext);
 
-  const isData = vacData.length > 0;
+  const isData = vacData.length > 0 && isSearchSubmitted === false;
 
   return (
     <div className="search-comp">

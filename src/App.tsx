@@ -15,6 +15,7 @@ import { CardPropsType } from "./types/types";
 function App() {
   const { catalogueData, fetchData } = useFetch();
   const { data: vacApiData, fetchData: fetchVacData, loading } = useFetch();
+  const { vacDetails, fetchData: fetchDetails } = useFetch();
   const { tokenCheck, loggedIn } = useAuth();
   const [page, setPage] = useState<number>(1);
 
@@ -23,6 +24,7 @@ function App() {
   const [salaryTo, setSalaryTo] = useState<number | string>("");
   const [catalogue, setCatalogue] = useState<string>("");
   const [isSearchSubmitted, setIsSearchSubmitted] = useState<boolean>(false);
+  const [vacId, setVacId] = useState<number | string>("");
 
   const [vacData, setVacData] = useState<[]>([]);
   const [savedData, setSavedData] = useState(
@@ -34,14 +36,21 @@ function App() {
     savedData.slice(0, PAGE_SIZE)
   );
 
+  const VACANCIES_PAGE_URL = `/2.0/vacancies/?keyword=${keyword}&published=1&page=${page}&catalogues=${catalogue}&payment_from=${salaryFrom}&payment_to=${salaryTo}&count=4/`;
+  const VACANCY_DETAILS_URL = `2.0/vacancies/${46179220}/`;
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
     if (loggedIn) {
       fetchData(CATALOGUES_URL);
     }
   }, [loggedIn]);
 
-  const VACANCIES_PAGE_URL = `/2.0/vacancies/?keyword=${keyword}&published=1&page=${page}&catalogues=${catalogue}&payment_from=${salaryFrom}&payment_to=${salaryTo}&count=4/`;
-  const token = localStorage.getItem("token");
+  useEffect(() => {
+    if (loggedIn) {
+      fetchDetails(VACANCY_DETAILS_URL);
+    }
+  }, [loggedIn]);
 
   const checkIfLoggedIn = useCallback(() => {
     tokenCheck();
@@ -61,6 +70,10 @@ function App() {
       setIsSearchSubmitted(false);
     }
   }, [loggedIn, page, isSearchSubmitted, catalogue, salaryFrom, salaryTo]);
+
+  console.log(vacId);
+
+  console.log(vacDetails);
 
   //first render initial cards
   useEffect(() => {
@@ -95,6 +108,7 @@ function App() {
   return (
     <>
       <MemoHeader />
+      <button onClick={() => fetchDetails("/2.0/vacancies/46344150/")}></button>
       <cardContext.Provider
         value={{
           catalogueData,
@@ -113,6 +127,8 @@ function App() {
           setCatalogue,
           setSalaryFrom,
           setSalaryTo,
+          setVacId,
+          isSearchSubmitted,
         }}
       >
         <Routes>
@@ -134,7 +150,14 @@ function App() {
             }
           ></Route>
 
-          <Route path="/details" element={<VacancyDetails />}></Route>
+          <Route
+            path={`/${vacId}`}
+            element={
+              <ProtectedRoutes loggedIn={loggedIn}>
+                <VacancyDetails />
+              </ProtectedRoutes>
+            }
+          ></Route>
         </Routes>
       </cardContext.Provider>
     </>

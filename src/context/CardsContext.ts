@@ -15,9 +15,11 @@ type cardContext = {
   setSavedDataDisplayed: React.Dispatch<CardPropsType[]>;
   setKeyword: React.Dispatch<React.SetStateAction<string>>;
   setIsSearchSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
+  isSearchSubmitted: boolean;
   setCatalogue: React.Dispatch<React.SetStateAction<string>>;
   setSalaryFrom: React.Dispatch<React.SetStateAction<number | string>>;
   setSalaryTo: React.Dispatch<React.SetStateAction<number | string>>;
+  setVacId: React.Dispatch<React.SetStateAction<number | string>>;
 };
 
 const cardContext = createContext<cardContext>({
@@ -34,9 +36,11 @@ const cardContext = createContext<cardContext>({
   setKeyword: () => "",
   keyword: "",
   setIsSearchSubmitted: () => false,
+  isSearchSubmitted: false,
   setCatalogue: () => "",
   setSalaryFrom: () => "",
   setSalaryTo: () => "",
+  setVacId: () => "",
 });
 
 export default cardContext;

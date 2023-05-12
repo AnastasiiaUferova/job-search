@@ -3,11 +3,13 @@ import "../../styles/Card/Card.css";
 import SavedButton from "./SavedButton";
 import cardContext from "../../context/CardsContext";
 import { CardPropsType } from "../../types/types";
+import { NavLink } from "react-router-dom";
 
 const Card: FC<CardPropsType> = (props) => {
   const { id, profession, payment_from, currency, town, type_of_work } = props;
 
-  const { addToSaved, removeFromSaved, savedData } = useContext(cardContext);
+  const { addToSaved, removeFromSaved, savedData, setVacId } =
+    useContext(cardContext);
 
   const savedCardIds = savedData.map((item: CardPropsType) => item.id);
 
@@ -27,10 +29,15 @@ const Card: FC<CardPropsType> = (props) => {
     }
   };
 
+  // <NavLink to={`/${id}`}>
+
   return (
     <div data-elem={`vacancy-_vacancy_id_${id}`} className="card">
       <div className="card__info">
-        <h3 className="card__title">{profession}</h3>
+        <NavLink onClick={() => setVacId(id)} to={`/${id}`}>
+          <h3 className="card__title">{profession}</h3>
+        </NavLink>
+
         <div className="card__details">
           <span className="card__salary">
             з/п от {payment_from} {currency}
