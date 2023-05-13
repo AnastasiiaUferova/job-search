@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import SavedButton from "../Card/SavedButton";
 import "../../styles/CardDetailed/CardDetailed.css";
 import cardContext from "../../context/CardsContext";
+import useSaveCard from "../../hooks/useSaveCard";
 
 export default function CardDetailed() {
   const { vacDetails } = useContext(cardContext);
+  const { className, onClickHandle } = useSaveCard(vacDetails.id);
   return (
     <div className="card_detailed">
       <div className="card_detailed__info">
@@ -19,7 +21,7 @@ export default function CardDetailed() {
         </div>
         <p className="card_detailed__place">{vacDetails.town.title}</p>
       </div>
-      <SavedButton />
+      <SavedButton className={className} onClick={() => onClickHandle()} />
     </div>
   );
 }

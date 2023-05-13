@@ -2,10 +2,18 @@
   border: 1px solid #EAEBED;
   border-radius: 12px;
   background-color: #FFFFFF;
-  padding: 24px;
+  padding: 4px 24px 24px 24px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+.details-container p {
+  font-size: 20px;
+  line-height: 20px;
+  margin-top: 20px;
+  margin-bottom: 16px;
+  font-style: normal;
+  font-weight: 700;
 }
 .details-container ul {
   margin-bottom: 0;

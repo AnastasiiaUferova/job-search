@@ -1,35 +1,17 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext } from "react";
 import "../../styles/Card/Card.css";
 import SavedButton from "./SavedButton";
 import cardContext from "../../context/CardsContext";
 import { CardPropsType } from "../../types/types";
 import { NavLink } from "react-router-dom";
+import useSaveCard from "../../hooks/useSaveCard";
 
 const Card: FC<CardPropsType> = (props) => {
   const { id, profession, payment_from, currency, town, type_of_work } = props;
 
-  const { addToSaved, removeFromSaved, savedData, setVacId } =
-    useContext(cardContext);
+  const { setVacId } = useContext(cardContext);
 
-  const savedCardIds = savedData.map((item: CardPropsType) => item.id);
-
-  const [className, setClassName] = useState<string>(
-    savedCardIds.includes(id)
-      ? "card__button card__button_saved"
-      : "card__button"
-  );
-
-  const onClickHandle = () => {
-    if (savedCardIds.includes(id)) {
-      removeFromSaved(id);
-      setClassName("card__button");
-    } else {
-      setClassName("card__button card__button_saved");
-      addToSaved(id);
-    }
-  };
-
-  // <NavLink to={`/${id}`}>
+  const { className, onClickHandle } = useSaveCard(id);
 
   return (
     <div data-elem={`vacancy-_vacancy_id_${id}`} className="card">
