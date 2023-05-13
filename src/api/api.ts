@@ -1,11 +1,24 @@
 import { useState } from "react";
 import { BASIC_URL } from "../_constants/constants";
 import axios from "axios";
+import { vacDetailsType } from "../types/types";
 
 export default function useFetch() {
   const [data, setData] = useState<[]>([]);
   const [catalogueData, setCatalogueData] = useState<[]>([]);
-  const [vacDetails, setVacDetails] = useState({});
+  const [vacDetails, setVacDetails] = useState<vacDetailsType>({
+    id: 0,
+    profession: "",
+    payment_from: 0,
+    currency: "",
+    town: {
+      title: "",
+    },
+    type_of_work: {
+      title: "",
+    },
+    vacancyRichText: "",
+  });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState(null);
 

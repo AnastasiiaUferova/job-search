@@ -1,9 +1,10 @@
 import { createContext } from "react";
-import { CardPropsType } from "../types/types";
+import { CardPropsType, vacDetailsType } from "../types/types";
 
 type cardContext = {
   catalogueData: [];
   vacData: [];
+  vacDetails: vacDetailsType;
   loading: boolean;
   page: number;
   keyword: string;
@@ -25,6 +26,19 @@ type cardContext = {
 const cardContext = createContext<cardContext>({
   catalogueData: [],
   vacData: [],
+  vacDetails: {
+    id: 0,
+    profession: "",
+    payment_from: 0,
+    currency: "",
+    town: {
+      title: "",
+    },
+    type_of_work: {
+      title: "",
+    },
+    vacancyRichText: "",
+  },
   savedData: [],
   savedDataDisplayed: [],
   loading: false,

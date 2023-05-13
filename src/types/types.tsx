@@ -7,7 +7,7 @@ export type CardPropsType = {
   type_of_work: string;
 };
 
-export type CardListItemType = {
+export interface CardListItemType {
   id: number;
   profession: string;
   payment_from: number;
@@ -18,7 +18,7 @@ export type CardListItemType = {
   type_of_work: {
     title: string;
   };
-};
+}
 
 export type catalogueItemType = {
   key: number;
@@ -28,3 +28,7 @@ export type catalogueItemType = {
   title_trimmed: string;
   url_rus: string;
 };
+
+export interface vacDetailsType extends CardListItemType {
+  vacancyRichText: string;
+}

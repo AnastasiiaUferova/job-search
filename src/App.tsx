@@ -31,13 +31,15 @@ function App() {
     () => JSON.parse(localStorage.getItem("saved")!) || []
   );
 
+  console.log(vacId);
+
   //for pagination
   const [savedDataDisplayed, setSavedDataDisplayed] = useState(
     savedData.slice(0, PAGE_SIZE)
   );
 
   const VACANCIES_PAGE_URL = `/2.0/vacancies/?keyword=${keyword}&published=1&page=${page}&catalogues=${catalogue}&payment_from=${salaryFrom}&payment_to=${salaryTo}&count=4/`;
-  const VACANCY_DETAILS_URL = `2.0/vacancies/${46179220}/`;
+  const VACANCY_DETAILS_URL = `/2.0/vacancies/${vacId}/`;
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -50,7 +52,7 @@ function App() {
     if (loggedIn) {
       fetchDetails(VACANCY_DETAILS_URL);
     }
-  }, [loggedIn]);
+  }, [loggedIn, vacId]);
 
   const checkIfLoggedIn = useCallback(() => {
     tokenCheck();
@@ -70,8 +72,6 @@ function App() {
       setIsSearchSubmitted(false);
     }
   }, [loggedIn, page, isSearchSubmitted, catalogue, salaryFrom, salaryTo]);
-
-  console.log(vacId);
 
   console.log(vacDetails);
 
@@ -108,7 +108,6 @@ function App() {
   return (
     <>
       <MemoHeader />
-      <button onClick={() => fetchDetails("/2.0/vacancies/46344150/")}></button>
       <cardContext.Provider
         value={{
           catalogueData,
@@ -129,6 +128,7 @@ function App() {
           setSalaryTo,
           setVacId,
           isSearchSubmitted,
+          vacDetails,
         }}
       >
         <Routes>
@@ -151,7 +151,7 @@ function App() {
           ></Route>
 
           <Route
-            path={`/${vacId}`}
+            path={"/details"}
             element={
               <ProtectedRoutes loggedIn={loggedIn}>
                 <VacancyDetails />

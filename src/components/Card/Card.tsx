@@ -34,7 +34,7 @@ const Card: FC<CardPropsType> = (props) => {
   return (
     <div data-elem={`vacancy-_vacancy_id_${id}`} className="card">
       <div className="card__info">
-        <NavLink onClick={() => setVacId(id)} to={`/${id}`}>
+        <NavLink onClick={() => setVacId(id)} to={"/details"}>
           <h3 className="card__title">{profession}</h3>
         </NavLink>
 

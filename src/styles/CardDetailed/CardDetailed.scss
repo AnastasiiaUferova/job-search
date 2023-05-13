@@ -2,7 +2,7 @@
 
 .card_detailed {
     width: 100%;
-    height: 157px;
+    min-height: 157px;
     background-color: $ligth-background;
     @include container-style(12px);
     display: flex;
