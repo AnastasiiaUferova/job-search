@@ -34,7 +34,7 @@ const Branch: FC<SelectProps> = (props) => {
 
   useEffect(() => {
     if (catalogueData) {
-      setOptions(catalogueData.map((item: optionItem) => item.title));
+      setOptions(catalogueData.map((item: optionItem) => item.title_trimmed));
     }
   }, [catalogueData]);
 

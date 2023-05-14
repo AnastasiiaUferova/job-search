@@ -17,7 +17,7 @@ export default function SearchComponent() {
       {isData ? (
         <>
           <CardList />
-          <PaginationComponent setPage={setPage} total={20} />
+          <PaginationComponent setPage={setPage} total={125} />
         </>
       ) : (
         <EmptyStateImg />

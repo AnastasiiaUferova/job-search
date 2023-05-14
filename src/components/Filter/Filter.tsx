@@ -23,7 +23,7 @@ export default function Filter() {
 
   const catalogueId = () => {
     const filteredCatalogueData = catalogueData.filter(
-      (item: catalogueItemType) => item.title === form.values.catalogue
+      (item: catalogueItemType) => item.title_trimmed === form.values.catalogue
     );
     if (form.values.catalogue !== "") {
       return String(filteredCatalogueData?.[0]["key"]);
