@@ -7,13 +7,6 @@
     flex-direction: column;
     gap: 20px;
 
-    p {
-        font-size: 20px;
-        line-height: 20px;
-        margin-top: 20px;
-        margin-bottom: 16px;
-        @include font(700);
-    }
 
     ul {
         margin-bottom: 0;
@@ -21,6 +14,14 @@
         line-height: 22.4px;
         size: 16px;
         padding-inline-start: 20px;
+    }
+
+    p {
+        font-size: 20px;
+        line-height: 20px;
+        margin-top: 20px;
+        margin-bottom: 16px;
+        @include font(700);
     }
 
     @media(max-width: 460px) {

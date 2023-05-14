@@ -7,14 +7,6 @@
   flex-direction: column;
   gap: 20px;
 }
-.details-container p {
-  font-size: 20px;
-  line-height: 20px;
-  margin-top: 20px;
-  margin-bottom: 16px;
-  font-style: normal;
-  font-weight: 700;
-}
 .details-container ul {
   margin-bottom: 0;
   font-style: normal;
@@ -22,6 +14,14 @@
   line-height: 22.4px;
   size: 16px;
   padding-inline-start: 20px;
+}
+.details-container p {
+  font-size: 20px;
+  line-height: 20px;
+  margin-top: 20px;
+  margin-bottom: 16px;
+  font-style: normal;
+  font-weight: 700;
 }
 @media (max-width: 460px) {
   .details-container {

@@ -24,14 +24,14 @@ function App() {
   const [salaryTo, setSalaryTo] = useState<number | string>("");
   const [catalogue, setCatalogue] = useState<string>("");
   const [isSearchSubmitted, setIsSearchSubmitted] = useState<boolean>(false);
-  const [vacId, setVacId] = useState<number | string>("");
+  const [vacId, setVacId] = useState<number | string>(
+    () => JSON.parse(localStorage.getItem("id")!) || ""
+  );
 
   const [vacData, setVacData] = useState<[]>([]);
   const [savedData, setSavedData] = useState(
     () => JSON.parse(localStorage.getItem("saved")!) || []
   );
-
-  console.log(vacId);
 
   //for pagination
   const [savedDataDisplayed, setSavedDataDisplayed] = useState(
@@ -42,6 +42,8 @@ function App() {
   const VACANCY_DETAILS_URL = `/2.0/vacancies/${vacId}/`;
   const token = localStorage.getItem("token");
 
+  console.log(savedData);
+
   useEffect(() => {
     if (loggedIn) {
       fetchData(CATALOGUES_URL);
@@ -51,6 +53,7 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       fetchDetails(VACANCY_DETAILS_URL);
+      localStorage.setItem("id", JSON.stringify(vacId));
     }
   }, [loggedIn, vacId]);
 
@@ -61,7 +64,7 @@ function App() {
   useEffect(() => {
     checkIfLoggedIn();
     localStorage.setItem("saved", JSON.stringify(savedData));
-  }, []);
+  }, [savedData]);
 
   //render if search or filter change
   useEffect(() => {
@@ -72,8 +75,6 @@ function App() {
       setIsSearchSubmitted(false);
     }
   }, [loggedIn, page, isSearchSubmitted, catalogue, salaryFrom, salaryTo]);
-
-  console.log(vacDetails);
 
   //first render initial cards
   useEffect(() => {
@@ -88,6 +89,7 @@ function App() {
       vacData.map((item: CardPropsType) => {
         if (item.id === id) {
           setSavedData([...savedData, item]);
+          localStorage.setItem("saved", JSON.stringify(savedData));
         }
         return item;
       });
@@ -101,6 +103,7 @@ function App() {
         return item.id !== id;
       });
       setSavedData(filteredData);
+      localStorage.setItem("saved", JSON.stringify(filteredData));
     },
     [savedData]
   );
@@ -151,7 +154,7 @@ function App() {
           ></Route>
 
           <Route
-            path={"/details"}
+            path={`/details/${vacId}`}
             element={
               <ProtectedRoutes loggedIn={loggedIn}>
                 <VacancyDetails />
