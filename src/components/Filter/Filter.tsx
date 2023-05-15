@@ -50,7 +50,7 @@ export default function Filter() {
         setSalaryTo(form.values.to);
         if (form.values.to !== "" || form.values.from !== "") {
           setAgreement(1);
-        }
+        } else setAgreement(0);
       })}
       className="filter"
     >

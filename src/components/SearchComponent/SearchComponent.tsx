@@ -5,23 +5,29 @@ import CardList from "../CardList/CardList";
 import PaginationComponent from "../Pagination/Pagination";
 import { useContext } from "react";
 import EmptyStateImg from "../EmptyState/EmptyStateImg";
+import { Loader } from "../Loader/Loader";
 
 export default function SearchComponent() {
-  const { setPage, vacData, isSearchSubmitted } = useContext(cardContext);
+  const { setPage, vacData, loading } = useContext(cardContext);
 
-  const isData = vacData.length > 0 && isSearchSubmitted === false;
-
-  return (
-    <div className="search-comp">
-      <SearchInput />
-      {isData ? (
+  const renderSearchCopmponent = () => {
+    if (loading) {
+      return <Loader />;
+    } else if (!loading && vacData.length === 0) {
+      return <EmptyStateImg />;
+    } else
+      return (
         <>
           <CardList />
           <PaginationComponent setPage={setPage} total={125} />
         </>
-      ) : (
-        <EmptyStateImg />
-      )}
+      );
+  };
+
+  return (
+    <div className="search-comp">
+      <SearchInput />
+      {renderSearchCopmponent()}
     </div>
   );
 }

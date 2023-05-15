@@ -73,10 +73,6 @@ function App() {
       setVacData(vacApiData);
       setSavedDataDisplayed;
       setIsSearchSubmitted(false);
-
-      if (salaryFrom === "" && salaryTo === "") {
-        setAgreement(0);
-      } else setAgreement(1);
     }
   }, [loggedIn, page, isSearchSubmitted, catalogue, salaryFrom, salaryTo]);
 
