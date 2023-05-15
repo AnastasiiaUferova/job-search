@@ -18,8 +18,13 @@ export default function Filter() {
     },
   });
 
-  const { setCatalogue, catalogueData, setSalaryFrom, setSalaryTo } =
-    useContext(cardContext);
+  const {
+    setCatalogue,
+    catalogueData,
+    setSalaryFrom,
+    setSalaryTo,
+    setAgreement,
+  } = useContext(cardContext);
 
   const catalogueId = () => {
     const filteredCatalogueData = catalogueData.filter(
@@ -43,6 +48,9 @@ export default function Filter() {
         setCatalogue(catalogueId());
         setSalaryFrom(form.values.from);
         setSalaryTo(form.values.to);
+        if (form.values.to !== "" || form.values.from !== "") {
+          setAgreement(1);
+        }
       })}
       className="filter"
     >

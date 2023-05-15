@@ -10,7 +10,7 @@ export default function useSaveCard(id: number) {
 
   const savedCardIds = savedData.map((item: CardPropsType) => item.id);
 
-  const [className, setClassName] = useState<string>("card__button");
+  const [className, setClassName] = useState<string>(() => "card__button");
 
   useEffect(() => {
     if (savedCardIds.includes(id) || storageCards.includes(id)) {

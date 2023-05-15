@@ -17,6 +17,7 @@ type cardContext = {
   setKeyword: React.Dispatch<React.SetStateAction<string>>;
   setIsSearchSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
   isSearchSubmitted: boolean;
+  setAgreement: React.Dispatch<React.SetStateAction<number>>;
   setCatalogue: React.Dispatch<React.SetStateAction<string>>;
   setSalaryFrom: React.Dispatch<React.SetStateAction<number | string>>;
   setSalaryTo: React.Dispatch<React.SetStateAction<number | string>>;
@@ -50,6 +51,7 @@ const cardContext = createContext<cardContext>({
   setKeyword: () => "",
   keyword: "",
   setIsSearchSubmitted: () => false,
+  setAgreement: () => 0,
   isSearchSubmitted: false,
   setCatalogue: () => "",
   setSalaryFrom: () => "",

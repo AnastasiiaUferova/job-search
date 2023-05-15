@@ -49,13 +49,6 @@ function App() {
     }
   }, [loggedIn]);
 
-  console.log(salaryTo !== "" || salaryFrom !== "");
-
-  useEffect(() => {
-    if (salaryTo !== "" || salaryFrom !== "") setAgreement(0);
-    else setAgreement(1);
-  }, [salaryTo, salaryFrom]);
-
   useEffect(() => {
     if (loggedIn) {
       fetchDetails(VACANCY_DETAILS_URL);
@@ -79,6 +72,10 @@ function App() {
       setVacData(vacApiData);
       setSavedDataDisplayed;
       setIsSearchSubmitted(false);
+
+      if (salaryFrom === "" && salaryTo === "") {
+        setAgreement(0);
+      } else setAgreement(1);
     }
   }, [loggedIn, page, isSearchSubmitted, catalogue, salaryFrom, salaryTo]);
 
@@ -132,6 +129,7 @@ function App() {
           setKeyword,
           keyword,
           setIsSearchSubmitted,
+          setAgreement,
           setCatalogue,
           setSalaryFrom,
           setSalaryTo,
