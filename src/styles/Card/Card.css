@@ -73,7 +73,6 @@
 }
 @media (max-width: 500px) {
   .card {
-    height: 180px;
     padding: 20px;
   }
   .card__details {
@@ -87,5 +86,8 @@
   }
   .card__place {
     font-size: 14px;
+  }
+  .card__info {
+    width: 80%;
   }
 }

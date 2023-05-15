@@ -23,7 +23,7 @@ const NumberInputComponent: FC<NumberInputComponentProps> = (props) => {
         onChange={onChange}
         handlersRef={handlers}
         hideControls
-        min={0}
+        min={1}
         styles={{
           rightSection: { pointerEvents: "none" },
           input: {

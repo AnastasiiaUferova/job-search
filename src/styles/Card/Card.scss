@@ -78,7 +78,6 @@
 
     @media(max-width: 500px) {
         & {
-            height: 180px;
             padding: 20px;
         }
         &__details {
@@ -95,5 +94,11 @@
         &__place {
             font-size: 14px;
         }
+
+    &__info {
+        width: 80%;
+    }
+
+        
     }
 }
