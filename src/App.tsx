@@ -60,6 +60,7 @@ function App() {
     tokenCheck();
   }, [token]);
 
+  //view changes for saved data
   useEffect(() => {
     checkIfLoggedIn();
     localStorage.setItem("saved", JSON.stringify(savedData));
