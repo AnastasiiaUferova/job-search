@@ -8,7 +8,7 @@ import EmptyStateImg from "../EmptyState/EmptyStateImg";
 import { Loader } from "../Loader/Loader";
 
 export default function SearchComponent() {
-  const { setPage, vacData, loading } = useContext(cardContext);
+  const { vacData, loading, setPage, page } = useContext(cardContext);
 
   const renderSearchCopmponent = () => {
     if (loading) {
@@ -19,7 +19,7 @@ export default function SearchComponent() {
       return (
         <>
           <CardList />
-          <PaginationComponent setPage={setPage} total={125} />
+          <PaginationComponent setPage={setPage} total={125} page={page} />
         </>
       );
   };

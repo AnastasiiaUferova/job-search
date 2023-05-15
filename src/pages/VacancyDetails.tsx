@@ -8,8 +8,6 @@ import { Loader } from "../components/Loader/Loader";
 export default function VacancyDetails() {
   const { vacDetails } = useContext(cardContext);
 
-  console.log(vacDetails);
-
   return (
     <div className="v-details">
       <div className="v-details__wrapper">

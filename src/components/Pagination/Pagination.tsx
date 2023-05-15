@@ -5,10 +5,11 @@ import "../../styles/Pagination/Pagination.css";
 type PaginationPropsType = {
   setPage: React.Dispatch<React.SetStateAction<number>>;
   total: number;
+  page: number;
 };
 
 const PaginationComponent: FC<PaginationPropsType> = (props) => {
-  const { setPage, total } = props;
+  const { setPage, total, page } = props;
 
   const voidDiv = () => {
     return <div></div>;
@@ -36,7 +37,7 @@ const PaginationComponent: FC<PaginationPropsType> = (props) => {
         })}
         onChange={setPage}
         total={total}
-        defaultValue={1}
+        value={page}
       />
     </div>
   );

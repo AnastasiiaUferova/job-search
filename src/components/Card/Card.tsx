@@ -11,13 +11,17 @@ const Card: FC<CardPropsType> = (props) => {
 
   const { setVacId } = useContext(cardContext);
 
-  const { className, onClickHandle } = useSaveCard(id);
+  const { className, onSaveClickHandle } = useSaveCard(id);
+
+  const onNavLinkClick = () => {
+    setVacId(id);
+  };
 
   return (
     <div data-elem={`vacancy-_vacancy_id_${id}`} className="card">
       <div className="card__info">
         <NavLink
-          onClick={() => setVacId(id)}
+          onClick={() => onNavLinkClick()}
           target="_blank"
           to={`/details/${id}`}
         >
@@ -32,7 +36,7 @@ const Card: FC<CardPropsType> = (props) => {
         </div>
         <p className="card__place">{town}</p>
       </div>
-      <SavedButton className={className} onClick={() => onClickHandle()} />
+      <SavedButton className={className} onClick={() => onSaveClickHandle()} />
     </div>
   );
 };

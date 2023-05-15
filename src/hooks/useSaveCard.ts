@@ -18,7 +18,7 @@ export default function useSaveCard(id: number) {
     } else setClassName("card__button");
   }, [loading]);
 
-  const onClickHandle = () => {
+  const onSaveClickHandle = () => {
     if (savedCardIds.includes(id) || storageCards.includes(id)) {
       removeFromSaved(id);
       setClassName("card__button");
@@ -30,6 +30,6 @@ export default function useSaveCard(id: number) {
 
   return {
     className,
-    onClickHandle,
+    onSaveClickHandle,
   };
 }

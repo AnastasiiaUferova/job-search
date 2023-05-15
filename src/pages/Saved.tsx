@@ -23,6 +23,7 @@ export default function Saved() {
         <PaginationComponent
           setPage={setPage}
           total={Math.ceil(savedData.length / 4)}
+          page={activePage}
         />
       </div>
     </div>

@@ -39,6 +39,8 @@ function App() {
     savedData.slice(0, PAGE_SIZE)
   );
 
+  console.log(page);
+
   const VACANCIES_PAGE_URL = `/2.0/vacancies/?keyword=${keyword}&published=1&page=${page}&catalogues=${catalogue}&payment_from=${salaryFrom}&payment_to=${salaryTo}&no_agreement=${agreement}&count=4/`;
   const VACANCY_DETAILS_URL = `/2.0/vacancies/${vacId}/`;
   const token = localStorage.getItem("token");
