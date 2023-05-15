@@ -20,8 +20,8 @@ function App() {
   const [page, setPage] = useState<number>(1);
 
   const [keyword, setKeyword] = useState<string>("");
-  const [salaryFrom, setSalaryFrom] = useState<number | string>("");
-  const [salaryTo, setSalaryTo] = useState<number | string>("");
+  const [salaryFrom, setSalaryFrom] = useState<number | string>(1);
+  const [salaryTo, setSalaryTo] = useState<number | string>(1);
   const [catalogue, setCatalogue] = useState<string>("");
   const [agreement, setAgreement] = useState<number>(0);
   const [isSearchSubmitted, setIsSearchSubmitted] = useState<boolean>(false);

@@ -10,16 +10,22 @@
     padding: 24px;
     margin-bottom: 20px;
 
+    button {
+        margin-top: 4px;
+    }
+
     &__info {
         display: flex;
         flex-direction: column;
         gap: 16.5px;
+        justify-content: center;
+        width: 90%;
     }
 
     &__title {
         @include font(700);
         font-size: 28px;
-        line-height: 33.89px
+        line-height: 33.89px;
     }
 
     &__details {
@@ -47,28 +53,6 @@
         top: 2px;
     }
 
-    &__button {
-        @include button;
-        background-image: url(../../assets/Empty-star.svg);
-        width: 22px;
-        height: 22px;
-        align-self:flex-start;
-        margin: 0;
-    }
-
-    &__button:hover {
-        background-image: url(../../assets/Hover-star.svg);
-    }
-
-    &__button:active{
-        background-image: url(../../assets/Filled-star.svg);
-    }
-
-    &__button_active{
-        background-image: url(../../assets/Filled-star.svg);
-    }
-
-
     li {
         list-style: none;
     }
@@ -81,7 +65,6 @@
 
     @media(max-width: 535px) {
         & {
-            height: 180px;
             padding: 10px 20px;
         }
 
@@ -104,8 +87,4 @@
             font-size: 12px;
         }
     }
-}
-
-.card_detailed {
-   height: 157px;
 }
