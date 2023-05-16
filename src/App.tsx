@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Route, Routes, useLocation, useParams } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Saved from "./pages/Saved";
 import VacancyDetails from "./pages/VacancyDetails";
@@ -25,6 +25,7 @@ function App() {
   const [catalogue, setCatalogue] = useState<string>("");
   const [agreement, setAgreement] = useState<number>(0);
   const [isSearchSubmitted, setIsSearchSubmitted] = useState<boolean>(false);
+  const [isBurgerOpened, setIsBurgerOpened] = useState<boolean>(false);
 
   const location = useLocation();
   const source = location.pathname
@@ -32,6 +33,7 @@ function App() {
     .splice(1)
     .join("")
     .split("&")[0];
+
   const [vacId, setVacId] = useState<string>(
     () => JSON.parse(localStorage.getItem("id")!) || ""
   );
@@ -142,6 +144,8 @@ function App() {
           setVacId,
           isSearchSubmitted,
           vacDetails,
+          setIsBurgerOpened,
+          isBurgerOpened,
         }}
       >
         <Routes>

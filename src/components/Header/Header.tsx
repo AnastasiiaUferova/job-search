@@ -1,8 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
 import "../../styles/Header/Header.css";
 import { NavLink } from "react-router-dom";
+import NavLinks from "./NavLinks";
+import BurgerMenu from "./BurgerMenu";
 
 function Header(): JSX.Element {
+  const [isSmallWidth, setIsSmallWidth] = useState(false);
+
+  const Resize = () => {
+    if (window.innerWidth <= 650) {
+      setIsSmallWidth(true);
+    } else setIsSmallWidth(false);
+  };
+
+  const resizeDebounced = useDebouncedCallback(() => {
+    return Resize();
+  }, 200);
+
+  useEffect(() => {
+    window.addEventListener("resize", resizeDebounced);
+    return () => {
+      window.removeEventListener("resize", resizeDebounced);
+    };
+  }, [resizeDebounced]);
+
+  useEffect(() => {
+    Resize();
+  }, []);
+
   return (
     <header className="header">
       <nav className="header__content">
@@ -11,26 +37,7 @@ function Header(): JSX.Element {
             Jobored
           </NavLink>
         </div>
-        <div className="header__links">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? "header__links_active" : ""
-            }
-            end
-          >
-            Поиск Вакансий
-          </NavLink>
-          <NavLink
-            to="/saved"
-            className={({ isActive }) =>
-              isActive ? "header__links_active" : ""
-            }
-            end
-          >
-            Избранное
-          </NavLink>
-        </div>
+        {isSmallWidth ? <BurgerMenu /> : <NavLinks />}
       </nav>
     </header>
   );

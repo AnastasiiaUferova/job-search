@@ -51,14 +51,9 @@
 
 @media (max-width: 650px) {
   .header {
-    height: 200px;
-    padding-top: 20px;
+    padding: 0 15%;
   }
   .header__content {
-    flex-direction: column;
-  }
-  .header__links {
-    flex-direction: column;
-    gap: 30px;
+    justify-content: space-between;
   }
 }

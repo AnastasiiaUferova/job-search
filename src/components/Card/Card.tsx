@@ -3,7 +3,7 @@ import "../../styles/Card/Card.css";
 import SavedButton from "./SavedButton";
 import cardContext from "../../context/CardsContext";
 import { CardPropsType } from "../../types/types";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useSaveCard from "../../hooks/useSaveCard";
 
 const Card: FC<CardPropsType> = (props) => {
