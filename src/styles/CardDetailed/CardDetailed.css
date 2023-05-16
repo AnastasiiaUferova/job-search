@@ -11,10 +11,15 @@
   padding: 24px;
   margin-bottom: 20px;
 }
+.card_detailed button {
+  margin-top: 4px;
+}
 .card_detailed__info {
   display: flex;
   flex-direction: column;
   gap: 16.5px;
+  justify-content: center;
+  width: 90%;
 }
 .card_detailed__title {
   font-style: normal;
@@ -45,27 +50,6 @@
   position: relative;
   top: 2px;
 }
-.card_detailed__button {
-  border: none;
-  background-color: transparent;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url(../../assets/Empty-star.svg);
-  width: 22px;
-  height: 22px;
-  align-self: flex-start;
-  margin: 0;
-}
-.card_detailed__button:hover {
-  background-image: url(../../assets/Hover-star.svg);
-}
-.card_detailed__button:active {
-  background-image: url(../../assets/Filled-star.svg);
-}
-.card_detailed__button_active {
-  background-image: url(../../assets/Filled-star.svg);
-}
 .card_detailed li {
   list-style: none;
 }
@@ -76,7 +60,6 @@
 }
 @media (max-width: 535px) {
   .card_detailed {
-    height: 180px;
     padding: 10px 20px;
   }
   .card_detailed__info {
@@ -94,8 +77,4 @@
   .card_detailed__place {
     font-size: 12px;
   }
-}
-
-.card_detailed {
-  height: 157px;
 }
