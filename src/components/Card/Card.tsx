@@ -3,7 +3,7 @@ import "../../styles/Card/Card.css";
 import SavedButton from "./SavedButton";
 import cardContext from "../../context/CardsContext";
 import { CardPropsType } from "../../types/types";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import useSaveCard from "../../hooks/useSaveCard";
 
 const Card: FC<CardPropsType> = (props) => {
@@ -14,7 +14,8 @@ const Card: FC<CardPropsType> = (props) => {
   const { className, onSaveClickHandle } = useSaveCard(id);
 
   const onNavLinkClick = () => {
-    setVacId(id);
+    setVacId(String(id));
+    localStorage.setItem("id", JSON.stringify(id));
   };
 
   return (
@@ -23,6 +24,7 @@ const Card: FC<CardPropsType> = (props) => {
         <NavLink
           onClick={() => onNavLinkClick()}
           target="_blank"
+          rel="noopener noreferrer"
           to={`/details/${id}`}
         >
           <h3 className="card__title">{profession}</h3>

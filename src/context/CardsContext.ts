@@ -21,7 +21,7 @@ type cardContext = {
   setCatalogue: React.Dispatch<React.SetStateAction<string>>;
   setSalaryFrom: React.Dispatch<React.SetStateAction<number | string>>;
   setSalaryTo: React.Dispatch<React.SetStateAction<number | string>>;
-  setVacId: React.Dispatch<React.SetStateAction<number | string>>;
+  setVacId: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const cardContext = createContext<cardContext>({

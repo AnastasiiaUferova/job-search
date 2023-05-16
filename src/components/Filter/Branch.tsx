@@ -47,7 +47,7 @@ const Branch: FC<SelectProps> = (props) => {
         data-elem="industry-select"
         onDropdownOpen={() => setIsOpened(true)}
         onDropdownClose={() => setIsOpened(false)}
-        placeholder="Выберете отрасль"
+        placeholder="Выберите отрасль"
         rightSection={Dropdown()}
         styles={{
           rightSection: { pointerEvents: "none" },

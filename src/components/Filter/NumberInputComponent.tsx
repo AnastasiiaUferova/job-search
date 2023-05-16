@@ -28,7 +28,7 @@ const NumberInputComponent: FC<NumberInputComponentProps> = (props) => {
           rightSection: { pointerEvents: "none" },
           input: {
             height: "42px",
-            width: "273px",
+            width: "100%",
             cursor: "pointer",
             "&:focus, &:hover": {
               border: "1px solid #5E96FC",

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, useParams } from "react-router-dom";
 import Home from "./pages/Home";
 import Saved from "./pages/Saved";
 import VacancyDetails from "./pages/VacancyDetails";
@@ -25,7 +25,14 @@ function App() {
   const [catalogue, setCatalogue] = useState<string>("");
   const [agreement, setAgreement] = useState<number>(0);
   const [isSearchSubmitted, setIsSearchSubmitted] = useState<boolean>(false);
-  const [vacId, setVacId] = useState<number | string>(
+
+  const location = useLocation();
+  const source = location.pathname
+    .split("details/")
+    .splice(1)
+    .join("")
+    .split("&")[0];
+  const [vacId, setVacId] = useState<string>(
     () => JSON.parse(localStorage.getItem("id")!) || ""
   );
 
@@ -39,10 +46,11 @@ function App() {
     savedData.slice(0, PAGE_SIZE)
   );
 
-  console.log(page);
+  console.log(source);
+  //console.log(vacId);
 
   const VACANCIES_PAGE_URL = `/2.0/vacancies/?keyword=${keyword}&published=1&page=${page}&catalogues=${catalogue}&payment_from=${salaryFrom}&payment_to=${salaryTo}&no_agreement=${agreement}&count=4/`;
-  const VACANCY_DETAILS_URL = `/2.0/vacancies/${vacId}/`;
+  const VACANCY_DETAILS_URL = `/2.0/vacancies/${source}/`;
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -54,7 +62,6 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       fetchDetails(VACANCY_DETAILS_URL);
-      localStorage.setItem("id", JSON.stringify(vacId));
     }
   }, [loggedIn, vacId]);
 
@@ -157,7 +164,7 @@ function App() {
           ></Route>
 
           <Route
-            path={`/details/${vacId}`}
+            path={`/details/:${vacId}`}
             element={
               <ProtectedRoutes loggedIn={loggedIn}>
                 <VacancyDetails />

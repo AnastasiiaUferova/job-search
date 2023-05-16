@@ -67,6 +67,7 @@
 }
 .filter__number-input {
   position: relative;
+  width: 100%;
 }
 .filter__number-inputs button {
   width: 12px;
