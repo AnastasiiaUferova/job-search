@@ -1,9 +1,9 @@
+import React, { useContext } from "react";
 import cardContext from "../../context/CardsContext";
 import "../../styles/SearchComponent/SearchComponent.css";
 import SearchInput from "./SearchInput";
 import CardList from "../CardList/CardList";
 import PaginationComponent from "../Pagination/Pagination";
-import { useContext } from "react";
 import EmptyStateImg from "../EmptyState/EmptyStateImg";
 import { Loader } from "../Loader/Loader";
 

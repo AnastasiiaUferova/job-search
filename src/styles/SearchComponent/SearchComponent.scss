@@ -1,45 +1,41 @@
 @import "../Variables/Variables.scss";
 
 .search-comp {
-    width: 773px;
-    display: flex;
-    flex-direction: column;
-    background-color: $main-background;
-    height: auto;
+  width: 773px;
+  display: flex;
+  flex-direction: column;
+  background-color: $main-background;
+  height: auto;
 
-    &__icon {
-        background-image: url(../../assets/Search.svg);
-        width: 12.57px;
-        height: 12.57px;
-        background-size: cover;
-    }
+  &__icon {
+    background-image: url(../../assets/Search.svg);
+    width: 12.57px;
+    height: 12.57px;
+    background-size: cover;
+  }
 
-    .mantine-Input-input {
-        padding: 0 100px 0 30px;
-        height: 48px;
-        @include container-style(8px);
-        cursor: pointer
-    }
+  .mantine-Input-input {
+    padding: 0 100px 0 30px;
+    height: 48px;
+    @include container-style(8px);
+    cursor: pointer;
+  }
 
-    .mantine-Input-input:focus,
-    .mantine-Input-input:hover {
-        border: 1px solid #5E96FC;
-    }
+  .mantine-Input-input:focus,
+  .mantine-Input-input:hover {
+    border: 1px solid #5e96fc;
+  }
 
-    &__button {
-        height: 32px;
-        margin: 8px 12px 0 0 !important;
-        border-radius: 8px;
-    }
+  &__button {
+    height: 32px;
+    margin: 8px 12px 0 0 !important;
+    border-radius: 8px;
+  }
 }
 
 @media (max-width: 800px) {
-    .search-comp {
-        width: 90%;
-        overflow: scroll;
-    }
+  .search-comp {
+    width: 90%;
+    overflow: scroll;
+  }
 }
-
-
-
-

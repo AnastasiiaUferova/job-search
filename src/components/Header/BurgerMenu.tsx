@@ -1,7 +1,6 @@
-import React from "react";
 import { Burger } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import MenuPopup from "./MenuPopup";
+import MemoMenuPopup from "./MenuPopup";
 
 function BurgerMenu() {
   const [opened, { toggle, close }] = useDisclosure(false);
@@ -15,7 +14,7 @@ function BurgerMenu() {
         onClick={toggle}
         size="md"
       />
-      <MenuPopup close={close} isOpened={opened} />
+      <MemoMenuPopup close={close} isOpened={opened} />
     </>
   );
 }

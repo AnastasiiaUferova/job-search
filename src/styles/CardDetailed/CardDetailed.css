@@ -2,10 +2,10 @@
 .card_detailed {
   width: 100%;
   min-height: 157px;
-  background-color: #FFFFFF;
-  border: 1px solid #EAEBED;
+  background-color: #ffffff;
+  border: 1px solid #eaebed;
   border-radius: 12px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   justify-content: space-between;
   padding: 24px;
@@ -55,7 +55,7 @@
 }
 .card_detailed li::before {
   content: "•";
-  color: #7B7C88;
+  color: #7b7c88;
   padding-right: 12px;
 }
 @media (max-width: 535px) {

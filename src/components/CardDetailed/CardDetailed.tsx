@@ -7,21 +7,26 @@ import useSaveCard from "../../hooks/useSaveCard";
 export default function CardDetailed() {
   const { vacDetails } = useContext(cardContext);
   const { className, onSaveClickHandle } = useSaveCard(vacDetails.id);
+
+  const { id, profession, payment_from, currency, type_of_work, town } =
+    vacDetails;
   return (
     <div className="card_detailed">
       <div className="card_detailed__info">
-        <h3 className="card_detailed__title">{vacDetails.profession}</h3>
+        <h3 className="card_detailed__title">{profession}</h3>
         <div className="card_detailed__details">
           <span className="card_detailed__salary">
-            {vacDetails.payment_from} {vacDetails.currency}
+            {payment_from} {currency}
           </span>
-          <li className="card_detailed__time">
-            {vacDetails.type_of_work.title}
-          </li>
+          <li className="card_detailed__time">{type_of_work.title}</li>
         </div>
-        <p className="card_detailed__place">{vacDetails.town.title}</p>
+        <p className="card_detailed__place">{town.title}</p>
       </div>
-      <SavedButton className={className} onClick={() => onSaveClickHandle()} />
+      <SavedButton
+        id={id}
+        className={className}
+        onClick={() => onSaveClickHandle()}
+      />
     </div>
   );
 }

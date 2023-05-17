@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import "../../styles/MenuPopup/MenuPopup.css";
-import { NavLink } from "react-router-dom";
 import "../../styles/Header/Header.css";
+import NavLinks from "./NavLinks";
 
 type MenuPopupProps = {
   isOpened: boolean;
@@ -14,25 +14,11 @@ const MenuPopup: FC<MenuPopupProps> = ({ isOpened, close }) => {
   return (
     <div className={className}>
       <div className="menu-popup__links">
-        <NavLink
-          to="/"
-          className={({ isActive }) => (isActive ? "header__links_active" : "")}
-          end
-          onClick={close}
-        >
-          Поиск Вакансий
-        </NavLink>
-        <NavLink
-          to="/saved"
-          className={({ isActive }) => (isActive ? "header__links_active" : "")}
-          end
-          onClick={close}
-        >
-          Избранное
-        </NavLink>
+        <NavLinks onClick={close} />
       </div>
     </div>
   );
 };
 
-export default MenuPopup;
+const MemoMenuPopup = React.memo(MenuPopup);
+export default MemoMenuPopup;

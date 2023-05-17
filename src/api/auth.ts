@@ -5,6 +5,7 @@ import axios from "axios";
 export default function useAuth() {
   const [error, setError] = useState(null);
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const [ttl, setTtl] = useState<number>();
 
   const fetchDataAuth = () => {
     axios
@@ -15,6 +16,19 @@ export default function useAuth() {
       })
       .catch((err) => {
         setError(err);
+        console.log(err);
+      });
+  };
+
+  const fetchDataTtl = () => {
+    axios
+      .get(BASIC_URL + AUTH_URL, configAuth)
+      .then((res) => {
+        setTtl(res.data.ttl);
+      })
+      .catch((err) => {
+        setError(err);
+        console.log(err);
       });
   };
 
@@ -25,9 +39,17 @@ export default function useAuth() {
     } else setLoggedIn(true);
   };
 
+  const ttlCheck = () => {
+    fetchDataTtl();
+    if (ttl! < Date.now() / 1000) {
+      fetchDataAuth();
+    }
+  };
+
   return {
     error,
     tokenCheck,
     loggedIn,
+    ttlCheck,
   };
 }

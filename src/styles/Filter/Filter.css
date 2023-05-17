@@ -1,10 +1,10 @@
 .filter {
   width: 315px;
   height: 360px;
-  background-color: #FFFFFF;
-  border: 1px solid #EAEBED;
+  background-color: #ffffff;
+  border: 1px solid #eaebed;
   border-radius: 12px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -27,7 +27,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  color: #ACADB9;
+  color: #acadb9;
   border: none;
   background-color: transparent;
   margin-right: 21px;
@@ -41,13 +41,13 @@
   position: absolute;
 }
 .filter__reset:hover {
-  color: #92C1FF;
+  color: #92c1ff;
 }
 .filter__reset:hover::after {
   content: url(../../assets/CloseIconHover.svg);
 }
 .filter__reset:active {
-  color: #5E96FC;
+  color: #5e96fc;
 }
 .filter__reset:active::after {
   content: url(../../assets/CloseIconActive.svg);

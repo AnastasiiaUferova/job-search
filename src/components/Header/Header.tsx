@@ -37,7 +37,13 @@ function Header(): JSX.Element {
             Jobored
           </NavLink>
         </div>
-        {isSmallWidth ? <BurgerMenu /> : <NavLinks />}
+        {isSmallWidth ? (
+          <BurgerMenu />
+        ) : (
+          <div className="header__links">
+            <NavLinks />
+          </div>
+        )}
       </nav>
     </header>
   );

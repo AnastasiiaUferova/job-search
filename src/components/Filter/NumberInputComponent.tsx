@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NumberInput, NumberInputHandlers } from "@mantine/core";
-import { useRef, FC } from "react";
+import React, { useRef, FC } from "react";
 
 type NumberInputComponentProps = {
   placeholder: string;

@@ -1,36 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
 
 @font-face {
-    font-family: 'poppins_blackregular';
-    src: url('poppins-black-webfont.woff2') format('woff2'),
-         url('poppins-black-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "poppins_blackregular";
+  src: url("poppins-black-webfont.woff2") format("woff2"),
+    url("poppins-black-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Inter';
-    font-style:  normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url("Inter-Regular.woff2") format("woff2"),
-         url("Inter-Regular.woff") format("woff");
-  }
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("Inter-Regular.woff2") format("woff2"),
+    url("Inter-Regular.woff") format("woff");
+}
 
-  @font-face {
-    font-family: 'Inter';
-    font-style:  normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url("Inter-Medium.woff") format("woff2"),
-         url("Inter-Medium.woff2") format("woff");
-  }
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("Inter-Medium.woff") format("woff2"),
+    url("Inter-Medium.woff2") format("woff");
+}
 
-  @font-face {
-    font-family: 'Inter';
-    font-style:  normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url("Inter-Bold.woff2") format("woff2"),
-         url("Inter-Bold.woff") format("woff");
-  }
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("Inter-Bold.woff2") format("woff2"),
+    url("Inter-Bold.woff") format("woff");
+}

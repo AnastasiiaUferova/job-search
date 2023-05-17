@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import React, { FC, useContext } from "react";
 import "../../styles/Card/Card.css";
 import SavedButton from "./SavedButton";
 import cardContext from "../../context/CardsContext";
@@ -19,7 +19,7 @@ const Card: FC<CardPropsType> = (props) => {
   };
 
   return (
-    <div data-elem={`vacancy-_vacancy_id_${id}`} className="card">
+    <div data-elem={`vacancy-${id}`} className="card">
       <div className="card__info">
         <NavLink
           onClick={() => onNavLinkClick()}
@@ -38,7 +38,11 @@ const Card: FC<CardPropsType> = (props) => {
         </div>
         <p className="card__place">{town}</p>
       </div>
-      <SavedButton className={className} onClick={() => onSaveClickHandle()} />
+      <SavedButton
+        id={id}
+        className={className}
+        onClick={() => onSaveClickHandle()}
+      />
     </div>
   );
 };

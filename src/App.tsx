@@ -16,7 +16,7 @@ function App() {
   const { catalogueData, fetchData } = useFetch();
   const { data: vacApiData, fetchData: fetchVacData, loading } = useFetch();
   const { vacDetails, fetchData: fetchDetails } = useFetch();
-  const { tokenCheck, loggedIn } = useAuth();
+  const { tokenCheck, loggedIn, ttlCheck } = useAuth();
   const [page, setPage] = useState<number>(1);
 
   const [keyword, setKeyword] = useState<string>("");
@@ -48,12 +48,17 @@ function App() {
     savedData.slice(0, PAGE_SIZE)
   );
 
-  console.log(source);
-  //console.log(vacId);
-
   const VACANCIES_PAGE_URL = `/2.0/vacancies/?keyword=${keyword}&published=1&page=${page}&catalogues=${catalogue}&payment_from=${salaryFrom}&payment_to=${salaryTo}&no_agreement=${agreement}&count=4/`;
   const VACANCY_DETAILS_URL = `/2.0/vacancies/${source}/`;
   const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    ttlCheck();
+  }, []);
+
+  const checkIfLoggedIn = useCallback(() => {
+    tokenCheck();
+  }, [token]);
 
   useEffect(() => {
     if (loggedIn) {
@@ -67,9 +72,12 @@ function App() {
     }
   }, [loggedIn, vacId]);
 
-  const checkIfLoggedIn = useCallback(() => {
-    tokenCheck();
-  }, [token]);
+  //first render initial cards
+  useEffect(() => {
+    if (vacData && loggedIn) {
+      setVacData(vacApiData);
+    }
+  }, [loading]);
 
   //view changes for saved data
   useEffect(() => {
@@ -86,13 +94,6 @@ function App() {
       setIsSearchSubmitted(false);
     }
   }, [loggedIn, page, isSearchSubmitted, catalogue, salaryFrom, salaryTo]);
-
-  //first render initial cards
-  useEffect(() => {
-    if (vacData && loggedIn) {
-      setVacData(vacApiData);
-    }
-  }, [loading]);
 
   //saving functions
   const addToSaved = useCallback(

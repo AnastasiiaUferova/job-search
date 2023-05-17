@@ -1,26 +1,23 @@
 @import "../Variables/Variables.scss";
 
-
 .mantine-1wqzler:first-of-type {
-    background: url(../../assets/Pagination-left.svg);
-    @include pag_buttons;
-  }
-  
-  .mantine-1wqzler:first-of-type[data-disabled] {
-    background-image: url(../../assets/Pagination-left-light.svg);
-    transform: none;
-    @include pag_buttons;
-  }
-  
-  .mantine-1wqzler:last-of-type {
-    background: url(../../assets/Pagination-right.svg);
-    @include pag_buttons;
-  }
-  
-  .mantine-1wqzler:last-of-type[data-disabled] {
-    background-image: url(../../assets/Pagination-left-light.svg);
-    transform: rotate(180deg);
-    @include pag_buttons;
-  }
-  
+  background: url(../../assets/Pagination-left.svg);
+  @include pag_buttons;
+}
 
+.mantine-1wqzler:first-of-type[data-disabled] {
+  background-image: url(../../assets/Pagination-left-light.svg);
+  transform: none;
+  @include pag_buttons;
+}
+
+.mantine-1wqzler:last-of-type {
+  background: url(../../assets/Pagination-right.svg);
+  @include pag_buttons;
+}
+
+.mantine-1wqzler:last-of-type[data-disabled] {
+  background-image: url(../../assets/Pagination-left-light.svg);
+  transform: rotate(180deg);
+  @include pag_buttons;
+}

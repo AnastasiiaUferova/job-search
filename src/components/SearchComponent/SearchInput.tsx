@@ -1,9 +1,9 @@
+import React, { useContext, useEffect, useState } from "react";
 import { TextInput } from "@mantine/core";
 import "../../styles/SearchComponent/SearchComponent.css";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import { useForm } from "@mantine/form";
 import cardContext from "../../context/CardsContext";
-import { useContext, useEffect, useState } from "react";
 
 export default function SearchInput() {
   const SearchIcon = () => {

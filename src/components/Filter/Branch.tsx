@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useContext, useEffect, useState, FC } from "react";
+import React, { useContext, useEffect, useState, FC } from "react";
 import "../../styles/Filter/Filter.css";
 import { Select } from "@mantine/core";
 import cardContext from "../../context/CardsContext";

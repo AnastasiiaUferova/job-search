@@ -10,7 +10,7 @@
   flex-direction: column;
   z-index: 3;
   transition: visibility 1s, opacity 0.5s linear;
-  background: #FFFFFF;
+  background: #ffffff;
   visibility: hidden;
   opacity: 0;
 }

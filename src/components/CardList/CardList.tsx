@@ -14,8 +14,6 @@ export default function CardList() {
 
   const { vacData, loading, savedDataDisplayed } = useContext(cardContext);
 
-  const isData = vacData;
-
   const getCards = () => {
     if (location.pathname === "/saved" && !savedDataDisplayed) {
       return [];
@@ -28,7 +26,7 @@ export default function CardList() {
     if (loading === false) {
       return (
         <div className={className}>
-          {isData &&
+          {vacData &&
             getCards().map((item: CardListItemType) => {
               return (
                 <Card

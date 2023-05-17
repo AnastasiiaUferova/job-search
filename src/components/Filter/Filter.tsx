@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import Branch from "./Branch";
 import "../../styles/Filter/Filter.css";
 import ResetButton from "./ResetButton";

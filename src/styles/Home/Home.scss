@@ -1,18 +1,18 @@
 @import "../Variables/Variables.scss";
 
 .home {
-    display: flex;
-    justify-content: center;
-    padding: 40px 0 44px;
-    gap: 28px;
-    height: auto;
-    background-color: $main-background;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0 44px;
+  gap: 28px;
+  height: auto;
+  background-color: $main-background;
 }
 
 @media (max-width: 1154px) {
-    .home {
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-    }
+  .home {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
 }

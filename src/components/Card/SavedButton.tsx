@@ -3,14 +3,16 @@ import React, { FC } from "react";
 type SavedButtonProps = {
   onClick: () => void;
   className: string;
+  id: number;
 };
 
 const SavedButton: FC<SavedButtonProps> = (props) => {
-  const { onClick, className } = props;
+  const { onClick, className, id } = props;
+
   return (
     <button
       onClick={onClick}
-      data-elem="vacancy-_vacancy_id_-shortlist-button"
+      data-elem={`vacancy-${id}-shortlist-button`}
       className={className}
     ></button>
   );

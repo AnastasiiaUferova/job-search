@@ -1,23 +1,27 @@
-import React from "react";
+import React, { FC } from "react";
 import { NavLink } from "react-router-dom";
+import { NavLinksData } from "../../_constants/constants";
 
-export default function NavLinks() {
+type NavLinksProps = {
+  onClick?: () => void;
+};
+
+const NavLinks: FC<NavLinksProps> = (props) => {
   return (
-    <div className="header__links">
-      <NavLink
-        to="/"
-        className={({ isActive }) => (isActive ? "header__links_active" : "")}
-        end
-      >
-        Поиск Вакансий
-      </NavLink>
-      <NavLink
-        to="/saved"
-        className={({ isActive }) => (isActive ? "header__links_active" : "")}
-        end
-      >
-        Избранное
-      </NavLink>
-    </div>
+    <>
+      {NavLinksData.map((item) => (
+        <NavLink
+          key={item.key}
+          to={item.path}
+          className={({ isActive }) => (isActive ? "header__links_active" : "")}
+          end
+          onClick={props.onClick}
+        >
+          {item.label}
+        </NavLink>
+      ))}
+    </>
   );
-}
+};
+
+export default NavLinks;

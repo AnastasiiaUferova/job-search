@@ -1,4 +1,3 @@
-import React from "react";
 import "../../styles/EmptyState/EmptyState.css";
 import EmptyStateImg from "../../assets/NoResults.svg";
 import NavButton from "./NavButton";

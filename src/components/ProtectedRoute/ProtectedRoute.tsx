@@ -1,5 +1,5 @@
 import { Loader } from "../../components/Loader/Loader";
-import { FC, ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
 
 type ProtectedRoutesProps = {
   loggedIn: boolean;

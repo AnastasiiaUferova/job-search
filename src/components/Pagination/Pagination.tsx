@@ -1,5 +1,5 @@
+import React, { FC } from "react";
 import { Pagination } from "@mantine/core";
-import { FC } from "react";
 import "../../styles/Pagination/Pagination.css";
 
 type PaginationPropsType = {

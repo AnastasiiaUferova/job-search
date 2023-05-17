@@ -17,8 +17,7 @@ export const CATALOGUES_URL = "/2.0/catalogues/";
 
 export const PAGE_SIZE = 4;
 
-//"/2.0/vacancies/?published_all=true";
-//"/2.0/vacancies?town=Москва&keyword=Python";
-//"/2.0/vacancies/?published=1&page=2&count=4/";
-//?town=4&catalogues=33&count=4
-//"/2.0/vacancies/?published=1?count=10&page=4/";
+export const NavLinksData = [
+  { path: "/", label: "Поиск Вакансий", key: 1 },
+  { path: "/saved", label: "Избранное", key: 2 },
+];

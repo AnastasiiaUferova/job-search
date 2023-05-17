@@ -1,7 +1,7 @@
 .details-container {
-  border: 1px solid #EAEBED;
+  border: 1px solid #eaebed;
   border-radius: 12px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 4px 24px 24px 24px;
   display: flex;
   flex-direction: column;
