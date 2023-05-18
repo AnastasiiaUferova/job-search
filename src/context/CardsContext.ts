@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { CardPropsType, vacDetailsType } from "../types/types";
 
-type cardContext = {
+type cardContextType = {
   catalogueData: [];
   vacData: [];
   vacDetails: vacDetailsType;
@@ -26,7 +26,7 @@ type cardContext = {
   isBurgerOpened: boolean;
 };
 
-const cardContext = createContext<cardContext>({
+const cardContext = createContext<cardContextType>({
   catalogueData: [],
   vacData: [],
   vacDetails: {

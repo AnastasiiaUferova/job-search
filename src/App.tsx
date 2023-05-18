@@ -16,7 +16,7 @@ function App() {
   const { catalogueData, fetchData } = useFetch();
   const { data: vacApiData, fetchData: fetchVacData, loading } = useFetch();
   const { vacDetails, fetchData: fetchDetails } = useFetch();
-  const { tokenCheck, loggedIn, ttlCheck } = useAuth();
+  const { loggedIn } = useAuth();
   const [page, setPage] = useState<number>(1);
 
   const [keyword, setKeyword] = useState<string>("");
@@ -50,15 +50,6 @@ function App() {
 
   const VACANCIES_PAGE_URL = `/2.0/vacancies/?keyword=${keyword}&published=1&page=${page}&catalogues=${catalogue}&payment_from=${salaryFrom}&payment_to=${salaryTo}&no_agreement=${agreement}&count=4/`;
   const VACANCY_DETAILS_URL = `/2.0/vacancies/${source}/`;
-  const token = localStorage.getItem("token");
-
-  useEffect(() => {
-    ttlCheck();
-  }, []);
-
-  const checkIfLoggedIn = useCallback(() => {
-    tokenCheck();
-  }, [token]);
 
   useEffect(() => {
     if (loggedIn) {
@@ -81,7 +72,6 @@ function App() {
 
   //view changes for saved data
   useEffect(() => {
-    checkIfLoggedIn();
     localStorage.setItem("saved", JSON.stringify(savedData));
   }, [savedData]);
 
@@ -90,7 +80,7 @@ function App() {
     if (loggedIn) {
       fetchVacData(VACANCIES_PAGE_URL);
       setVacData(vacApiData);
-      setSavedDataDisplayed;
+      setSavedDataDisplayed(savedDataDisplayed);
       setIsSearchSubmitted(false);
     }
   }, [loggedIn, page, isSearchSubmitted, catalogue, salaryFrom, salaryTo]);

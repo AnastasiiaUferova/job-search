@@ -6,6 +6,7 @@ module.exports = {
     "prettier",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
+    "react-app",
   ],
   env: {
     browser: true,
