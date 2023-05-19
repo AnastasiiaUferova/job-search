@@ -4,18 +4,19 @@ import Home from "./pages/Home";
 import Saved from "./pages/Saved";
 import VacancyDetails from "./pages/VacancyDetails";
 import EmptyState from "./components/EmptyState/EmptyState";
-import useFetch from "./api/api";
+import useGetData from "./api/api";
 import { CATALOGUES_URL, PAGE_SIZE } from "./_constants/constants";
 import cardContext from "./context/CardsContext";
 import ProtectedRoutes from "./components/ProtectedRoute/ProtectedRoute";
 import useAuth from "./api/auth";
 import MemoHeader from "./components/Header/Header";
 import { CardPropsType } from "./types/types";
+import useGetDetailedData from "./api/detailsApi";
 
 function App() {
-  const { catalogueData, fetchData } = useFetch();
-  const { data: vacApiData, fetchData: fetchVacData, loading } = useFetch();
-  const { vacDetails, fetchData: fetchDetails } = useFetch();
+  const { data, getData, loading } = useGetData(true);
+  const { data: catalogueData, getData: getCatalogue } = useGetData(false);
+  const { vacDetails, getDetailedData } = useGetDetailedData();
   const { loggedIn } = useAuth();
   const [page, setPage] = useState<number>(1);
 
@@ -53,20 +54,20 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
-      fetchData(CATALOGUES_URL);
+      getCatalogue(CATALOGUES_URL);
     }
   }, [loggedIn]);
 
   useEffect(() => {
     if (loggedIn) {
-      fetchDetails(VACANCY_DETAILS_URL);
+      getDetailedData(VACANCY_DETAILS_URL);
     }
   }, [loggedIn, vacId]);
 
   //first render initial cards
   useEffect(() => {
     if (vacData && loggedIn) {
-      setVacData(vacApiData);
+      setVacData(data);
     }
   }, [loading]);
 
@@ -78,8 +79,8 @@ function App() {
   //render if search or filter change
   useEffect(() => {
     if (loggedIn) {
-      fetchVacData(VACANCIES_PAGE_URL);
-      setVacData(vacApiData);
+      getData(VACANCIES_PAGE_URL);
+      setVacData(data);
       setSavedDataDisplayed(savedDataDisplayed);
       setIsSearchSubmitted(false);
     }

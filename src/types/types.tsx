@@ -20,6 +20,10 @@ export interface CardListItemType {
   };
 }
 
+export interface CardListType {
+  objects: CardListItemType[];
+}
+
 export type catalogueItemType = {
   key: number;
   positions: object[];

@@ -1,14 +1,27 @@
 import { useState } from "react";
 import { BASIC_URL } from "../_constants/constants";
 import axios from "axios";
+import { vacDetailsType } from "../types/types";
 
-export default function useGetData(isGeneralData: boolean) {
-  const [data, setData] = useState<[]>([]);
+export default function useGetDetailedData() {
+  const [vacDetails, setVacDetails] = useState<vacDetailsType>({
+    id: 0,
+    profession: "",
+    payment_from: 0,
+    currency: "",
+    town: {
+      title: "",
+    },
+    type_of_work: {
+      title: "",
+    },
+    vacancyRichText: "",
+  });
   const [loading, setLoading] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [error, setError] = useState<any>(null);
 
-  const getData = async (url: string) => {
+  const getDetailedData = async (url: string) => {
     try {
       setLoading(true);
       const response = await axios.get(BASIC_URL + url, {
@@ -20,7 +33,7 @@ export default function useGetData(isGeneralData: boolean) {
         },
       });
 
-      setData(isGeneralData ? response.data.objects : response.data);
+      setVacDetails(response.data);
       setLoading(false);
     } catch (err) {
       setError(err);
@@ -31,7 +44,7 @@ export default function useGetData(isGeneralData: boolean) {
   return {
     loading,
     error,
-    data,
-    getData,
+    vacDetails,
+    getDetailedData,
   };
 }
