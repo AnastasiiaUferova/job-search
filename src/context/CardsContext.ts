@@ -6,21 +6,15 @@ type cardContextType = {
   vacData: [];
   vacDetails: vacDetailsType;
   loading: boolean;
-  page: number;
-  keyword: string;
-  setPage: React.Dispatch<React.SetStateAction<number>>;
   savedData: [];
   setSavedData: React.Dispatch<CardPropsType[]>;
   savedDataDisplayed: [];
   setSavedDataDisplayed: React.Dispatch<CardPropsType[]>;
-  setKeyword: React.Dispatch<React.SetStateAction<string>>;
   setIsSearchSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
   isSearchSubmitted: boolean;
-  setAgreement: React.Dispatch<React.SetStateAction<number>>;
-  setCatalogue: React.Dispatch<React.SetStateAction<string>>;
-  setSalaryFrom: React.Dispatch<React.SetStateAction<number | string>>;
-  setSalaryTo: React.Dispatch<React.SetStateAction<number | string>>;
   setVacId: React.Dispatch<React.SetStateAction<string>>;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  page: number;
 };
 
 const cardContext = createContext<cardContextType>({
@@ -42,19 +36,13 @@ const cardContext = createContext<cardContextType>({
   savedData: [],
   savedDataDisplayed: [],
   loading: false,
-  page: 1,
-  setPage: () => 1,
   setSavedDataDisplayed: () => [],
   setSavedData: () => [],
-  setKeyword: () => "",
-  keyword: "",
   setIsSearchSubmitted: () => false,
-  setAgreement: () => 0,
   isSearchSubmitted: false,
-  setCatalogue: () => "",
-  setSalaryFrom: () => "",
-  setSalaryTo: () => "",
   setVacId: () => "",
+  setPage: () => 1,
+  page: 1,
 });
 
 export default cardContext;

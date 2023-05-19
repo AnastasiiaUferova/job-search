@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { AUTH_URL, BASIC_URL, configAuth } from "../_constants/constants";
+import { AUTH_URL, BASE_URL, configAuth } from "../_constants/constants";
 import axios from "axios";
 
 export default function useAuth() {
@@ -12,7 +12,7 @@ export default function useAuth() {
 
   const fetchDataAuth = async () => {
     try {
-      const response = await axios.get(BASIC_URL + AUTH_URL, configAuth);
+      const response = await axios.get(BASE_URL + AUTH_URL, configAuth);
       localStorage.setItem("token", response.data.access_token);
       setLoggedIn(true);
     } catch (err) {
@@ -23,7 +23,7 @@ export default function useAuth() {
 
   const fetchDataTtl = async () => {
     try {
-      const response = await axios.get(BASIC_URL + AUTH_URL, configAuth);
+      const response = await axios.get(BASE_URL + AUTH_URL, configAuth);
       setTtl(response.data.ttl);
     } catch (err) {
       setError(err);

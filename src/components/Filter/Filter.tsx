@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Branch from "./Branch";
 import "../../styles/Filter/Filter.css";
 import ResetButton from "./ResetButton";
@@ -8,8 +8,13 @@ import cardContext from "../../context/CardsContext";
 import { catalogueItemType } from "../../types/types";
 import { Group } from "@mantine/core";
 import NumberInputComponent from "./NumberInputComponent";
-import { CATALOGUES_URL } from "../../_constants/constants";
-import useGetData from "../../api/api";
+import { useDispatch } from "react-redux";
+import {
+  setAgreement,
+  setCatalogue,
+  setSalaryFrom,
+  setSalaryTo,
+} from "../../redux/slices/paramsSlice";
 
 export default function Filter() {
   const form = useForm({
@@ -20,14 +25,9 @@ export default function Filter() {
     },
   });
 
-  const { setCatalogue, setSalaryFrom, setSalaryTo, setAgreement } =
-    useContext(cardContext);
+  const dispatch = useDispatch();
 
-  const { data: catalogueData, getData: getCatalogue } = useGetData(false);
-
-  useEffect(() => {
-    getCatalogue(CATALOGUES_URL);
-  }, [catalogueData]);
+  const { catalogueData } = useContext(cardContext);
 
   const catalogueId = () => {
     const filteredCatalogueData = catalogueData.filter(
@@ -39,21 +39,22 @@ export default function Filter() {
   };
 
   const handleReset = () => {
-    setCatalogue("");
-    setSalaryFrom("");
-    setSalaryTo("");
+    dispatch(setSalaryTo(""));
+    dispatch(setSalaryFrom(""));
+    dispatch(setCatalogue(""));
+
     form.reset();
   };
 
   return (
     <form
       onSubmit={form.onSubmit(() => {
-        setCatalogue(catalogueId());
-        setSalaryFrom(form.values.from);
-        setSalaryTo(form.values.to);
+        dispatch(setCatalogue(catalogueId()));
+        dispatch(setSalaryFrom(form.values.from));
+        dispatch(setSalaryTo(form.values.to));
         if (form.values.to !== "" || form.values.from !== "") {
-          setAgreement(1);
-        } else setAgreement(0);
+          dispatch(setAgreement(1));
+        } else dispatch(setAgreement(0));
       })}
       className="filter"
     >

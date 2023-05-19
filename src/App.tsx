@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Home from "./pages/Home";
 import Saved from "./pages/Saved";
 import VacancyDetails from "./pages/VacancyDetails";
@@ -11,9 +12,10 @@ import ProtectedRoutes from "./components/ProtectedRoute/ProtectedRoute";
 import useAuth from "./api/auth";
 import MemoHeader from "./components/Header/Header";
 import useGetDetailedData from "./api/detailsApi";
+import { RootState } from "../src/redux/store";
+import { useGetVacsQuery } from "./redux/slices/apiSlice";
 
 function App() {
-  const { data, getData, loading } = useGetData(true);
   const { data: catalogueData, getData: getCatalogue } = useGetData(false);
   const {
     vacDetails,
@@ -21,14 +23,41 @@ function App() {
     loading: detailsLoading,
   } = useGetDetailedData();
   const { loggedIn } = useAuth();
+
   const [page, setPage] = useState<number>(1);
 
-  const [keyword, setKeyword] = useState<string>("");
-  const [salaryFrom, setSalaryFrom] = useState<number | string>(1);
-  const [salaryTo, setSalaryTo] = useState<number | string>(1);
-  const [catalogue, setCatalogue] = useState<string>("");
-  const [agreement, setAgreement] = useState<number>(0);
+  const keyword = useSelector((state: RootState) => state.setKeyword.keyword);
+  //const page = useSelector((state: RootState) => state.setPage.page);
+  const salaryFrom = useSelector(
+    (state: RootState) => state.setSalaryFrom.salaryFrom
+  );
+  const salaryTo = useSelector(
+    (state: RootState) => state.setSalaryTo.salaryTo
+  );
+  const catalogue = useSelector(
+    (state: RootState) => state.setCatalogue.catalogue
+  );
+  const agreement = useSelector(
+    (state: RootState) => state.setAgreement.agreement
+  );
+
   const [isSearchSubmitted, setIsSearchSubmitted] = useState<boolean>(false);
+
+  const {
+    data: generalData,
+    isLoading: loading,
+    isError,
+  } = useGetVacsQuery(
+    {
+      keyword: keyword,
+      page: page,
+      catalogue: catalogue,
+      salaryFrom: salaryFrom,
+      salaryTo: salaryTo,
+      agreement: agreement,
+    },
+    { skip: !loggedIn }
+  );
 
   const location = useLocation();
   const source = location.pathname
@@ -50,27 +79,23 @@ function App() {
   const [savedDataDisplayed, setSavedDataDisplayed] = useState(
     savedData.slice(0, PAGE_SIZE)
   );
+  console.log(vacData);
 
   const VACANCIES_PAGE_URL = `/2.0/vacancies/?keyword=${keyword}&published=1&page=${page}&catalogues=${catalogue}&payment_from=${salaryFrom}&payment_to=${salaryTo}&no_agreement=${agreement}&count=4/`;
   const VACANCY_DETAILS_URL = `/2.0/vacancies/${source}/`;
-
-  useEffect(() => {
-    if (loggedIn) {
-      getCatalogue(CATALOGUES_URL);
-    }
-  }, [loggedIn]);
 
   //render vac details
   useEffect(() => {
     if (loggedIn) {
       getDetailedData(VACANCY_DETAILS_URL);
+      getCatalogue(CATALOGUES_URL);
     }
   }, [loggedIn, vacId]);
 
   //first render initial cards
   useEffect(() => {
-    if (vacData && loggedIn) {
-      setVacData(data);
+    if (generalData && loggedIn && !loading) {
+      setVacData(generalData?.objects);
     }
   }, [loading]);
 
@@ -82,8 +107,7 @@ function App() {
   //render if search or filter change
   useEffect(() => {
     if (loggedIn) {
-      getData(VACANCIES_PAGE_URL);
-      setVacData(data);
+      setVacData(generalData?.objects);
       setSavedDataDisplayed(savedDataDisplayed);
       setIsSearchSubmitted(false);
     }
@@ -96,23 +120,17 @@ function App() {
         value={{
           catalogueData,
           vacData,
-          page,
-          setPage,
           loading,
           savedData,
           setSavedData,
           savedDataDisplayed,
           setSavedDataDisplayed,
-          setKeyword,
-          keyword,
           setIsSearchSubmitted,
-          setAgreement,
-          setCatalogue,
-          setSalaryFrom,
-          setSalaryTo,
           setVacId,
           isSearchSubmitted,
           vacDetails,
+          page,
+          setPage,
         }}
       >
         <Routes>

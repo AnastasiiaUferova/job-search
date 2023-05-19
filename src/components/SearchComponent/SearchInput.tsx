@@ -4,13 +4,19 @@ import "../../styles/SearchComponent/SearchComponent.css";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import { useForm } from "@mantine/form";
 import cardContext from "../../context/CardsContext";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { setKeyword } from "../../redux/slices/paramsSlice";
 
 export default function SearchInput() {
   const SearchIcon = () => {
     return <div className="search-comp__icon"></div>;
   };
 
-  const { setKeyword, keyword, setIsSearchSubmitted } = useContext(cardContext);
+  const keyword = useSelector((state: RootState) => state.setKeyword.keyword);
+  const dispatch = useDispatch();
+
+  const { setIsSearchSubmitted } = useContext(cardContext);
 
   const form = useForm({
     initialValues: {
@@ -27,14 +33,14 @@ export default function SearchInput() {
   return (
     <form
       onSubmit={form.onSubmit(() => {
-        setKeyword(inputValue);
+        dispatch(setKeyword(inputValue));
         setIsSearchSubmitted(true);
       })}
     >
       <TextInput
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
           form.setFieldValue("query", event.target.value);
-          setKeyword(event.target.value);
+          dispatch(setKeyword(event.target.value));
         }}
         value={inputValue}
         data-elem="search-input"

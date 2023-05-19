@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BASIC_URL } from "../_constants/constants";
+import { BASE_URL } from "../_constants/constants";
 import axios from "axios";
 import { vacDetailsType } from "../types/types";
 
@@ -24,7 +24,7 @@ export default function useGetDetailedData() {
   const getDetailedData = async (url: string) => {
     try {
       setLoading(true);
-      const response = await axios.get(BASIC_URL + url, {
+      const response = await axios.get(BASE_URL + url, {
         headers: {
           "x-secret-key": "GEU4nvd3rej*jeh.eqp",
           "x-api-app-id":
