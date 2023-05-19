@@ -1,25 +1,32 @@
-import React, { useContext } from "react";
+import React, { FC } from "react";
 import "../styles/VacancyDetails/VacancyDetails.css";
 import CardDetailed from "../components/CardDetailed/CardDetailed";
 import DetailsContainer from "../components/DetailsContainer/DetailsContainer";
-import cardContext from "../context/CardsContext";
 import { Loader } from "../components/Loader/Loader";
+import { vacDetailsType } from "../types/types";
 
-export default function VacancyDetails() {
-  const { vacDetails } = useContext(cardContext);
+export type vacDetailsProps = {
+  details: vacDetailsType;
+  loading?: boolean;
+};
+
+const VacancyDetails: FC<vacDetailsProps> = (props) => {
+  const { loading, details } = props;
 
   return (
     <div className="v-details">
       <div className="v-details__wrapper">
-        {{ vacDetails } ? (
-          <>
-            <CardDetailed />
-            <DetailsContainer />
-          </>
-        ) : (
+        {loading ? (
           <Loader />
+        ) : (
+          <>
+            <CardDetailed details={details} />
+            <DetailsContainer details={details} />
+          </>
         )}
       </div>
     </div>
   );
-}
+};
+
+export default VacancyDetails;

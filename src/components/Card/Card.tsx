@@ -12,7 +12,7 @@ const Card: FC<CardPropsType> = (props) => {
 
   const { setVacId } = useContext(cardContext);
 
-  const { addToSaved, removeFromSaved } = useSaveFunctions();
+  const { addToSaved, removeFromSaved } = useSaveFunctions(id);
 
   const { className, onSaveClickHandle } = useSaveHandleClick(
     id,

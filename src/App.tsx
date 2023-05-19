@@ -15,7 +15,11 @@ import useGetDetailedData from "./api/detailsApi";
 function App() {
   const { data, getData, loading } = useGetData(true);
   const { data: catalogueData, getData: getCatalogue } = useGetData(false);
-  const { vacDetails, getDetailedData } = useGetDetailedData();
+  const {
+    vacDetails,
+    getDetailedData,
+    loading: detailsLoading,
+  } = useGetDetailedData();
   const { loggedIn } = useAuth();
   const [page, setPage] = useState<number>(1);
 
@@ -57,6 +61,7 @@ function App() {
     }
   }, [loggedIn]);
 
+  //render vac details
   useEffect(() => {
     if (loggedIn) {
       getDetailedData(VACANCY_DETAILS_URL);
@@ -136,7 +141,7 @@ function App() {
             path={`/details/:${vacId}`}
             element={
               <ProtectedRoutes loggedIn={loggedIn}>
-                <VacancyDetails />
+                <VacancyDetails details={vacDetails} loading={detailsLoading} />
               </ProtectedRoutes>
             }
           ></Route>

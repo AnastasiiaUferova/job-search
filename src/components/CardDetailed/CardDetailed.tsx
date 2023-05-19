@@ -1,15 +1,21 @@
-import React, { useContext } from "react";
+import React, { FC } from "react";
 import SavedButton from "../Card/SavedButton";
 import "../../styles/CardDetailed/CardDetailed.css";
-import cardContext from "../../context/CardsContext";
-import useSaveCard from "../../hooks/useSaveHandleClick";
+import useSaveHandleClick from "../../hooks/useSaveHandleClick";
+import useSaveFunctions from "../../hooks/useSaveFunctions";
+import { vacDetailsProps } from "../../pages/VacancyDetails";
 
-export default function CardDetailed() {
-  const { vacDetails } = useContext(cardContext);
-  const { className, onSaveClickHandle } = useSaveCard(vacDetails.id);
-
+const CardDetailed: FC<vacDetailsProps> = (props) => {
   const { id, profession, payment_from, currency, type_of_work, town } =
-    vacDetails;
+    props.details;
+  const { addToSaved, removeFromSaved } = useSaveFunctions(id);
+
+  const { className, onSaveClickHandle } = useSaveHandleClick(
+    id,
+    addToSaved,
+    removeFromSaved
+  );
+
   return (
     <div className="card_detailed">
       <div className="card_detailed__info">
@@ -29,4 +35,6 @@ export default function CardDetailed() {
       />
     </div>
   );
-}
+};
+
+export default CardDetailed;

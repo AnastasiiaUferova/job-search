@@ -4,8 +4,8 @@ import { CardPropsType } from "../types/types";
 
 export default function useSaveHandleClick(
   id: number,
-  addToSaved: (id: number) => void,
-  removeFromSaved: (id: number) => void
+  addToSaved: () => void,
+  removeFromSaved: () => void
 ) {
   const { savedData, loading } = useContext(cardContext);
 
@@ -23,11 +23,11 @@ export default function useSaveHandleClick(
 
   const onSaveClickHandle = () => {
     if (savedCardIds.includes(id) || storageCards.includes(id)) {
-      removeFromSaved(id);
+      removeFromSaved();
       setClassName("card__button");
     } else {
       setClassName("card__button card__button_saved");
-      addToSaved(id);
+      addToSaved();
     }
   };
 
