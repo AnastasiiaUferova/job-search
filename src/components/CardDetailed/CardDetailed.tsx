@@ -3,9 +3,9 @@ import SavedButton from "../Card/SavedButton";
 import "../../styles/CardDetailed/CardDetailed.css";
 import useSaveHandleClick from "../../hooks/useSaveHandleClick";
 import useSaveFunctions from "../../hooks/useSaveFunctions";
-import { vacDetailsProps } from "../../pages/VacancyDetails";
+import { detailsProps } from "../../types/types";
 
-const CardDetailed: FC<vacDetailsProps> = (props) => {
+const CardDetailed: FC<detailsProps> = (props) => {
   const { id, profession, payment_from, currency, type_of_work, town } =
     props.details;
   const { addToSaved, removeFromSaved } = useSaveFunctions(id);

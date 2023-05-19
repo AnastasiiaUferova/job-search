@@ -11,33 +11,15 @@ import ProtectedRoutes from "./components/ProtectedRoute/ProtectedRoute";
 import useAuth from "./api/auth";
 import MemoHeader from "./components/Header/Header";
 import { RootState } from "../src/redux/store";
-import {
-  useGetVacsQuery,
-  useGetCataloguesQuery,
-  useGetDetailsQuery,
-} from "./redux/slices/apiSlice";
+import { useGetVacsQuery, useGetDetailsQuery } from "./redux/slices/apiSlice";
+import useParams from "./hooks/useParams";
 
 function App() {
   const { loggedIn } = useAuth();
 
   const [page, setPage] = useState<number>(1);
 
-  const keyword = useSelector((state: RootState) => state.setKeyword.keyword);
-  //const page = useSelector((state: RootState) => state.setPage.page);
-  const salaryFrom = useSelector(
-    (state: RootState) => state.setSalaryFrom.salaryFrom
-  );
-  const salaryTo = useSelector(
-    (state: RootState) => state.setSalaryTo.salaryTo
-  );
-  const catalogue = useSelector(
-    (state: RootState) => state.setCatalogue.catalogue
-  );
-  const agreement = useSelector(
-    (state: RootState) => state.setAgreement.agreement
-  );
-
-  const [isSearchSubmitted, setIsSearchSubmitted] = useState<boolean>(false);
+  const { keyword, salaryFrom, salaryTo, catalogue, agreement } = useParams();
 
   const location = useLocation();
   const source = location.pathname
@@ -62,11 +44,6 @@ function App() {
     { skip: !loggedIn }
   );
 
-  const { data: catalogueData, isError: catalogueError } =
-    useGetCataloguesQuery("", {
-      skip: !loggedIn,
-    });
-
   const { data: vacDetails, isError: vacDetailsError } = useGetDetailsQuery(
     source,
     {
@@ -88,8 +65,6 @@ function App() {
     savedData.slice(0, PAGE_SIZE)
   );
 
-  const VACANCY_DETAILS_URL = `/2.0/vacancies/${source}/`;
-
   //first render initial cards
   useEffect(() => {
     if (generalData && loggedIn && !loading) {
@@ -107,7 +82,6 @@ function App() {
     if (loggedIn) {
       setVacData(generalData?.objects);
       setSavedDataDisplayed(savedDataDisplayed);
-      setIsSearchSubmitted(false);
     }
   }, [loggedIn, generalData]);
 
@@ -116,16 +90,14 @@ function App() {
       <MemoHeader />
       <cardContext.Provider
         value={{
-          catalogueData,
+          loggedIn,
           vacData,
           loading,
           savedData,
           setSavedData,
           savedDataDisplayed,
           setSavedDataDisplayed,
-          setIsSearchSubmitted,
           setVacId,
-          isSearchSubmitted,
           vacDetails,
           page,
           setPage,

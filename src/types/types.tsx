@@ -36,3 +36,7 @@ export type catalogueItemType = {
 export interface vacDetailsType extends CardListItemType {
   vacancyRichText: string;
 }
+
+export type detailsProps = {
+  details: vacDetailsType;
+};

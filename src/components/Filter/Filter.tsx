@@ -15,6 +15,7 @@ import {
   setSalaryFrom,
   setSalaryTo,
 } from "../../redux/slices/paramsSlice";
+import { useGetCataloguesQuery } from "../../redux/slices/apiSlice";
 
 export default function Filter() {
   const form = useForm({
@@ -25,9 +26,14 @@ export default function Filter() {
     },
   });
 
+  const { loggedIn } = useContext(cardContext);
+
   const dispatch = useDispatch();
 
-  const { catalogueData } = useContext(cardContext);
+  const { data: catalogueData, isError: catalogueError } =
+    useGetCataloguesQuery("", {
+      skip: !loggedIn,
+    });
 
   const catalogueId = () => {
     const filteredCatalogueData = catalogueData.filter(
@@ -62,7 +68,10 @@ export default function Filter() {
         <h2 className="filter__title">Фильтры</h2>
         <ResetButton onClick={() => handleReset()} />
       </div>
-      <Branch {...form.getInputProps("catalogue")} />
+      <Branch
+        catalogueData={catalogueData}
+        {...form.getInputProps("catalogue")}
+      />
       <div className="filter__input-groups filter__number-inputs">
         <h3 className="filter__subtitle">Оклад</h3>
         <Group>

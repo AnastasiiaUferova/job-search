@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState, FC, useContext } from "react";
+import React, { useEffect, useState, FC } from "react";
 import "../../styles/Filter/Filter.css";
 import { Select } from "@mantine/core";
 import { Loader } from "../Loader/Loader";
-import cardContext from "../../context/CardsContext";
 
 type SelectProps = {
   value: any;
@@ -12,6 +11,7 @@ type SelectProps = {
   error?: any;
   onFocus?: any;
   onBlur?: any;
+  catalogueData: [];
 };
 
 const Branch: FC<SelectProps> = (props) => {
@@ -23,7 +23,7 @@ const Branch: FC<SelectProps> = (props) => {
     url_rus: string;
   };
 
-  const { catalogueData } = useContext(cardContext);
+  const { catalogueData } = props;
 
   const [isOpened, setIsOpened] = useState<boolean>(false);
   const [options, setOptions] = useState<string[]>([]);

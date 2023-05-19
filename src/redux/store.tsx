@@ -6,6 +6,7 @@ import setSalaryFromReducer from "./slices/paramsSlice";
 import setSalaryToReducer from "./slices/paramsSlice";
 import setCatalogueReducer from "./slices/paramsSlice";
 import setAgreementReducer from "./slices/paramsSlice";
+import setVacDataReducer from "./slices/vacGeneralSlice";
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
     setSalaryTo: setSalaryToReducer,
     setCatalogue: setCatalogueReducer,
     setAgreement: setAgreementReducer,
+    setVacData: setVacDataReducer,
     [vacApi.reducerPath]: vacApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

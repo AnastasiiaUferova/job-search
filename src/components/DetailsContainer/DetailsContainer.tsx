@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import "../../styles/DetailsContainer/DetailsContainer.css";
-import { vacDetailsProps } from "../../pages/VacancyDetails";
+import { detailsProps } from "../../types/types";
 
-const DetailsContainer: FC<vacDetailsProps> = (props) => {
+const DetailsContainer: FC<detailsProps> = (props) => {
   return (
     <div className="details-container">
       <div
