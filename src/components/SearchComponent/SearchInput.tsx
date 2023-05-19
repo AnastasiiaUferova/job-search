@@ -33,14 +33,14 @@ export default function SearchInput() {
   return (
     <form
       onSubmit={form.onSubmit(() => {
-        dispatch(setKeyword(inputValue));
+        dispatch(setKeyword(form.values.query));
         setIsSearchSubmitted(true);
       })}
     >
       <TextInput
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
           form.setFieldValue("query", event.target.value);
-          dispatch(setKeyword(event.target.value));
+          setInputValue(event.target.value);
         }}
         value={inputValue}
         data-elem="search-input"

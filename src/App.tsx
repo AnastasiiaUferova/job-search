@@ -5,23 +5,19 @@ import Home from "./pages/Home";
 import Saved from "./pages/Saved";
 import VacancyDetails from "./pages/VacancyDetails";
 import EmptyState from "./components/EmptyState/EmptyState";
-import useGetData from "./api/api";
-import { CATALOGUES_URL, PAGE_SIZE } from "./_constants/constants";
+import { PAGE_SIZE } from "./_constants/constants";
 import cardContext from "./context/CardsContext";
 import ProtectedRoutes from "./components/ProtectedRoute/ProtectedRoute";
 import useAuth from "./api/auth";
 import MemoHeader from "./components/Header/Header";
-import useGetDetailedData from "./api/detailsApi";
 import { RootState } from "../src/redux/store";
-import { useGetVacsQuery } from "./redux/slices/apiSlice";
+import {
+  useGetVacsQuery,
+  useGetCataloguesQuery,
+  useGetDetailsQuery,
+} from "./redux/slices/apiSlice";
 
 function App() {
-  const { data: catalogueData, getData: getCatalogue } = useGetData(false);
-  const {
-    vacDetails,
-    getDetailedData,
-    loading: detailsLoading,
-  } = useGetDetailedData();
   const { loggedIn } = useAuth();
 
   const [page, setPage] = useState<number>(1);
@@ -43,6 +39,13 @@ function App() {
 
   const [isSearchSubmitted, setIsSearchSubmitted] = useState<boolean>(false);
 
+  const location = useLocation();
+  const source = location.pathname
+    .split("details/")
+    .splice(1)
+    .join("")
+    .split("&")[0];
+
   const {
     data: generalData,
     isLoading: loading,
@@ -59,12 +62,17 @@ function App() {
     { skip: !loggedIn }
   );
 
-  const location = useLocation();
-  const source = location.pathname
-    .split("details/")
-    .splice(1)
-    .join("")
-    .split("&")[0];
+  const { data: catalogueData, isError: catalogueError } =
+    useGetCataloguesQuery("", {
+      skip: !loggedIn,
+    });
+
+  const { data: vacDetails, isError: vacDetailsError } = useGetDetailsQuery(
+    source,
+    {
+      skip: !loggedIn,
+    }
+  );
 
   const [vacId, setVacId] = useState<string>(
     () => JSON.parse(localStorage.getItem("id")!) || ""
@@ -79,18 +87,8 @@ function App() {
   const [savedDataDisplayed, setSavedDataDisplayed] = useState(
     savedData.slice(0, PAGE_SIZE)
   );
-  console.log(vacData);
 
-  const VACANCIES_PAGE_URL = `/2.0/vacancies/?keyword=${keyword}&published=1&page=${page}&catalogues=${catalogue}&payment_from=${salaryFrom}&payment_to=${salaryTo}&no_agreement=${agreement}&count=4/`;
   const VACANCY_DETAILS_URL = `/2.0/vacancies/${source}/`;
-
-  //render vac details
-  useEffect(() => {
-    if (loggedIn) {
-      getDetailedData(VACANCY_DETAILS_URL);
-      getCatalogue(CATALOGUES_URL);
-    }
-  }, [loggedIn, vacId]);
 
   //first render initial cards
   useEffect(() => {
@@ -111,7 +109,7 @@ function App() {
       setSavedDataDisplayed(savedDataDisplayed);
       setIsSearchSubmitted(false);
     }
-  }, [loggedIn, page, isSearchSubmitted, catalogue, salaryFrom, salaryTo]);
+  }, [loggedIn, generalData]);
 
   return (
     <>
@@ -156,7 +154,7 @@ function App() {
             path={`/details/:${vacId}`}
             element={
               <ProtectedRoutes loggedIn={loggedIn}>
-                <VacancyDetails details={vacDetails} loading={detailsLoading} />
+                <VacancyDetails details={vacDetails} loading={loading} />
               </ProtectedRoutes>
             }
           ></Route>

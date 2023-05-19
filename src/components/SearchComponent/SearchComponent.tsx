@@ -6,17 +6,18 @@ import CardList from "../CardList/CardList";
 import PaginationComponent from "../Pagination/Pagination";
 import EmptyStateImg from "../EmptyState/EmptyStateImg";
 import { Loader } from "../Loader/Loader";
-import { useSelector } from "react-redux";
 
 export default function SearchComponent() {
   const { vacData, loading, setPage, page } = useContext(cardContext);
 
   //const page = useSelector((state: RootState) => state.setPage.page);
 
+  //!!! correct
+
   const renderSearchCopmponent = () => {
     if (loading) {
       return <Loader />;
-    } else if (loading) {
+    } else if (vacData && vacData.length === 0 && !loading) {
       return <EmptyStateImg />;
     } else
       return (
