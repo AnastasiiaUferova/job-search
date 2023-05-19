@@ -29,7 +29,6 @@ function App() {
   const [catalogue, setCatalogue] = useState<string>("");
   const [agreement, setAgreement] = useState<number>(0);
   const [isSearchSubmitted, setIsSearchSubmitted] = useState<boolean>(false);
-  const [isBurgerOpened, setIsBurgerOpened] = useState<boolean>(false);
 
   const location = useLocation();
   const source = location.pathname
@@ -114,8 +113,6 @@ function App() {
           setVacId,
           isSearchSubmitted,
           vacDetails,
-          setIsBurgerOpened,
-          isBurgerOpened,
         }}
       >
         <Routes>

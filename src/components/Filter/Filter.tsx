@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Branch from "./Branch";
 import "../../styles/Filter/Filter.css";
 import ResetButton from "./ResetButton";
@@ -8,6 +8,8 @@ import cardContext from "../../context/CardsContext";
 import { catalogueItemType } from "../../types/types";
 import { Group } from "@mantine/core";
 import NumberInputComponent from "./NumberInputComponent";
+import { CATALOGUES_URL } from "../../_constants/constants";
+import useGetData from "../../api/api";
 
 export default function Filter() {
   const form = useForm({
@@ -18,13 +20,14 @@ export default function Filter() {
     },
   });
 
-  const {
-    setCatalogue,
-    catalogueData,
-    setSalaryFrom,
-    setSalaryTo,
-    setAgreement,
-  } = useContext(cardContext);
+  const { setCatalogue, setSalaryFrom, setSalaryTo, setAgreement } =
+    useContext(cardContext);
+
+  const { data: catalogueData, getData: getCatalogue } = useGetData(false);
+
+  useEffect(() => {
+    getCatalogue(CATALOGUES_URL);
+  }, [catalogueData]);
 
   const catalogueId = () => {
     const filteredCatalogueData = catalogueData.filter(

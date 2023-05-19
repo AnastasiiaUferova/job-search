@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useContext, useEffect, useState, FC } from "react";
+import React, { useEffect, useState, FC, useContext } from "react";
 import "../../styles/Filter/Filter.css";
 import { Select } from "@mantine/core";
+import { Loader } from "../Loader/Loader";
 import cardContext from "../../context/CardsContext";
 
 type SelectProps = {
@@ -22,8 +23,9 @@ const Branch: FC<SelectProps> = (props) => {
     url_rus: string;
   };
 
-  const [isOpened, setIsOpened] = useState<boolean>(false);
   const { catalogueData } = useContext(cardContext);
+
+  const [isOpened, setIsOpened] = useState<boolean>(false);
   const [options, setOptions] = useState<string[]>([]);
 
   const Dropdown = () => {
@@ -41,37 +43,41 @@ const Branch: FC<SelectProps> = (props) => {
   return (
     <div className="filter__input-groups">
       <h3 className="filter__subtitle">Отрасль</h3>
-      <Select
-        onChange={props.onChange}
-        value={props.value}
-        data-elem="industry-select"
-        onDropdownOpen={() => setIsOpened(true)}
-        onDropdownClose={() => setIsOpened(false)}
-        placeholder="Выберите отрасль"
-        rightSection={Dropdown()}
-        styles={{
-          rightSection: { pointerEvents: "none" },
-          input: {
-            height: "42px",
-            cursor: "pointer",
-            "&:focus, &:hover": {
-              border: "1px solid #5E96FC",
-            },
-          },
-
-          item: {
-            "&[data-selected]": {
-              "&, &:hover": {
-                backgroundColor: "#5E96FC",
+      {catalogueData ? (
+        <Select
+          onChange={props.onChange}
+          value={props.value}
+          data-elem="industry-select"
+          onDropdownOpen={() => setIsOpened(true)}
+          onDropdownClose={() => setIsOpened(false)}
+          placeholder="Выберите отрасль"
+          rightSection={Dropdown()}
+          styles={{
+            rightSection: { pointerEvents: "none" },
+            input: {
+              height: "42px",
+              cursor: "pointer",
+              "&:focus, &:hover": {
+                border: "1px solid #5E96FC",
               },
             },
-            "&[data-hovered]": {
-              backgroundColor: "#DEECFF",
+
+            item: {
+              "&[data-selected]": {
+                "&, &:hover": {
+                  backgroundColor: "#5E96FC",
+                },
+              },
+              "&[data-hovered]": {
+                backgroundColor: "#DEECFF",
+              },
             },
-          },
-        }}
-        data={options}
-      />
+          }}
+          data={options}
+        />
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };

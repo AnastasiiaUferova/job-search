@@ -21,8 +21,6 @@ type cardContextType = {
   setSalaryFrom: React.Dispatch<React.SetStateAction<number | string>>;
   setSalaryTo: React.Dispatch<React.SetStateAction<number | string>>;
   setVacId: React.Dispatch<React.SetStateAction<string>>;
-  setIsBurgerOpened: React.Dispatch<React.SetStateAction<boolean>>;
-  isBurgerOpened: boolean;
 };
 
 const cardContext = createContext<cardContextType>({
@@ -57,8 +55,6 @@ const cardContext = createContext<cardContextType>({
   setSalaryFrom: () => "",
   setSalaryTo: () => "",
   setVacId: () => "",
-  setIsBurgerOpened: () => false,
-  isBurgerOpened: false,
 });
 
 export default cardContext;
