@@ -1,13 +1,16 @@
-import { useContext, useEffect, useState } from "react";
-import cardContext from "../context/CardsContext";
+import { useEffect, useState } from "react";
 import { CardPropsType } from "../types/types";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 export default function useSaveHandleClick(
   id: number,
   addToSaved: () => void,
   removeFromSaved: () => void
 ) {
-  const { savedData, loading } = useContext(cardContext);
+  const savedData = useSelector(
+    (state: RootState) => state.setSavedData.savedData
+  );
 
   const storageCards = JSON.parse(localStorage.getItem("saved")!);
 
@@ -19,7 +22,7 @@ export default function useSaveHandleClick(
     if (savedCardIds.includes(id) || storageCards.includes(id)) {
       setClassName("card__button card__button_saved");
     } else setClassName("card__button");
-  }, [loading]);
+  }, []);
 
   const onSaveClickHandle = () => {
     if (savedCardIds.includes(id) || storageCards.includes(id)) {

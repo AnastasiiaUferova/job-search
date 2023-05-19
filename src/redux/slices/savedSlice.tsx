@@ -1,24 +1,23 @@
-import { Slice, createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { CardProps } from '../../types/types';
+import { Slice, createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 
-export interface formCard {
-  cards: CardProps[];
+export interface savedDataIN {
+  savedData: [];
 }
 
-const initialState: formCard = {
-  cards: [],
+const initialState: savedDataIN = {
+  savedData: JSON.parse(localStorage.getItem("saved")!) || [],
 };
 
-export const formCardsSlice = createSlice({
-  name: 'formCards',
+export const savedDataSlice = createSlice({
+  name: "savedCards",
   initialState,
   reducers: {
-    setFormCards: (state, action: PayloadAction<CardProps[]>) => {
-      state.cards = action.payload;
+    setSavedData: (state, action: PayloadAction<[]>) => {
+      state.savedData = action.payload;
     },
   },
-}) as Slice<formCard>;
+}) as Slice<savedDataIN>;
 
-export const { setFormCards } = formCardsSlice.actions;
-export default formCardsSlice.reducer;
+export const { setSavedData } = savedDataSlice.actions;
+export default savedDataSlice.reducer;

@@ -1,33 +1,28 @@
-import React, { useContext } from "react";
+import React, { FC } from "react";
 import Card from "../Card/Card";
 import "../../styles/CardList/CardList.css";
-import cardContext from "../../context/CardsContext";
 import { Loader } from "../Loader/Loader";
 import { useLocation } from "react-router-dom";
 import { CardListItemType } from "../../types/types";
 
-export default function CardList() {
+type cardListProps = {
+  cards: [];
+  loading?: boolean;
+};
+
+const CardList: FC<cardListProps> = (props) => {
   const location = useLocation();
 
+  const { cards, loading } = props;
   const className =
     location.pathname === "/saved" ? "card-list card-list__saved" : "card-list";
 
-  const { vacData, loading, savedDataDisplayed } = useContext(cardContext);
-
-  const getCards = () => {
-    if (location.pathname === "/saved" && !savedDataDisplayed) {
-      return [];
-    } else if (location.pathname === "/saved" && savedDataDisplayed) {
-      return savedDataDisplayed;
-    } else return vacData;
-  };
-
   const renderElements = () => {
-    if (loading === false) {
+    if (!loading) {
       return (
         <div className={className}>
-          {vacData &&
-            getCards().map((item: CardListItemType) => {
+          {cards &&
+            cards.map((item: CardListItemType) => {
               return (
                 <Card
                   key={item.id}
@@ -46,4 +41,6 @@ export default function CardList() {
   };
 
   return renderElements();
-}
+};
+
+export default CardList;

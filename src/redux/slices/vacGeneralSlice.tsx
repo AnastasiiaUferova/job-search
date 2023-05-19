@@ -10,7 +10,7 @@ const initialState: vacDataIN = {
 };
 
 export const vacDataSlice = createSlice({
-  name: "formCards",
+  name: "vacData",
   initialState,
   reducers: {
     setVacData: (state, action: PayloadAction<[]>) => {

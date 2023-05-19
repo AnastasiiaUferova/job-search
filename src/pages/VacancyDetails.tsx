@@ -7,13 +7,7 @@ import { useGetDetailsQuery } from "../redux/slices/apiSlice";
 import { useLocation } from "react-router-dom";
 import cardContext from "../context/CardsContext";
 
-export type vacDetailsProps = {
-  loading?: boolean;
-};
-
-const VacancyDetails: FC<vacDetailsProps> = (props) => {
-  const { loading } = props;
-
+const VacancyDetails = () => {
   const location = useLocation();
   const source = location.pathname
     .split("details/")
@@ -23,17 +17,18 @@ const VacancyDetails: FC<vacDetailsProps> = (props) => {
 
   const { loggedIn } = useContext(cardContext);
 
-  const { data: vacDetails, isError: vacDetailsError } = useGetDetailsQuery(
-    source,
-    {
-      skip: !loggedIn,
-    }
-  );
+  const {
+    data: vacDetails,
+    isError: vacDetailsError,
+    isLoading,
+  } = useGetDetailsQuery(source, {
+    skip: !loggedIn,
+  });
 
   return (
     <div className="v-details">
       <div className="v-details__wrapper">
-        {loading ? (
+        {isLoading ? (
           <Loader />
         ) : (
           <>
