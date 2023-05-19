@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import SavedButton from "../Card/SavedButton";
 import "../../styles/CardDetailed/CardDetailed.css";
 import cardContext from "../../context/CardsContext";
-import useSaveCard from "../../hooks/useSaveCard";
+import useSaveCard from "../../hooks/useSaveHandleClick";
 
 export default function CardDetailed() {
   const { vacDetails } = useContext(cardContext);

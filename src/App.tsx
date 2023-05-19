@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Saved from "./pages/Saved";
@@ -10,7 +10,6 @@ import cardContext from "./context/CardsContext";
 import ProtectedRoutes from "./components/ProtectedRoute/ProtectedRoute";
 import useAuth from "./api/auth";
 import MemoHeader from "./components/Header/Header";
-import { CardPropsType } from "./types/types";
 import useGetDetailedData from "./api/detailsApi";
 
 function App() {
@@ -86,31 +85,6 @@ function App() {
     }
   }, [loggedIn, page, isSearchSubmitted, catalogue, salaryFrom, salaryTo]);
 
-  //saving functions
-  const addToSaved = useCallback(
-    (id: number) => {
-      vacData.map((item: CardPropsType) => {
-        if (item.id === id) {
-          setSavedData([...savedData, item]);
-          localStorage.setItem("saved", JSON.stringify(savedData));
-        }
-        return item;
-      });
-    },
-    [savedData, vacData]
-  );
-
-  const removeFromSaved = useCallback(
-    (id: number) => {
-      const filteredData = savedData.filter((item: CardPropsType) => {
-        return item.id !== id;
-      });
-      setSavedData(filteredData);
-      localStorage.setItem("saved", JSON.stringify(filteredData));
-    },
-    [savedData]
-  );
-
   return (
     <>
       <MemoHeader />
@@ -121,9 +95,8 @@ function App() {
           page,
           setPage,
           loading,
-          addToSaved,
-          removeFromSaved,
           savedData,
+          setSavedData,
           savedDataDisplayed,
           setSavedDataDisplayed,
           setKeyword,

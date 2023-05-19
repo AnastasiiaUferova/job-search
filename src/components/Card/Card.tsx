@@ -4,14 +4,21 @@ import SavedButton from "./SavedButton";
 import cardContext from "../../context/CardsContext";
 import { CardPropsType } from "../../types/types";
 import { NavLink } from "react-router-dom";
-import useSaveCard from "../../hooks/useSaveCard";
+import useSaveHandleClick from "../../hooks/useSaveHandleClick";
+import useSaveFunctions from "../../hooks/useSaveFunctions";
 
 const Card: FC<CardPropsType> = (props) => {
   const { id, profession, payment_from, currency, town, type_of_work } = props;
 
   const { setVacId } = useContext(cardContext);
 
-  const { className, onSaveClickHandle } = useSaveCard(id);
+  const { addToSaved, removeFromSaved } = useSaveFunctions();
+
+  const { className, onSaveClickHandle } = useSaveHandleClick(
+    id,
+    addToSaved,
+    removeFromSaved
+  );
 
   const onNavLinkClick = () => {
     setVacId(String(id));

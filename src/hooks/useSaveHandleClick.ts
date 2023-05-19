@@ -2,9 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import cardContext from "../context/CardsContext";
 import { CardPropsType } from "../types/types";
 
-export default function useSaveCard(id: number) {
-  const { addToSaved, removeFromSaved, savedData, loading } =
-    useContext(cardContext);
+export default function useSaveHandleClick(
+  id: number,
+  addToSaved: (id: number) => void,
+  removeFromSaved: (id: number) => void
+) {
+  const { savedData, loading } = useContext(cardContext);
 
   const storageCards = JSON.parse(localStorage.getItem("saved")!);
 
