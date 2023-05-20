@@ -14,10 +14,6 @@ export default function Saved() {
     (state: RootState) => state.setSavedData.savedData
   );
 
-  useEffect(() => {
-    localStorage.setItem("saved", JSON.stringify(savedData));
-  }, [savedData]);
-
   const [savedDataDisplayed, setSavedDataDisplayed] = useState<
     CardListItemType[]
   >(() => savedData.slice(0, PAGE_SIZE));

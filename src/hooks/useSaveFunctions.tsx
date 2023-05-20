@@ -4,7 +4,7 @@ import { RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setSavedData } from "../redux/slices/savedSlice";
 
-const useSaveFunctions = (cardId: number) => {
+const useSaveFunctions = (cardId: number | string) => {
   const vacData = useSelector((state: RootState) => state.setVacData.vacData);
   const savedData = useSelector(
     (state: RootState) => state.setSavedData.savedData
@@ -17,6 +17,7 @@ const useSaveFunctions = (cardId: number) => {
       if (item.id === cardId) {
         dispatch(setSavedData([...savedData, item]));
         localStorage.setItem("saved", JSON.stringify(savedData));
+        console.log("yes, saved");
       }
       return item;
     });
@@ -27,7 +28,8 @@ const useSaveFunctions = (cardId: number) => {
       return item.id !== cardId;
     });
     dispatch(setSavedData(filteredData));
-    localStorage.setItem("saved", JSON.stringify(filteredData));
+    localStorage.setItem("saved", JSON.stringify(savedData));
+    console.log("yes, removed");
   }, [savedData]);
 
   return { addToSaved, removeFromSaved };

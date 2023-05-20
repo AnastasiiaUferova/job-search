@@ -13,25 +13,29 @@ export default function useSaveHandleClick(
   );
 
   const storageCards = JSON.parse(localStorage.getItem("saved")!);
-  const storageCardsIds = storageCards.map((item: CardPropsType) => item.id);
+  const storageCardsIds =
+    storageCards && storageCards.map((item: CardPropsType) => item.id);
 
   const savedCardIds = savedData.map((item: CardPropsType) => item.id);
 
   const [className, setClassName] = useState<string>(() => "card__button");
 
   useEffect(() => {
-    if (savedCardIds.includes(id) || storageCardsIds.includes(id)) {
+    if (storageCardsIds.includes(id)) {
       setClassName("card__button card__button_saved");
     } else setClassName("card__button");
   }, []);
 
+  console.log(storageCardsIds);
+  console.log(savedCardIds);
+
   const onSaveClickHandle = () => {
-    if (savedCardIds.includes(id) || storageCardsIds.includes(id)) {
-      removeFromSaved();
-      setClassName("card__button");
-    } else {
+    if (!savedCardIds.includes(id)) {
       setClassName("card__button card__button_saved");
       addToSaved();
+    } else {
+      removeFromSaved();
+      setClassName("card__button");
     }
   };
 

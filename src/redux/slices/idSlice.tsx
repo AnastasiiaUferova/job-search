@@ -2,7 +2,7 @@ import { Slice, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface cardIdState {
-  cardId: string;
+  cardId: string | number;
 }
 
 const initialState: cardIdState = {

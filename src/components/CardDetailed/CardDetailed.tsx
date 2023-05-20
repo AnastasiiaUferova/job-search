@@ -4,16 +4,22 @@ import "../../styles/CardDetailed/CardDetailed.css";
 import useSaveHandleClick from "../../hooks/useSaveHandleClick";
 import useSaveFunctions from "../../hooks/useSaveFunctions";
 import { detailsProps } from "../../types/types";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const CardDetailed: FC<detailsProps> = (props) => {
   const { id, profession, payment_from, currency, type_of_work, town } =
     props.details;
-  const { addToSaved, removeFromSaved } = useSaveFunctions(id);
+  const { removeFromSaved, addToSaved } = useSaveFunctions(id);
+
+  /*const addToSaved = () => {
+    console.log("added");
+  };*/
 
   const { className, onSaveClickHandle } = useSaveHandleClick(
     id,
-    addToSaved,
-    removeFromSaved
+    removeFromSaved,
+    addToSaved
   );
 
   return (

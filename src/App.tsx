@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Saved from "./pages/Saved";
@@ -19,6 +19,10 @@ function App() {
   const savedData = useSelector(
     (state: RootState) => state.setSavedData.savedData
   );
+
+  useEffect(() => {
+    localStorage.setItem("saved", JSON.stringify(savedData));
+  }, [savedData]);
 
   return (
     <>
