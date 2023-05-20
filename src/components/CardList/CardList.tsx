@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import { CardListItemType } from "../../types/types";
 
 type cardListProps = {
-  cards: [];
+  cards: CardListItemType[];
   loading?: boolean;
 };
 

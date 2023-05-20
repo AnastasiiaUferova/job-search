@@ -1,8 +1,7 @@
 import { Slice, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export interface popupState {
-  page: number;
+export interface paramState {
   keyword: string;
   salaryFrom: number | string;
   salaryTo: number | string;
@@ -10,8 +9,7 @@ export interface popupState {
   agreement: number;
 }
 
-const initialState: popupState = {
-  page: 1,
+const initialState: paramState = {
   keyword: "",
   salaryFrom: 1,
   salaryTo: 1,
@@ -26,9 +24,6 @@ export const paramSlice = createSlice({
     setKeyword: (state, action: PayloadAction<string>) => {
       state.keyword = action.payload;
     },
-    setPage: (state, action: PayloadAction<number>) => {
-      state.page = action.payload;
-    },
     setSalaryFrom: (state, action: PayloadAction<number>) => {
       state.salaryFrom = action.payload;
     },
@@ -42,11 +37,10 @@ export const paramSlice = createSlice({
       state.agreement = action.payload;
     },
   },
-}) as Slice<popupState>;
+}) as Slice<paramState>;
 
 export const {
   setKeyword,
-  setPage,
   setSalaryFrom,
   setSalaryTo,
   setCatalogue,

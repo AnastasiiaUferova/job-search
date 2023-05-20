@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Saved from "./pages/Saved";
@@ -14,11 +14,7 @@ import { RootState } from "./redux/store";
 function App() {
   const { loggedIn } = useAuth();
 
-  const [page, setPage] = useState<number>(1);
-
-  const [vacId, setVacId] = useState<string>(
-    () => JSON.parse(localStorage.getItem("id")!) || ""
-  );
+  const cardId = useSelector((state: RootState) => state.setCardId.cardId);
 
   const savedData = useSelector(
     (state: RootState) => state.setSavedData.savedData
@@ -30,9 +26,6 @@ function App() {
       <cardContext.Provider
         value={{
           loggedIn,
-          setVacId,
-          page,
-          setPage,
         }}
       >
         <Routes>
@@ -55,7 +48,7 @@ function App() {
           ></Route>
 
           <Route
-            path={`/details/:${vacId}`}
+            path={`/details/:${cardId}`}
             element={
               <ProtectedRoutes loggedIn={loggedIn}>
                 <VacancyDetails />

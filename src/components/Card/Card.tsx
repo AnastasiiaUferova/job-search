@@ -1,16 +1,15 @@
-import React, { FC, useContext } from "react";
+import React, { FC } from "react";
 import "../../styles/Card/Card.css";
 import SavedButton from "./SavedButton";
-import cardContext from "../../context/CardsContext";
 import { CardPropsType } from "../../types/types";
 import { NavLink } from "react-router-dom";
 import useSaveHandleClick from "../../hooks/useSaveHandleClick";
 import useSaveFunctions from "../../hooks/useSaveFunctions";
+import { useDispatch } from "react-redux";
+import { setCardId } from "../../redux/slices/idSlice";
 
 const Card: FC<CardPropsType> = (props) => {
   const { id, profession, payment_from, currency, town, type_of_work } = props;
-
-  const { setVacId } = useContext(cardContext);
 
   const { addToSaved, removeFromSaved } = useSaveFunctions(id);
 
@@ -20,8 +19,10 @@ const Card: FC<CardPropsType> = (props) => {
     removeFromSaved
   );
 
+  const dispatch = useDispatch();
+
   const onNavLinkClick = () => {
-    setVacId(String(id));
+    dispatch(setCardId(String(id)));
     localStorage.setItem("id", JSON.stringify(id));
   };
 

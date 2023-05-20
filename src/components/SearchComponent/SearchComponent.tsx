@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import cardContext from "../../context/CardsContext";
 import "../../styles/SearchComponent/SearchComponent.css";
 import SearchInput from "./SearchInput";
@@ -13,13 +13,15 @@ import { setVacData } from "../../redux/slices/vacGeneralSlice";
 import { useGetVacsQuery } from "../../redux/slices/apiSlice";
 
 export default function SearchComponent() {
-  const { setPage, page, loggedIn } = useContext(cardContext);
+  const { loggedIn } = useContext(cardContext);
 
   const { keyword, salaryFrom, salaryTo, catalogue, agreement } = useParams();
 
   const dispatch = useDispatch();
 
   const vacData = useSelector((state: RootState) => state.setVacData.vacData);
+
+  const [activePage, setActivePage] = useState<number>(1);
 
   const {
     data: generalData,
@@ -28,7 +30,7 @@ export default function SearchComponent() {
   } = useGetVacsQuery(
     {
       keyword: keyword,
-      page: page,
+      page: activePage,
       catalogue: catalogue,
       salaryFrom: salaryFrom,
       salaryTo: salaryTo,
@@ -50,7 +52,11 @@ export default function SearchComponent() {
       return (
         <>
           <CardList loading={loading} cards={vacData} />
-          <PaginationComponent setPage={setPage} total={125} page={page} />
+          <PaginationComponent
+            setPage={setActivePage}
+            total={125}
+            page={activePage}
+          />
         </>
       );
   };

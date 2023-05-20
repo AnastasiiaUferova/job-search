@@ -3,7 +3,6 @@ import { RootState } from "../redux/store";
 
 const useParams = () => {
   const keyword = useSelector((state: RootState) => state.setKeyword.keyword);
-  //const page = useSelector((state: RootState) => state.setPage.page);
   const salaryFrom = useSelector(
     (state: RootState) => state.setSalaryFrom.salaryFrom
   );
