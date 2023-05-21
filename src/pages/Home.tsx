@@ -7,10 +7,11 @@ export type homeProps = {
   setActivePage: React.Dispatch<SetStateAction<number>>;
   activePage: number;
   loading: boolean;
+  totalPages: number;
 };
 
 const Home: FC<homeProps> = (props) => {
-  const { setActivePage, activePage, loading } = props;
+  const { setActivePage, activePage, loading, totalPages } = props;
 
   return (
     <main className="home">
@@ -19,6 +20,7 @@ const Home: FC<homeProps> = (props) => {
         setActivePage={setActivePage}
         activePage={activePage}
         loading={loading}
+        totalPages={totalPages}
       />
     </main>
   );

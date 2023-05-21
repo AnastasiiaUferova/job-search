@@ -13,6 +13,7 @@ import { useGetVacsQuery } from "./redux/slices/apiSlice";
 import useSetParams from "./hooks/useSetParams";
 import { setVacData } from "./redux/slices/vacGeneralSlice";
 import Error from "./components/Error/Error";
+import useSetTotalPages from "./hooks/useSetPages";
 
 function App() {
   const { loggedIn } = useAuth();
@@ -31,13 +32,13 @@ function App() {
   );
 
   const {
-    data: generalData,
+    data,
     isFetching: loading,
     isError,
   } = useGetVacsQuery(
     {
       keyword: keyword,
-      page: activePage,
+      page: activePage - 1,
       catalogue: catalogue,
       salaryFrom: salaryFrom,
       salaryTo: salaryTo,
@@ -46,13 +47,15 @@ function App() {
     { skip: !loggedIn }
   );
 
+  const { totalPages } = useSetTotalPages(data);
+
   useEffect(() => {
     localStorage.setItem("saved", JSON.stringify(savedData));
   }, [savedData]);
 
   useEffect(() => {
-    dispatch(setVacData(generalData?.objects));
-  }, [generalData?.objects, dispatch]);
+    dispatch(setVacData(data?.objects));
+  }, [data?.objects, dispatch]);
 
   return (
     <>
@@ -67,6 +70,7 @@ function App() {
                 setActivePage={setActivePage}
                 activePage={activePage}
                 loading={loading}
+                totalPages={totalPages}
               />
             </ProtectedRoutes>
           }

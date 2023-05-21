@@ -12,7 +12,7 @@ import { homeProps } from "../../pages/Home";
 const SearchComponent: FC<homeProps> = (props) => {
   const vacData = useSelector((state: RootState) => state.setVacData.vacData);
 
-  const { setActivePage, activePage, loading } = props;
+  const { setActivePage, activePage, loading, totalPages } = props;
 
   const renderSearchCopmponent = () => {
     if (loading) {
@@ -25,7 +25,7 @@ const SearchComponent: FC<homeProps> = (props) => {
           <CardList loading={loading} cards={vacData} />
           <PaginationComponent
             setPage={setActivePage}
-            total={125}
+            total={totalPages}
             page={activePage}
           />
         </>

@@ -24,6 +24,10 @@ export interface CardListType {
   objects: CardListItemType[];
 }
 
+export interface totalType {
+  total: number;
+}
+
 export type catalogueItemType = {
   key: number;
   positions: object[];
