@@ -46,8 +46,6 @@ function App() {
     { skip: !loggedIn }
   );
 
-  console.log(loading);
-
   useEffect(() => {
     localStorage.setItem("saved", JSON.stringify(savedData));
   }, [savedData]);

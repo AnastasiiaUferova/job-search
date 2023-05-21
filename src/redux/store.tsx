@@ -9,6 +9,7 @@ import setAgreementReducer from "./slices/paramsSlice";
 import setVacDataReducer from "./slices/vacGeneralSlice";
 import setSavedDataReducer from "./slices/savedSlice";
 import setCardIdReducer from "./slices/idSlice";
+import { authApi } from "./slices/authSlice";
 
 export const store = configureStore({
   reducer: {
@@ -22,9 +23,10 @@ export const store = configureStore({
     setSavedData: setSavedDataReducer,
     setCardId: setCardIdReducer,
     [vacApi.reducerPath]: vacApi.reducer,
+    [authApi.reducerPath]: authApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(vacApi.middleware),
+    getDefaultMiddleware().concat(vacApi.middleware, authApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { AUTH_URL, BASE_URL, configAuth } from "../_constants/constants";
-import axios from "axios";
+import { useGetDataAuthQuery } from "../redux/slices/authSlice";
 
 export default function useAuth() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -10,24 +9,26 @@ export default function useAuth() {
 
   const token = localStorage.getItem("token");
 
+  const { error: authError, refetch } = useGetDataAuthQuery("");
+
   const fetchDataAuth = async () => {
     try {
-      const response = await axios.get(BASE_URL + AUTH_URL, configAuth);
+      const response = await refetch();
       localStorage.setItem("token", response.data.access_token);
       setLoggedIn(true);
     } catch (err) {
       setError(err);
-      console.log(err);
+      console.log(authError);
     }
   };
 
   const fetchDataTtl = async () => {
     try {
-      const response = await axios.get(BASE_URL + AUTH_URL, configAuth);
+      const response = await refetch();
       setTtl(response.data.ttl);
     } catch (err) {
       setError(err);
-      console.log(err);
+      console.log(authError);
     }
   };
 
