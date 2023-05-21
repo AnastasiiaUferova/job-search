@@ -4,15 +4,15 @@ import Home from "./pages/Home";
 import Saved from "./pages/Saved";
 import VacancyDetails from "./pages/VacancyDetails";
 import EmptyState from "./components/EmptyState/EmptyState";
-import cardContext from "./context/CardsContext";
 import ProtectedRoutes from "./components/ProtectedRoute/ProtectedRoute";
-import useAuth from "./api/auth";
+import useAuth from "./auth/useAuth";
 import MemoHeader from "./components/Header/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 import { useGetVacsQuery } from "./redux/slices/apiSlice";
 import useSetParams from "./hooks/useSetParams";
 import { setVacData } from "./redux/slices/vacGeneralSlice";
+import Error from "./components/Error/Error";
 
 function App() {
   const { loggedIn } = useAuth();
@@ -57,44 +57,39 @@ function App() {
   return (
     <>
       <MemoHeader />
-      <cardContext.Provider
-        value={{
-          loggedIn,
-        }}
-      >
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ProtectedRoutes loggedIn={loggedIn}>
-                <Home
-                  setActivePage={setActivePage}
-                  activePage={activePage}
-                  loading={loading}
-                />
-              </ProtectedRoutes>
-            }
-          ></Route>
+      {isError && <Error />}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoutes loggedIn={loggedIn}>
+              <Home
+                setActivePage={setActivePage}
+                activePage={activePage}
+                loading={loading}
+              />
+            </ProtectedRoutes>
+          }
+        ></Route>
 
-          <Route
-            path="/saved"
-            element={
-              <ProtectedRoutes loggedIn={loggedIn}>
-                {savedData.length > 0 ? <Saved /> : <EmptyState />}
-              </ProtectedRoutes>
-            }
-          ></Route>
+        <Route
+          path="/saved"
+          element={
+            <ProtectedRoutes loggedIn={loggedIn}>
+              {savedData.length > 0 ? <Saved /> : <EmptyState />}
+            </ProtectedRoutes>
+          }
+        ></Route>
 
-          <Route
-            path={`/details/:${cardId}`}
-            element={
-              <ProtectedRoutes loggedIn={loggedIn}>
-                <VacancyDetails />
-              </ProtectedRoutes>
-            }
-          ></Route>
-        </Routes>
-      </cardContext.Provider>
+        <Route
+          path={`/details/:${cardId}`}
+          element={
+            <ProtectedRoutes loggedIn={loggedIn}>
+              <VacancyDetails loggedIn={loggedIn} />
+            </ProtectedRoutes>
+          }
+        ></Route>
+      </Routes>
     </>
   );
 }

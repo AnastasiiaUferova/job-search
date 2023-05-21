@@ -1,13 +1,17 @@
-import React, { FC, useContext } from "react";
+import React, { FC } from "react";
 import "../styles/VacancyDetails/VacancyDetails.css";
 import CardDetailed from "../components/CardDetailed/CardDetailed";
 import DetailsContainer from "../components/DetailsContainer/DetailsContainer";
 import { Loader } from "../components/Loader/Loader";
 import { useGetDetailsQuery } from "../redux/slices/apiSlice";
 import { useLocation } from "react-router-dom";
-import cardContext from "../context/CardsContext";
+import Error from "../components/Error/Error";
 
-const VacancyDetails = () => {
+type vacancyDetailsProps = {
+  loggedIn: boolean;
+};
+
+const VacancyDetails: FC<vacancyDetailsProps> = (props) => {
   const location = useLocation();
   const source = location.pathname
     .split("details/")
@@ -15,29 +19,30 @@ const VacancyDetails = () => {
     .join("")
     .split("&")[0];
 
-  const { loggedIn } = useContext(cardContext);
-
   const {
     data: vacDetails,
-    isError: vacDetailsError,
+    isError,
     isLoading,
   } = useGetDetailsQuery(source, {
-    skip: !loggedIn,
+    skip: !props.loggedIn,
   });
 
   return (
-    <div className="v-details">
-      <div className="v-details__wrapper">
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <>
-            <CardDetailed details={vacDetails} />
-            <DetailsContainer details={vacDetails} />
-          </>
-        )}
+    <>
+      {isError && <Error />}
+      <div className="v-details">
+        <div className="v-details__wrapper">
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              <CardDetailed details={vacDetails} />
+              <DetailsContainer details={vacDetails} />
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
