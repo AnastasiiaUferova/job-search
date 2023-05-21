@@ -1,0 +1,21 @@
+@import "../Variables/Variables.scss";
+
+.saved {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  background-color: $main-background;
+
+  &__wrapper {
+    width: 773px;
+    padding-bottom: 44px;
+  }
+
+  @media (max-width: 800px) {
+    & {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}

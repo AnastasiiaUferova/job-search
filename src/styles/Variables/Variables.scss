@@ -1,0 +1,35 @@
+//Colors
+$main-background: #f5f5f5;
+$ligth-background: #ffffff;
+$main-blue: #5e96fc;
+$gray-font: #acadb9;
+$black-font: #232134;
+$hover-blue: #92c1ff;
+$dark-gray: #7b7c88;
+$dark-gray-font: #343a40;
+
+//Fonts
+@mixin font($weight) {
+  font-style: normal;
+  font-weight: $weight;
+}
+
+@mixin container-style($radius) {
+  border: 1px solid #eaebed;
+  border-radius: $radius;
+  background-color: $ligth-background;
+}
+
+@mixin button {
+  border: none;
+  background-color: transparent;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin pag_buttons {
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-position: center;
+}

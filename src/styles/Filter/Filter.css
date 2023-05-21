@@ -1,0 +1,136 @@
+.filter {
+  width: 315px;
+  height: 360px;
+  background-color: #ffffff;
+  border: 1px solid #eaebed;
+  border-radius: 12px;
+  background-color: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.filter__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.filter__title {
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  font-size: 20px;
+  color: #232134;
+}
+.filter__reset {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #acadb9;
+  border: none;
+  background-color: transparent;
+  margin-right: 21px;
+  padding: 0;
+  position: relative;
+}
+.filter__reset::after {
+  content: url(../../assets/Close-icon.svg);
+  margin-top: 3px;
+  padding-left: 5px;
+  position: absolute;
+}
+.filter__reset:hover {
+  color: #92c1ff;
+}
+.filter__reset:hover::after {
+  content: url(../../assets/CloseIconHover.svg);
+}
+.filter__reset:active {
+  color: #5e96fc;
+}
+.filter__reset:active::after {
+  content: url(../../assets/CloseIconActive.svg);
+}
+.filter__input-groups {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.filter__subtitle {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #232134;
+  margin-bottom: 8px;
+}
+.filter__number-input {
+  position: relative;
+  width: 100%;
+}
+.filter__number-inputs button {
+  width: 12px;
+  height: 12px;
+  border: none;
+  background-color: transparent;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.filter__number-inputs button:nth-of-type(1) {
+  background-image: url(../../assets/UpNumber.svg);
+  top: 9px;
+  right: 0;
+}
+.filter__number-inputs button:nth-of-type(1):hover {
+  background-image: url(../../assets/UpNumberHover.svg);
+}
+.filter__number-inputs button:nth-of-type(1):active {
+  background-image: url(../../assets/UpNumberActive.svg);
+}
+.filter__number-inputs button:nth-of-type(2) {
+  background-image: url(../../assets/DownNumber.svg);
+}
+.filter__number-inputs button:nth-of-type(2):hover {
+  background-image: url(../../assets/UpNumberHover.svg);
+  transform: rotate(180deg);
+}
+.filter__number-inputs button:nth-of-type(2):active {
+  background-image: url(../../assets/UpNumberActive.svg);
+  transform: rotate(180deg);
+}
+.filter__number-inputs_buttons {
+  width: 12px;
+  height: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  top: 9px;
+}
+.filter__submit-button {
+  border-radius: 8px;
+}
+
+.dropdown {
+  background-image: url(../../assets/Dropdown.svg);
+  width: 15px;
+  height: 7px;
+  background-size: cover;
+}
+.dropdown_open {
+  background-image: url(../../assets/DropdownUp.svg);
+}
+
+.mantine-k3ov3c {
+  gap: 8px !important;
+}
+
+@media (max-width: 360px) {
+  .filter {
+    width: 300px;
+  }
+}

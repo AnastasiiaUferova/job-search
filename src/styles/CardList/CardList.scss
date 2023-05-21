@@ -1,0 +1,27 @@
+@import "../../styles/Variables/Variables.scss";
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  margin-bottom: 40px;
+  gap: 16px;
+  max-width: 773px;
+  background-color: $main-background;
+  height: auto;
+
+  &__saved {
+    margin-bottom: 104px;
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 1154px) {
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    gap: 16px;
+    max-width: 773px;
+  }
+}
