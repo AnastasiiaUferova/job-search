@@ -4,6 +4,7 @@ import "../../styles/Header/Header.css";
 import { NavLink } from "react-router-dom";
 import NavLinks from "./NavLinks";
 import BurgerMenu from "./BurgerMenu";
+import Logo from "../../assets/Logo.svg";
 
 function Header(): JSX.Element {
   const [isSmallWidth, setIsSmallWidth] = useState(false);
@@ -34,6 +35,7 @@ function Header(): JSX.Element {
       <nav className="header__content">
         <div className="header__logo">
           <NavLink className="header__logo_title" to="/">
+            <img alt="Лого" src={Logo}></img>
             Jobored
           </NavLink>
         </div>
