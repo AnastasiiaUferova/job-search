@@ -18,11 +18,19 @@ export default function Saved() {
     CardListItemType[]
   >(() => savedData.slice(0, PAGE_SIZE));
 
+  console.log(activePage);
+
   useEffect(() => {
     const from = (activePage - 1) * PAGE_SIZE;
     const to = from + PAGE_SIZE;
     setSavedDataDisplayed(savedData.slice(from, to));
   }, [activePage, savedData]);
+
+  useEffect(() => {
+    if (savedDataDisplayed.length === 0 && savedData.length !== 0) {
+      setPage((prevPage) => prevPage - 1);
+    }
+  }, [savedDataDisplayed, savedData]);
 
   return (
     <div className="saved">

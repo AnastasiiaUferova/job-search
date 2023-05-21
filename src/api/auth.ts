@@ -2,12 +2,10 @@ import { useCallback, useEffect, useState } from "react";
 import { useGetDataAuthQuery } from "../redux/slices/authSlice";
 
 export default function useAuth() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [error, setError] = useState<any>(null);
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const [ttl, setTtl] = useState<number>();
 
-  const token = localStorage.getItem("token");
+  const tokenAuth = localStorage.getItem("token");
 
   const { error: authError, refetch } = useGetDataAuthQuery("");
 
@@ -17,7 +15,6 @@ export default function useAuth() {
       localStorage.setItem("token", response.data.access_token);
       setLoggedIn(true);
     } catch (err) {
-      setError(err);
       console.log(authError);
     }
   };
@@ -27,20 +24,17 @@ export default function useAuth() {
       const response = await refetch();
       setTtl(response.data.ttl);
     } catch (err) {
-      setError(err);
       console.log(authError);
     }
   };
 
   const tokenCheck = () => {
-    const token = localStorage.getItem("token");
-    if (token === null) {
+    if (tokenAuth === null) {
       fetchDataAuth();
     } else setLoggedIn(true);
   };
 
-  const checkIfLoggedIn = useCallback(tokenCheck, [token]);
-
+  // check if the token is expired
   const ttlCheck = () => {
     fetchDataTtl();
     if (ttl! < Date.now() / 1000) {
@@ -48,13 +42,14 @@ export default function useAuth() {
     }
   };
 
+  const checkIfLoggedIn = useCallback(tokenCheck, [tokenAuth]);
+
   useEffect(() => {
     ttlCheck();
     checkIfLoggedIn();
   }, []);
 
   return {
-    error,
     loggedIn,
   };
 }
