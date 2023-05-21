@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 
-const useParams = () => {
+const useSetParams = () => {
   const keyword = useSelector((state: RootState) => state.setKeyword.keyword);
   const salaryFrom = useSelector(
     (state: RootState) => state.setSalaryFrom.salaryFrom
@@ -25,4 +25,4 @@ const useParams = () => {
   };
 };
 
-export default useParams;
+export default useSetParams;

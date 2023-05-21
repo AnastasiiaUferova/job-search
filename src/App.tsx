@@ -11,7 +11,7 @@ import MemoHeader from "./components/Header/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 import { useGetVacsQuery } from "./redux/slices/apiSlice";
-import useParams from "./hooks/useParams";
+import useSetParams from "./hooks/useSetParams";
 import { setVacData } from "./redux/slices/vacGeneralSlice";
 
 function App() {
@@ -19,7 +19,8 @@ function App() {
 
   const cardId = useSelector((state: RootState) => state.setCardId.cardId);
 
-  const { keyword, salaryFrom, salaryTo, catalogue, agreement } = useParams();
+  const { keyword, salaryFrom, salaryTo, catalogue, agreement } =
+    useSetParams();
 
   const dispatch = useDispatch();
 
@@ -31,7 +32,7 @@ function App() {
 
   const {
     data: generalData,
-    isLoading: loading,
+    isFetching: loading,
     isError,
   } = useGetVacsQuery(
     {
@@ -44,6 +45,8 @@ function App() {
     },
     { skip: !loggedIn }
   );
+
+  console.log(loading);
 
   useEffect(() => {
     localStorage.setItem("saved", JSON.stringify(savedData));

@@ -1,16 +1,12 @@
-import React, { FC, useContext, useEffect, useState } from "react";
-import cardContext from "../../context/CardsContext";
+import React, { FC } from "react";
 import "../../styles/SearchComponent/SearchComponent.css";
 import SearchInput from "./SearchInput";
 import CardList from "../CardList/CardList";
 import PaginationComponent from "../Pagination/Pagination";
 import EmptyStateImg from "../EmptyState/EmptyStateImg";
 import { Loader } from "../Loader/Loader";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import useParams from "../../hooks/useParams";
-import { setVacData } from "../../redux/slices/vacGeneralSlice";
-import { useGetVacsQuery } from "../../redux/slices/apiSlice";
 import { homeProps } from "../../pages/Home";
 
 const SearchComponent: FC<homeProps> = (props) => {

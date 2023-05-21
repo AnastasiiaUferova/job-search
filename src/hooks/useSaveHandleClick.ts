@@ -40,8 +40,6 @@ export default function useSaveCard(id: number) {
 
   const [className, setClassName] = useState<string>(() => "card__button");
 
-  console.log(savedCardIds);
-
   useEffect(() => {
     if (savedCardIds.includes(id)) {
       setClassName("card__button card__button_saved");
@@ -63,7 +61,3 @@ export default function useSaveCard(id: number) {
     onSaveClickHandle,
   };
 }
-
-/*
-  
-*/
