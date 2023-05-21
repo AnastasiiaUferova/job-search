@@ -18,8 +18,6 @@ export default function Saved() {
     CardListItemType[]
   >(() => savedData.slice(0, PAGE_SIZE));
 
-  console.log(activePage);
-
   useEffect(() => {
     const from = (activePage - 1) * PAGE_SIZE;
     const to = from + PAGE_SIZE;
