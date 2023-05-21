@@ -3,7 +3,16 @@ import { BASE_URL, CATALOGUES_URL, headers } from "../../_constants/constants";
 
 export const vacApi = createApi({
   reducerPath: "vacApi",
-  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: BASE_URL,
+    prepareHeaders: (headers) => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
 
   endpoints: (builder) => ({
     getVacs: builder.query({

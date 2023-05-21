@@ -4,20 +4,13 @@ import SavedButton from "./SavedButton";
 import { CardPropsType } from "../../types/types";
 import { NavLink } from "react-router-dom";
 import useSaveHandleClick from "../../hooks/useSaveHandleClick";
-import useSaveFunctions from "../../hooks/useSaveFunctions";
 import { useDispatch } from "react-redux";
 import { setCardId } from "../../redux/slices/idSlice";
 
 const Card: FC<CardPropsType> = (props) => {
   const { id, profession, payment_from, currency, town, type_of_work } = props;
 
-  const { addToSaved, removeFromSaved } = useSaveFunctions(id);
-
-  const { className, onSaveClickHandle } = useSaveHandleClick(
-    id,
-    addToSaved,
-    removeFromSaved
-  );
+  const { className, onSaveClickHandle } = useSaveHandleClick(id);
 
   const dispatch = useDispatch();
 

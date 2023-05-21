@@ -2,25 +2,19 @@ import React, { FC } from "react";
 import SavedButton from "../Card/SavedButton";
 import "../../styles/CardDetailed/CardDetailed.css";
 import useSaveHandleClick from "../../hooks/useSaveHandleClick";
-import useSaveFunctions from "../../hooks/useSaveFunctions";
 import { detailsProps } from "../../types/types";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
 const CardDetailed: FC<detailsProps> = (props) => {
-  const { id, profession, payment_from, currency, type_of_work, town } =
+  const { profession, payment_from, currency, type_of_work, town } =
     props.details;
-  const { removeFromSaved, addToSaved } = useSaveFunctions(id);
 
-  /*const addToSaved = () => {
-    console.log("added");
-  };*/
+  const { className, onSaveClickHandle } = useSaveHandleClick(props.details.id);
+  const vacData = useSelector((state: RootState) => state.setVacData.vacData);
 
-  const { className, onSaveClickHandle } = useSaveHandleClick(
-    id,
-    removeFromSaved,
-    addToSaved
-  );
+  console.log(props.details.id);
+  console.log(vacData);
 
   return (
     <div className="card_detailed">
@@ -35,7 +29,7 @@ const CardDetailed: FC<detailsProps> = (props) => {
         <p className="card_detailed__place">{town.title}</p>
       </div>
       <SavedButton
-        id={id}
+        id={props.details.id}
         className={className}
         onClick={() => onSaveClickHandle()}
       />

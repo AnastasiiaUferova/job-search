@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Saved from "./pages/Saved";
@@ -8,21 +8,50 @@ import cardContext from "./context/CardsContext";
 import ProtectedRoutes from "./components/ProtectedRoute/ProtectedRoute";
 import useAuth from "./api/auth";
 import MemoHeader from "./components/Header/Header";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./redux/store";
+import { useGetVacsQuery } from "./redux/slices/apiSlice";
+import useParams from "./hooks/useParams";
+import { setVacData } from "./redux/slices/vacGeneralSlice";
 
 function App() {
   const { loggedIn } = useAuth();
 
   const cardId = useSelector((state: RootState) => state.setCardId.cardId);
 
+  const { keyword, salaryFrom, salaryTo, catalogue, agreement } = useParams();
+
+  const dispatch = useDispatch();
+
+  const [activePage, setActivePage] = useState<number>(1);
+
   const savedData = useSelector(
     (state: RootState) => state.setSavedData.savedData
+  );
+
+  const {
+    data: generalData,
+    isLoading: loading,
+    isError,
+  } = useGetVacsQuery(
+    {
+      keyword: keyword,
+      page: activePage,
+      catalogue: catalogue,
+      salaryFrom: salaryFrom,
+      salaryTo: salaryTo,
+      agreement: agreement,
+    },
+    { skip: !loggedIn }
   );
 
   useEffect(() => {
     localStorage.setItem("saved", JSON.stringify(savedData));
   }, [savedData]);
+
+  useEffect(() => {
+    dispatch(setVacData(generalData?.objects));
+  }, [generalData?.objects, dispatch]);
 
   return (
     <>
@@ -37,7 +66,11 @@ function App() {
             path="/"
             element={
               <ProtectedRoutes loggedIn={loggedIn}>
-                <Home />
+                <Home
+                  setActivePage={setActivePage}
+                  activePage={activePage}
+                  loading={loading}
+                />
               </ProtectedRoutes>
             }
           ></Route>

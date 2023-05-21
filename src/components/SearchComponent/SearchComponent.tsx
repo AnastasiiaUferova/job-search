@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import cardContext from "../../context/CardsContext";
 import "../../styles/SearchComponent/SearchComponent.css";
 import SearchInput from "./SearchInput";
@@ -11,37 +11,12 @@ import { RootState } from "../../redux/store";
 import useParams from "../../hooks/useParams";
 import { setVacData } from "../../redux/slices/vacGeneralSlice";
 import { useGetVacsQuery } from "../../redux/slices/apiSlice";
+import { homeProps } from "../../pages/Home";
 
-export default function SearchComponent() {
-  const { loggedIn } = useContext(cardContext);
-
-  const { keyword, salaryFrom, salaryTo, catalogue, agreement } = useParams();
-
-  const dispatch = useDispatch();
-
+const SearchComponent: FC<homeProps> = (props) => {
   const vacData = useSelector((state: RootState) => state.setVacData.vacData);
 
-  const [activePage, setActivePage] = useState<number>(1);
-
-  const {
-    data: generalData,
-    isLoading: loading,
-    isError,
-  } = useGetVacsQuery(
-    {
-      keyword: keyword,
-      page: activePage,
-      catalogue: catalogue,
-      salaryFrom: salaryFrom,
-      salaryTo: salaryTo,
-      agreement: agreement,
-    },
-    { skip: !loggedIn }
-  );
-
-  useEffect(() => {
-    dispatch(setVacData(generalData?.objects));
-  }, [generalData?.objects, dispatch]);
+  const { setActivePage, activePage, loading } = props;
 
   const renderSearchCopmponent = () => {
     if (loading) {
@@ -67,4 +42,6 @@ export default function SearchComponent() {
       {renderSearchCopmponent()}
     </div>
   );
-}
+};
+
+export default SearchComponent;
