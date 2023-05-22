@@ -40,13 +40,11 @@ const NumberInputComponent: FC<NumberInputComponentProps> = (props) => {
       />
       <div className="filter__number-inputs_buttons">
         <button
-          style={{ width: "12px" }}
           type="button"
           className="filter__number-inputs_button"
           onClick={() => handlers.current?.increment()}
         ></button>
         <button
-          style={{ width: "12px" }}
           className="filter__number-inputs_button"
           type="button"
           onClick={() => handlers.current?.decrement()}
