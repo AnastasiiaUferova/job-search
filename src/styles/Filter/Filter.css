@@ -130,6 +130,6 @@
     width: 300px;
   }
   button {
-    width: 12px;
+    width: 12px !important;
   }
 }
