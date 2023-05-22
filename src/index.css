@@ -35,8 +35,6 @@ h3 {
 
 button {
   cursor: pointer;
-  -webkit-appearance: none;
-  -moz-appearance:none;
 }
 
 p {

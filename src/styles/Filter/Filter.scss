@@ -78,7 +78,6 @@
 
   &__number-inputs {
        &_button {
-      max-width: 12px;
       height: 12px;
       @include button;
 
@@ -111,7 +110,6 @@
     }
 
     &_buttons {
-      max-width: 12px;
       display: flex;
       flex-direction: column;
       position: absolute;
