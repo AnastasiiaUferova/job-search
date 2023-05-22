@@ -133,4 +133,15 @@
   .filter {
     width: 300px;
   }
+  .filter__number-inputs_buttons {
+    width: 10px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    position: absolute;
+    z-index: 2;
+    right: 10px;
+    top: 9px;
+  }
 }
