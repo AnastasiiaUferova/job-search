@@ -4,26 +4,16 @@ import SavedButton from "./SavedButton";
 import { CardPropsType } from "../../types/types";
 import { NavLink } from "react-router-dom";
 import useSaveHandleClick from "../../hooks/useSaveHandleClick";
-import { useDispatch } from "react-redux";
-import { setCardId } from "../../redux/slices/idSlice";
 
 const Card: FC<CardPropsType> = (props) => {
   const { id, profession, payment_from, currency, town, type_of_work } = props;
 
   const { className, onSaveClickHandle } = useSaveHandleClick(id);
 
-  const dispatch = useDispatch();
-
-  const onNavLinkClick = () => {
-    dispatch(setCardId(String(id)));
-    localStorage.setItem("id", JSON.stringify(id));
-  };
-
   return (
     <div data-elem={`vacancy-${id}`} className="card">
       <div className="card__info">
         <NavLink
-          onClick={() => onNavLinkClick()}
           target="_blank"
           rel="noopener noreferrer"
           to={`/details/${id}`}

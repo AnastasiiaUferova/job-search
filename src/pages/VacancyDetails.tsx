@@ -4,7 +4,7 @@ import CardDetailed from "../components/CardDetailed/CardDetailed";
 import DetailsContainer from "../components/DetailsContainer/DetailsContainer";
 import { Loader } from "../components/Loader/Loader";
 import { useGetDetailsQuery } from "../redux/slices/apiSlice";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Error from "../components/Error/Error";
 
 type vacancyDetailsProps = {
@@ -12,18 +12,13 @@ type vacancyDetailsProps = {
 };
 
 const VacancyDetails: FC<vacancyDetailsProps> = (props) => {
-  const location = useLocation();
-  const source = location.pathname
-    .split("details/")
-    .splice(1)
-    .join("")
-    .split("&")[0];
+  const { id } = useParams();
 
   const {
     data: vacDetails,
     isError,
     isLoading,
-  } = useGetDetailsQuery(source, {
+  } = useGetDetailsQuery(id!, {
     skip: !props.loggedIn,
   });
 

@@ -8,7 +8,6 @@ import setCatalogueReducer from "./slices/paramsSlice";
 import setAgreementReducer from "./slices/paramsSlice";
 import setVacDataReducer from "./slices/vacGeneralSlice";
 import setSavedDataReducer from "./slices/savedSlice";
-import setCardIdReducer from "./slices/idSlice";
 import { authApi } from "./slices/authSlice";
 
 export const store = configureStore({
@@ -21,7 +20,6 @@ export const store = configureStore({
     setAgreement: setAgreementReducer,
     setVacData: setVacDataReducer,
     setSavedData: setSavedDataReducer,
-    setCardId: setCardIdReducer,
     [vacApi.reducerPath]: vacApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
   },

@@ -18,8 +18,6 @@ import useSetTotalPages from "./hooks/useSetPages";
 function App() {
   const { loggedIn } = useAuth();
 
-  const cardId = useSelector((state: RootState) => state.setCardId.cardId);
-
   const { keyword, salaryFrom, salaryTo, catalogue, agreement } =
     useSetParams();
 
@@ -86,7 +84,7 @@ function App() {
         ></Route>
 
         <Route
-          path={`/details/:${cardId}`}
+          path={`/details/:id`}
           element={
             <ProtectedRoutes loggedIn={loggedIn}>
               <VacancyDetails loggedIn={loggedIn} />
