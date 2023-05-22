@@ -80,7 +80,8 @@
 }
 .filter__number-inputs_button:nth-of-type(1) {
   background-image: url(../../assets/UpNumber.svg);
-  margin-bottom: 10px;
+  width: 12px;
+  margin-bottom: 2px;
 }
 .filter__number-inputs_button:nth-of-type(1):hover {
   background-image: url(../../assets/UpNumberHover.svg);
@@ -90,6 +91,7 @@
 }
 .filter__number-inputs_button:nth-of-type(2) {
   background-image: url(../../assets/DownNumber.svg);
+  width: 12px;
 }
 .filter__number-inputs_button:nth-of-type(2):hover {
   background-image: url(../../assets/UpNumberHover.svg);
