@@ -80,7 +80,11 @@
        &_button {
       height: 12px;
       width: 100%;
-      @include button;
+      border: none;
+      background-color: transparent;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
 
       &:nth-of-type(1) {
         background-image: url(../../assets/UpNumber.svg);
