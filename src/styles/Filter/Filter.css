@@ -80,8 +80,6 @@
 }
 .filter__number-inputs_button:nth-of-type(1) {
   background-image: url(../../assets/UpNumber.svg);
-  top: 9px;
-  right: 0;
 }
 .filter__number-inputs_button:nth-of-type(1):hover {
   background-image: url(../../assets/UpNumberHover.svg);
@@ -100,10 +98,6 @@
   background-image: url(../../assets/UpNumberActive.svg);
   transform: rotate(180deg);
 }
-.filter__submit-button {
-  border-radius: 8px;
-}
-
 .filter__number-inputs_buttons {
   width: 12px;
   height: 26px;
@@ -115,6 +109,9 @@
   right: 10px;
   top: 9px;
   background-color: red;
+}
+.filter__submit-button {
+  border-radius: 8px;
 }
 
 .dropdown {
