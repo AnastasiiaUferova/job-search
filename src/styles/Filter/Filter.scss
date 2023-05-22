@@ -114,10 +114,10 @@
       display: flex;
       flex-direction: column;
       position: absolute;
-      position: absolute;
       z-index: 2;
       right: 10px;
       top: 9px;
+      background-color: red;
     }
   }
 
@@ -144,11 +144,6 @@
 @media (max-width: 360px) {
   .filter {
     width: 300px;
-
-    &__number-inputs_button {
-      width: 1px;
-      height: 1px;
-    }
   }
 
 }
