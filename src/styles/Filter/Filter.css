@@ -80,6 +80,7 @@
 .filter__number-inputs #button-1 {
   background-image: url(../../assets/UpNumber.svg);
   margin-bottom: 2px;
+  width: 100%;
 }
 .filter__number-inputs #button-1:hover {
   background-image: url(../../assets/UpNumberHover.svg);
@@ -89,6 +90,7 @@
 }
 .filter__number-inputs #button-2 {
   background-image: url(../../assets/DownNumber.svg);
+  width: 100%;
 }
 .filter__number-inputs #button-2:hover {
   background-image: url(../../assets/UpNumberHover.svg);

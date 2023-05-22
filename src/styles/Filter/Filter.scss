@@ -85,6 +85,7 @@
     #button-1 {
       background-image: url(../../assets/UpNumber.svg);
       margin-bottom: 2px;
+      width: 100%;
 
       &:hover {
         background-image: url(../../assets/UpNumberHover.svg);
@@ -97,6 +98,7 @@
 
     #button-2 {
       background-image: url(../../assets/DownNumber.svg);
+      width: 100%;
 
       &:hover {
         background-image: url(../../assets/UpNumberHover.svg);
