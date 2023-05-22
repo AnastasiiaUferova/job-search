@@ -34,11 +34,11 @@ h3 {
 }
 
 button {
-  cursor: pointer;
+  all: unset; /* Сбросить все свойства кнопки */
 }
 
 button {
-  all: unset; /* Сбросить все свойства кнопки */
+  cursor: pointer;
 }
 
 p {
