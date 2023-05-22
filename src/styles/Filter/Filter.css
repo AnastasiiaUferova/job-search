@@ -71,45 +71,30 @@
 }
 .filter__number-inputs_button {
   height: 12px;
-  width: 12px;
   border: none;
   background-color: transparent;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
-.filter__number-inputs_button:nth-of-type(1) {
+.filter__number-inputs #button-1 {
   background-image: url(../../assets/UpNumber.svg);
   margin-bottom: 2px;
-  height: 12px;
-  width: 12px;
-  border: none;
-  background-color: transparent;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
 }
-.filter__number-inputs_button:nth-of-type(1):hover {
+.filter__number-inputs #button-1:hover {
   background-image: url(../../assets/UpNumberHover.svg);
 }
-.filter__number-inputs_button:nth-of-type(1):active {
+.filter__number-inputs #button-1:active {
   background-image: url(../../assets/UpNumberActive.svg);
 }
-.filter__number-inputs_button:nth-of-type(2) {
+.filter__number-inputs #button-2 {
   background-image: url(../../assets/DownNumber.svg);
-  height: 12px;
-  width: 12px;
-  border: none;
-  background-color: transparent;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
 }
-.filter__number-inputs_button:nth-of-type(2):hover {
+.filter__number-inputs #button-2:hover {
   background-image: url(../../assets/UpNumberHover.svg);
   transform: rotate(180deg);
 }
-.filter__number-inputs_button:nth-of-type(2):active {
+.filter__number-inputs #button-2:active {
   background-image: url(../../assets/UpNumberActive.svg);
   transform: rotate(180deg);
 }
