@@ -79,11 +79,15 @@
   &__number-inputs {
        &_button {
       height: 12px;
+      width: 12px;
       @include button;
 
       &:nth-of-type(1) {
         background-image: url(../../assets/UpNumber.svg);
         margin-bottom: 2px;
+        height: 12px;
+        width: 12px;
+        @include button;
 
         &:hover {
           background-image: url(../../assets/UpNumberHover.svg);
@@ -96,6 +100,9 @@
 
       &:nth-of-type(2) {
         background-image: url(../../assets/DownNumber.svg);
+        height: 12px;
+        width: 12px;
+        @include button;
 
         &:hover {
           background-image: url(../../assets/UpNumberHover.svg);
