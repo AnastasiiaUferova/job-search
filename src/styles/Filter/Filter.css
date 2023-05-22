@@ -99,11 +99,14 @@
   transform: rotate(180deg);
 }
 .filter__number-inputs_buttons {
-  width: 12px;
-  height: 26px;
   display: flex;
   flex-direction: column;
   gap: 2px;
+  position: absolute;
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  top: 9px;
 }
 .filter__submit-button {
   border-radius: 8px;
