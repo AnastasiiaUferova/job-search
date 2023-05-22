@@ -23,7 +23,8 @@ const NumberInputComponent: FC<NumberInputComponentProps> = (props) => {
         onChange={onChange}
         handlersRef={handlers}
         hideControls
-        min={1}
+        min={500}
+        step={500}
         styles={{
           rightSection: { pointerEvents: "none" },
           input: {
@@ -40,9 +41,11 @@ const NumberInputComponent: FC<NumberInputComponentProps> = (props) => {
       <div className="filter__number-inputs_buttons">
         <button
           type="button"
+          className="filter__number-inputs_button"
           onClick={() => handlers.current?.increment()}
         ></button>
         <button
+          className="filter__number-inputs_button"
           type="button"
           onClick={() => handlers.current?.decrement()}
         ></button>
