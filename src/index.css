@@ -34,7 +34,7 @@ h3 {
 }
 
 button {
-  all: unset; /* Сбросить все свойства кнопки */
+  all: unset;
 }
 
 button {
