@@ -98,6 +98,13 @@
   background-image: url(../../assets/UpNumberActive.svg);
   transform: rotate(180deg);
 }
+.filter__number-inputs_buttons {
+  width: 12px;
+  height: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
 .filter__submit-button {
   border-radius: 8px;
 }

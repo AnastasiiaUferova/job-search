@@ -109,7 +109,13 @@
       }
     }
 
-
+    &_buttons {
+      width: 12px;
+      height: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
   }
 
   &__submit-button {
