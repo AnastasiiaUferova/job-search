@@ -37,6 +37,10 @@ button {
   cursor: pointer;
 }
 
+button {
+  all: unset; /* Сбросить все свойства кнопки */
+}
+
 p {
   margin: 0;
   margin-block-start: 0;
