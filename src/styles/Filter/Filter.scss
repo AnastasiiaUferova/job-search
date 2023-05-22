@@ -126,8 +126,6 @@
   }
 }
 
-
-
 .dropdown {
   background-image: url(../../assets/Dropdown.svg);
   width: 15px;
@@ -146,5 +144,11 @@
 @media (max-width: 360px) {
   .filter {
     width: 300px;
+
+    &__number-inputs_button {
+      width: 9px;
+      height: 9px;
+    }
   }
+
 }

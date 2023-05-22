@@ -130,4 +130,8 @@
   .filter {
     width: 300px;
   }
+  .filter__number-inputs_button {
+    width: 9px;
+    height: 9px;
+  }
 }
