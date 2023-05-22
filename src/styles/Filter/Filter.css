@@ -101,15 +101,16 @@
   transform: rotate(180deg);
 }
 .filter__number-inputs_buttons {
-  width: 12px !important;
-  height: 26px !important;
+  width: 12px;
+  height: 26px;
   display: flex;
   flex-direction: column;
   gap: 2px;
-  position: absolute !important;
-  z-index: 2 !important;
-  right: 10px !important;
-  top: 9px !important;
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  top: 9px;
+  background-color: red;
 }
 .filter__submit-button {
   border-radius: 8px;
