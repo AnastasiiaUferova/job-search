@@ -71,37 +71,37 @@
 }
 .filter__number-inputs_button {
   height: 12px;
+  width: 100%;
   border: none;
   background-color: transparent;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
-.filter__number-inputs #button-1 {
+.filter__number-inputs_button:nth-of-type(1) {
   background-image: url(../../assets/UpNumber.svg);
   margin-bottom: 2px;
-  width: 100%;
 }
-.filter__number-inputs #button-1:hover {
+.filter__number-inputs_button:nth-of-type(1):hover {
   background-image: url(../../assets/UpNumberHover.svg);
 }
-.filter__number-inputs #button-1:active {
+.filter__number-inputs_button:nth-of-type(1):active {
   background-image: url(../../assets/UpNumberActive.svg);
 }
-.filter__number-inputs #button-2 {
+.filter__number-inputs_button:nth-of-type(2) {
   background-image: url(../../assets/DownNumber.svg);
-  width: 100%;
 }
-.filter__number-inputs #button-2:hover {
+.filter__number-inputs_button:nth-of-type(2):hover {
   background-image: url(../../assets/UpNumberHover.svg);
   transform: rotate(180deg);
 }
-.filter__number-inputs #button-2:active {
+.filter__number-inputs_button:nth-of-type(2):active {
   background-image: url(../../assets/UpNumberActive.svg);
   transform: rotate(180deg);
 }
 .filter__number-inputs_buttons {
   display: flex;
+  width: 12px;
   flex-direction: column;
   position: absolute;
   z-index: 2;
@@ -130,8 +130,5 @@
 @media (max-width: 360px) {
   .filter {
     width: 300px;
-  }
-  button {
-    width: 12px !important;
   }
 }

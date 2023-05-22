@@ -79,40 +79,40 @@
   &__number-inputs {
        &_button {
       height: 12px;
+      width: 100%;
       @include button;
-    }
 
-    #button-1 {
-      background-image: url(../../assets/UpNumber.svg);
-      margin-bottom: 2px;
-      width: 100%;
+      &:nth-of-type(1) {
+        background-image: url(../../assets/UpNumber.svg);
+        margin-bottom: 2px;
 
-      &:hover {
-        background-image: url(../../assets/UpNumberHover.svg);
+        &:hover {
+          background-image: url(../../assets/UpNumberHover.svg);
+        }
+
+        &:active {
+          background-image: url(../../assets/UpNumberActive.svg);
+        }
       }
 
-      &:active {
-        background-image: url(../../assets/UpNumberActive.svg);
-      }
-    }
+      &:nth-of-type(2) {
+        background-image: url(../../assets/DownNumber.svg);
 
-    #button-2 {
-      background-image: url(../../assets/DownNumber.svg);
-      width: 100%;
+        &:hover {
+          background-image: url(../../assets/UpNumberHover.svg);
+          transform: rotate(180deg);
+        }
 
-      &:hover {
-        background-image: url(../../assets/UpNumberHover.svg);
-        transform: rotate(180deg);
-      }
-
-      &:active {
-        background-image: url(../../assets/UpNumberActive.svg);
-        transform: rotate(180deg);
+        &:active {
+          background-image: url(../../assets/UpNumberActive.svg);
+          transform: rotate(180deg);
+        }
       }
     }
 
     &_buttons {
       display: flex;
+      width: 12px;
       flex-direction: column;
       position: absolute;
       z-index: 2;
@@ -146,9 +146,4 @@
   .filter {
     width: 300px;
   }
-
-  button {
-    width: 12px !important;
-  }
-
 }
