@@ -80,6 +80,7 @@
 }
 .filter__number-inputs_button:nth-of-type(1) {
   background-image: url(../../assets/UpNumber.svg);
+  margin-bottom: 2px;
 }
 .filter__number-inputs_button:nth-of-type(1):hover {
   background-image: url(../../assets/UpNumberHover.svg);
@@ -100,10 +101,7 @@
 }
 .filter__number-inputs_buttons {
   display: flex;
-  width: 12px;
-  height: 26px;
   flex-direction: column;
-  gap: 2px;
   position: absolute;
   position: absolute;
   z-index: 2;
