@@ -50,7 +50,6 @@
 
     &:active {
       color: $main-blue;
-
       &::after {
         content: url(../../assets/CloseIconActive.svg);
       }
@@ -77,7 +76,17 @@
   }
 
   &__number-inputs {
-       &_button {
+    
+    &_buttons {
+      display: flex;
+      width: 12px;
+      flex-direction: column;
+      position: absolute;
+      right: 10px;
+      top: 9px;
+      gap: 2px;
+    }
+      &_button {
       height: 12px;
       width: 12px;
       @include button;
@@ -108,16 +117,6 @@
           transform: rotate(180deg);
         }
       }
-    }
-
-    &_buttons {
-      display: flex;
-      width: 12px;
-      flex-direction: column;
-      position: absolute;
-      right: 10px;
-      top: 9px;
-      gap: 2px;
     }
   }
 

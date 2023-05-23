@@ -69,6 +69,15 @@
   position: relative;
   width: 100%;
 }
+.filter__number-inputs_buttons {
+  display: flex;
+  width: 12px;
+  flex-direction: column;
+  position: absolute;
+  right: 10px;
+  top: 9px;
+  gap: 2px;
+}
 .filter__number-inputs_button {
   height: 12px;
   width: 12px;
@@ -98,15 +107,6 @@
 .filter__number-inputs_button:nth-of-type(2):active {
   background-image: url(../../assets/UpNumberActive.svg);
   transform: rotate(180deg);
-}
-.filter__number-inputs_buttons {
-  display: flex;
-  width: 12px;
-  flex-direction: column;
-  position: absolute;
-  right: 10px;
-  top: 9px;
-  gap: 2px;
 }
 .filter__submit-button {
   border-radius: 8px;
