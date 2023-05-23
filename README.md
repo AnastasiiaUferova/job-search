@@ -11,19 +11,19 @@ Test task for [Paralect Startup Summer 2023](https://startup-summer-2023-dev-tas
 * Search for vacancies with search input keyword;
 * Filter vacancies by payment and field of work;
 * Open links with vacancy details;
-* Save to favourites by clicking on save button;
+* Save to favourites by clicking on the save button;
 
 ### API used
 
-* Superjiob https://api.superjob.ru API (with proxy server given by Paralect).
+* Superjob https://api.superjob.ru API (with proxy server given by Paralect).
 
 ### Layout features
 
-* Layout is created according to individual Figma template;
-* Element positioning using flexbox
+* Layout is created according to individual Figma templates;
+* Element positioning using Flexbox
 * Adaptive design principles are used in the project: it's optimized for different screen resolutions (mobile, tablet, desktop)
-* The number of pages in pagination varies according to the number of cards got from API or saved by the user.
-* The vacancy list is rendered automatically without user maknig the first search.
+* The number of pagination pages varies according to the number of cards got from API or saved by the user.
+* The vacancy list is rendered automatically without the user making the first search.
 
 ### Routes
 * ```/ ```— main page
@@ -37,11 +37,12 @@ Test task for [Paralect Startup Summer 2023](https://startup-summer-2023-dev-tas
 * Hooks (useState, useEffect, useCallBack, useDebouncedCallback);
 * Adaptive layout using flexbox positioning;
 * Nested file structure according to BEM methodology;
-* TypeScript (Asynchronous JS, Fetch API, OOP);
+* TypeScript;
+* Redux Toolkit;
 * Mantine library for certain elements like filter and pagination;
 * SCSS;
 * Git;
-* Figma
+* Figma;
 
 
 ## Installation instructions:
