@@ -10,15 +10,17 @@ type NumberInputComponentProps = {
   error?: any;
   onFocus?: any;
   onBlur?: any;
+  elem: string;
 };
 
 const NumberInputComponent: FC<NumberInputComponentProps> = (props) => {
-  const { placeholder, onChange, value } = props;
+  const { placeholder, onChange, value, elem } = props;
   const handlers = useRef<NumberInputHandlers>();
 
   return (
     <div className="filter__number-input">
       <NumberInput
+        data-elem={elem}
         value={value}
         onChange={onChange}
         handlersRef={handlers}

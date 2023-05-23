@@ -80,12 +80,13 @@ const Filter: FC<FilterType> = (props) => {
           <Group>
             <NumberInputComponent
               {...form.getInputProps("from")}
-              data-elem="salary-from-input"
+              elem="salary-from-input"
               placeholder="От"
             />
+
             <NumberInputComponent
+              elem="salary-to-input"
               {...form.getInputProps("to")}
-              data-elem="salary-to-input"
               placeholder="До"
             />
           </Group>
