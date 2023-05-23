@@ -8,13 +8,11 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <Router>
-      <MantineProvider withGlobalStyles withNormalizeCSS>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </MantineProvider>
-    </Router>
-  </React.StrictMode>
+  <Router>
+    <MantineProvider withGlobalStyles withNormalizeCSS>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </MantineProvider>
+  </Router>
 );
