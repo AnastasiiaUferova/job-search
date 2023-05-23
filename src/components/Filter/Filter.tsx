@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC, SetStateAction } from "react";
 import Branch from "./Branch";
 import "../../styles/Filter/Filter.css";
 import ResetButton from "./ResetButton";
@@ -17,7 +17,11 @@ import {
 import { useGetCataloguesQuery } from "../../redux/slices/apiSlice";
 import Error from "../Error/Error";
 
-export default function Filter() {
+type FilterType = {
+  setActivePage: React.Dispatch<SetStateAction<number>>;
+};
+
+const Filter: FC<FilterType> = (props) => {
   const form = useForm({
     initialValues: {
       catalogue: "",
@@ -55,6 +59,8 @@ export default function Filter() {
           dispatch(setCatalogue(catalogueId()));
           dispatch(setSalaryFrom(form.values.from));
           dispatch(setSalaryTo(form.values.to));
+          props.setActivePage(1);
+
           if (form.values.to !== "" || form.values.from !== "") {
             dispatch(setAgreement(1));
           } else dispatch(setAgreement(0));
@@ -88,4 +94,6 @@ export default function Filter() {
       </form>
     </>
   );
-}
+};
+
+export default Filter;

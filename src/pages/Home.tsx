@@ -15,7 +15,7 @@ const Home: FC<homeProps> = (props) => {
 
   return (
     <main className="home">
-      <Filter />
+      <Filter setActivePage={setActivePage} />
       <SearchComponent
         setActivePage={setActivePage}
         activePage={activePage}

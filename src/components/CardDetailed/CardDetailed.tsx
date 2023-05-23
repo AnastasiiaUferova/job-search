@@ -3,18 +3,12 @@ import SavedButton from "../Card/SavedButton";
 import "../../styles/CardDetailed/CardDetailed.css";
 import useSaveHandleClick from "../../hooks/useSaveHandleClick";
 import { detailsProps } from "../../types/types";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
 
 const CardDetailed: FC<detailsProps> = (props) => {
   const { profession, payment_from, currency, type_of_work, town } =
     props.details;
 
   const { className, onSaveClickHandle } = useSaveHandleClick(props.details.id);
-  const vacData = useSelector((state: RootState) => state.setVacData.vacData);
-
-  console.log(props.details.id);
-  console.log(vacData);
 
   return (
     <div className="card_detailed">

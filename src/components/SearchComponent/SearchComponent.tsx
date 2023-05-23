@@ -34,7 +34,7 @@ const SearchComponent: FC<homeProps> = (props) => {
 
   return (
     <div className="search-comp">
-      <SearchInput />
+      <SearchInput setActivePage={setActivePage} />
       {renderSearchCopmponent()}
     </div>
   );

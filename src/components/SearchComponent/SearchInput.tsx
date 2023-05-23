@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, SetStateAction, useEffect, useState } from "react";
 import { TextInput } from "@mantine/core";
 import "../../styles/SearchComponent/SearchComponent.css";
 import SubmitButton from "../SubmitButton/SubmitButton";
@@ -7,7 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { setKeyword } from "../../redux/slices/paramsSlice";
 
-export default function SearchInput() {
+type SearchInputType = {
+  setActivePage: React.Dispatch<SetStateAction<number>>;
+};
+
+const SearchInput: FC<SearchInputType> = (props) => {
   const SearchIcon = () => {
     return <div className="search-comp__icon"></div>;
   };
@@ -31,6 +35,7 @@ export default function SearchInput() {
     <form
       onSubmit={form.onSubmit(() => {
         dispatch(setKeyword(form.values.query));
+        props.setActivePage(1);
       })}
     >
       <TextInput
@@ -58,4 +63,6 @@ export default function SearchInput() {
       />
     </form>
   );
-}
+};
+
+export default SearchInput;

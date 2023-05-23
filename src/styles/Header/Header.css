@@ -47,7 +47,7 @@
 
 @media (max-width: 650px) {
   .header {
-    padding: 0 15%;
+    padding: 0 4%;
   }
   .header__content {
     justify-content: space-between;
